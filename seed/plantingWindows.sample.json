@@ -1,0 +1,23 @@
+[
+  {
+    "plantId": 2320,
+    "commonName": "Tomato",
+    "startOffsetWeeks": 1,
+    "endOffsetWeeks": 7,
+    "method": "transplant"
+  },
+  {
+    "plantId": 1117,
+    "commonName": "Carrot",
+    "startOffsetWeeks": -4,
+    "endOffsetWeeks": 4,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 682,
+    "commonName": "Basil",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 8,
+    "method": "transplant"
+  }
+]

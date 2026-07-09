@@ -1,0 +1,36 @@
+{
+  "name": "gardenbook",
+  "version": "1.0.0",
+  "main": "backend.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --watch backend.js",
+    "seed": "node seed/seed.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "author": "Barbara Louyakis & Aleena Karatra",
+  "license": "MIT",
+  "description": "GardenBook - Gardening, Simplified.",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongodb": "^6.17.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0",
+    "pdfkit": "^0.17.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true
+  }
+}

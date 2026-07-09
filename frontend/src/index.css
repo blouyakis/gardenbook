@@ -1,0 +1,94 @@
+:root {
+  --gb-bg: #f6efdd; /* butter-cream page */
+  --gb-surface: #fdfaf1; /* warm paper white (cards, panels) */
+  --gb-border: #dfcf9f; /* soft gold frame */
+  --gb-crimson: #a84a51; /* dusty brick rose — primary actions */
+  --gb-crimson-bright: #c05e63; /* wordmark, accents, "today" */
+  --gb-text: #4a3f35; /* warm ink brown */
+  --gb-text-muted: #8d7f6f;
+  --gb-vegetable: #6f9660; /* vine-leaf green */
+  --gb-herb: #c9963f; /* sunflower gold */
+  --gb-fruit: #7c8cc4; /* muscari blue */
+  --gb-flower: #9c7fb5; /* lavender */
+  --gb-explore: #7c8cc4; /* muscari blue — Explore accent */
+}
+
+body {
+  background-color: var(--gb-bg);
+  background-image: url("/background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: var(--gb-text);
+}
+
+[data-bs-theme="light"] {
+  --bs-body-bg: var(--gb-bg);
+  --bs-body-color: var(--gb-text);
+  --bs-border-color: var(--gb-border);
+  --bs-tertiary-bg: rgba(253, 250, 241, 0.82);
+}
+
+h1, h2, h3 {
+  font-family: "rafaella", "Cinzel Decorative", Georgia, serif;
+}
+
+.navbar.bg-body-tertiary {
+  --bs-tertiary-bg-rgb: 253, 250, 241;
+  --bs-bg-opacity: 0;
+}
+
+.navbar .nav-link {
+  background-color: var(--gb-crimson);
+  color: #fdf6ee;
+  border-radius: 999px;
+  padding: 0.25rem 0.9rem;
+  margin-right: 0.4rem;
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible {
+  background-color: var(--gb-crimson-bright);
+  color: #fff;
+}
+
+.card {
+  background-color: rgba(253, 250, 241, 0.92);
+  border-color: var(--gb-border);
+}
+
+.btn {
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+}
+
+.btn-gb-primary {
+  background-color: var(--gb-crimson);
+  border-color: var(--gb-crimson);
+  color: #fdf6ee;
+}
+.btn-gb-primary:hover {
+  background-color: var(--gb-crimson-bright);
+  border-color: var(--gb-crimson-bright);
+  color: #fff;
+}
+
+.btn-gb-explore {
+  background-color: var(--gb-explore);
+  border-color: var(--gb-explore);
+  color: #f4f2fb;
+}
+.btn-gb-explore:hover {
+  background-color: #8d9bd0; 
+  border-color: #8d9bd0;
+  color: #fff;
+}
+
+.gb-wordmark {
+  font-family: "rafaella", "Cinzel Decorative", Georgia, serif;
+  color: var(--gb-crimson-bright);
+  letter-spacing: 0.03em;
+}
