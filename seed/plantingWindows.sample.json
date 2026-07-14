@@ -1,0 +1,139 @@
+[
+  {
+    "plantId": 2251,
+    "search": "cucumis",
+    "commonName": "Cucumber",
+    "type": "vegetable",
+    "startOffsetWeeks": 6,
+    "endOffsetWeeks": 12,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 2255,
+    "search": "cucurbita",
+    "commonName": "Zucchini",
+    "type": "vegetable",
+    "startOffsetWeeks": 6,
+    "endOffsetWeeks": 12,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 2320,
+    "search": "carrot",
+    "commonName": "Carrot",
+    "type": "vegetable",
+    "season": "spring",
+    "startOffsetWeeks": -4,
+    "endOffsetWeeks": 4,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 2320,
+    "search": "carrot",
+    "commonName": "Carrot",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 11,
+    "endOffsetWeeks": 16,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1273,
+    "search": "beet",
+    "commonName": "Beet",
+    "type": "vegetable",
+    "startOffsetWeeks": 11,
+    "endOffsetWeeks": 16,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1320,
+    "search": "kale",
+    "commonName": "Kale",
+    "type": "vegetable",
+    "startOffsetWeeks": 12,
+    "endOffsetWeeks": 18,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 671,
+    "search": "allium",
+    "commonName": "Scallion",
+    "type": "vegetable",
+    "startOffsetWeeks": 12,
+    "endOffsetWeeks": 18,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 683,
+    "search": "allium",
+    "commonName": "Garlic",
+    "type": "vegetable",
+    "startOffsetWeeks": 24,
+    "endOffsetWeeks": 28,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 685,
+    "search": "allium",
+    "commonName": "Chives",
+    "type": "herb",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 16,
+    "method": "transplant"
+  },
+  {
+    "plantId": 834,
+    "search": "dill",
+    "commonName": "Dill",
+    "type": "herb",
+    "startOffsetWeeks": 4,
+    "endOffsetWeeks": 15,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 2098,
+    "search": "cilantro",
+    "commonName": "Cilantro",
+    "type": "herb",
+    "startOffsetWeeks": 13,
+    "endOffsetWeeks": 19,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1885,
+    "search": "citrullus",
+    "commonName": "Watermelon",
+    "type": "fruit",
+    "startOffsetWeeks": 6,
+    "endOffsetWeeks": 12,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 2681,
+    "search": "cantaloupe",
+    "commonName": "Cantaloupe",
+    "type": "fruit",
+    "startOffsetWeeks": 6,
+    "endOffsetWeeks": 12,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1473,
+    "search": "marigold",
+    "commonName": "Marigold",
+    "type": "flower",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 13,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 2172,
+    "search": "cosmos",
+    "commonName": "Cosmos",
+    "type": "flower",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 12,
+    "method": "direct-sow"
+  }
+]
