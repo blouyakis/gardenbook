@@ -4,8 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
 
-// Shared — landing page with buttons into each garden view.
-// Replace the static cards with the user's real gardens
+// Replace the static cards with the user's real gardens?
 // (GET /api/gardens) once Aleena's gardens CRUD is live.
 const GARDEN_LINKS = [
   { label: "MyGardens", to: "/mygarden" },
@@ -25,7 +24,7 @@ export default function HomePage() {
         {GARDEN_LINKS.map((g) => (
           <Col md={4} xs={6} key={g.to}>
             <Card body className="text-center">
-              <Button as={Link} to={g.to} className="btn-gb-primary w-100">
+              <Button as={Link} to={g.to} variant="gb-primary" className="w-100">
                 {g.label}
               </Button>
             </Card>

@@ -1,6 +1,5 @@
 import { MongoClient } from "mongodb";
 
-// Single shared client for the whole app (native driver, no Mongoose)
 const client = new MongoClient(
   process.env.MONGODB_URI || "mongodb://localhost:27017"
 );
@@ -11,7 +10,6 @@ export async function connectToDb() {
   await client.connect();
   db = client.db(process.env.DB_NAME || "gardenbook");
 
-  // Indexes from the proposal
   await db.collection("users").createIndex({ email: 1 }, { unique: true });
   await db.collection("plantings").createIndex({ userId: 1, plantedDate: 1 });
 

@@ -1,30 +1,56 @@
 import { getDb } from "../db/connection.js";
 
-// Barbara — plant catalog (Perenual cache)
-// Document shape: { _id: <perenual species id>, commonName, scientificName,
-//   type, imageUrl, summary, hardiness: { min, max }, cachedAt }
-// Perenual free tier = 100 req/day -> ALWAYS serve from this cache;
-// only hit Perenual on a cache miss (or via the seed script).
-
 const plants = () => getDb().collection("plants");
 
 export const findPlants = async ({ search, type } = {}) => {
-  // Barbara: regex/startsWith on commonName for search, equality on type
-  throw new Error("Not implemented");
+  const filter = {};
+  if (search) {
+    const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    filter.commonName = { $regex: escaped, $options: "i" };
+  }
+  if (type) filter.type = type;
+  return plants().find(filter).sort({ commonName: 1 }).toArray();
 };
 
 export const findPlantById = async (plantId) => {
-  // Barbara
-  throw new Error("Not implemented");
+  return plants().findOne({ _id: Number(plantId) });
 };
 
 export const cachePlant = async (plantDoc) => {
-  // Barbara: upsert with _id = Perenual id, set cachedAt
-  throw new Error("Not implemented");
+  const { _id, ...fields } = plantDoc;
+  await plants().updateOne(
+    { _id: Number(_id) },
+    { $set: { ...fields, cachedAt: new Date() } },
+    { upsert: true }
+  );
+  return plantDoc;
 };
 
 export const fetchFromPerenual = async (speciesId) => {
-  // Barbara: fetch from Perenual with PERENUAL_API_KEY, map fields
-  // to our document shape, then cachePlant().
-  throw new Error("Not implemented");
+  const key = process.env.PERENUAL_API_KEY;
+  if (!key) throw new Error("PERENUAL_API_KEY is not set");
+
+  const url = `https://perenual.com/api/v2/species/details/${speciesId}?key=${key}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Perenual responded ${res.status} for species ${speciesId}`);
+  }
+  const data = await res.json();
+
+  const doc = {
+    _id: data.id,
+    commonName: data.common_name || "(unnamed)",
+    scientificName: Array.isArray(data.scientific_name)
+      ? data.scientific_name[0]
+      : data.scientific_name || "",
+    type: data.type || "",
+    imageUrl: data.default_image?.regular_url || data.default_image?.small_url || null,
+    summary: data.description || "",
+    hardiness: {
+      min: Number(data.hardiness?.min) || null,
+      max: Number(data.hardiness?.max) || null,
+    },
+  };
+
+  return cachePlant(doc);
 };
