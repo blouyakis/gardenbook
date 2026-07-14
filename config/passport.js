@@ -32,13 +32,10 @@ const strategy = new LocalStrategy(
 
 passport.use(strategy);
 
-// Serialize user (what to store in session).
-// NOTE: with Mongo this is the ObjectId — store it as a string.
 passport.serializeUser((user, done) => {
   done(null, user._id.toString());
 });
 
-// Deserialize user (how to retrieve user from session)
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await findUserById(id);

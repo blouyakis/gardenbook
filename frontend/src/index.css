@@ -30,7 +30,9 @@ body {
   --bs-tertiary-bg: rgba(253, 250, 241, 0.82);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: "rafaella", "Cinzel Decorative", Georgia, serif;
 }
 
@@ -82,7 +84,7 @@ h1, h2, h3 {
   color: #f4f2fb;
 }
 .btn-gb-explore:hover {
-  background-color: #8d9bd0; 
+  background-color: #8d9bd0;
   border-color: #8d9bd0;
   color: #fff;
 }

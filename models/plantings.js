@@ -1,29 +1,62 @@
 import { ObjectId } from "mongodb";
 import { getDb } from "../db/connection.js";
 
-// Barbara — plantings (the garden<->plant join with a date)
-// Document shape: { _id, userId, gardenId, plantId, plantedDate, notes, createdAt }
-// userId is denormalized to make the all-gardens calendar one query.
-
 const plantings = () => getDb().collection("plantings");
 
-export const createPlanting = async (userId, gardenId, data) => {
-  // Barbara
-  throw new Error("Not implemented");
+export const createPlanting = async (
+  userId,
+  gardenId,
+  { plantId, plantedDate, notes }
+) => {
+  const doc = {
+    userId: new ObjectId(userId),
+    gardenId: new ObjectId(gardenId),
+    plantId: Number(plantId),
+    plantedDate,
+    notes: notes || "",
+    createdAt: new Date(),
+  };
+  const result = await plantings().insertOne(doc);
+  return { _id: result.insertedId, ...doc };
 };
 
 export const updatePlanting = async (userId, gardenId, plantingId, updates) => {
-  // Barbara: filter by _id + userId + gardenId
-  throw new Error("Not implemented");
+  const allowed = {};
+  if (updates.plantedDate !== undefined)
+    allowed.plantedDate = updates.plantedDate;
+  if (updates.notes !== undefined) allowed.notes = updates.notes;
+
+  const result = await plantings().findOneAndUpdate(
+    {
+      _id: new ObjectId(plantingId),
+      userId: new ObjectId(userId),
+      gardenId: new ObjectId(gardenId),
+    },
+    { $set: allowed },
+    { returnDocument: "after" }
+  );
+  return result;
 };
 
 export const deletePlanting = async (userId, gardenId, plantingId) => {
-  // Barbara
-  throw new Error("Not implemented");
+  const result = await plantings().deleteOne({
+    _id: new ObjectId(plantingId),
+    userId: new ObjectId(userId),
+    gardenId: new ObjectId(gardenId),
+  });
+  return result.deletedCount === 1;
 };
 
-export const findPlantingsInWeek = async (userId, weekStart, weekEnd, gardenId = null) => {
-  // Barbara: { userId, plantedDate: { $gte: weekStart, $lt: weekEnd } }
-  // plus gardenId when provided. Covered by the compound index.
-  throw new Error("Not implemented");
+export const findPlantingsInWeek = async (
+  userId,
+  weekStart,
+  weekEnd,
+  gardenId = null
+) => {
+  const filter = {
+    userId: new ObjectId(userId),
+    plantedDate: { $gte: weekStart, $lt: weekEnd },
+  };
+  if (gardenId) filter.gardenId = new ObjectId(gardenId);
+  return plantings().find(filter).sort({ plantedDate: 1 }).toArray();
 };
