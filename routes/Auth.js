@@ -3,7 +3,13 @@ import bcrypt from "bcrypt";
 import passport from "passport";
 
 import { isAuthenticated } from "../middleware/auth.js";
-import { findUserByEmail, createUser } from "../models/users.js";
+import {
+  findUserByEmail,
+  createUser,
+  updatePassword,
+  deleteUserAndData,
+} from "../models/users.js";
+import { resolveRegion } from "../lib/region.js";
 
 const router = express.Router();
 
@@ -24,14 +30,13 @@ router.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Aleena: resolve zip -> { zone, lastFrost, firstFrost } via
-    // phzmapi.org + FarmSense before creating the user. For now, region
-    // stores the raw zip only.
+    const region = await resolveRegion(zip);
+
     const user = await createUser({
       email,
       passwordHash: hashedPassword,
       displayName,
-      region: { zip, zone: null, lastFrost: null, firstFrost: null },
+      region,
     });
 
     delete user.passwordHash;
@@ -41,9 +46,6 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// POST /api/auth/login — Passport local strategy, establish session.
-// Custom callback (not successRedirect) so the SPA gets JSON back and
-// can update React state without a full page reload.
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, info) => {
     if (err) return next(err);
@@ -57,13 +59,11 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-// GET /api/auth/session — return current user or 401
 router.get("/session", isAuthenticated, (req, res) => {
   delete req.user.passwordHash;
   res.json({ user: req.user });
 });
 
-// POST /api/auth/logout — destroy session
 router.post("/logout", (req, res) => {
   req.logout((err) => {
     if (err) {
@@ -75,18 +75,48 @@ router.post("/logout", (req, res) => {
   });
 });
 
-// PUT /api/auth/password — change password (verify current, hash new)
-// Aleena
 router.put("/password", isAuthenticated, async (req, res) => {
-  // Aleena: bcrypt.compare current password, hash + store the new one
-  res.status(501).json({ message: "Not implemented yet" });
+  try {
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+      return res
+        .status(400)
+        .json({ message: "Current and new password are required" });
+    }
+    if (newPassword.length < 6) {
+      return res
+        .status(400)
+        .json({ message: "New password must be at least 6 characters" });
+    }
+
+    const user = await findUserByEmail(req.user.email);
+    const ok = await bcrypt.compare(currentPassword, user.passwordHash);
+    if (!ok) {
+      return res.status(401).json({ message: "Current password is incorrect" });
+    }
+
+    const newHash = await bcrypt.hash(newPassword, 10);
+    await updatePassword(user._id, newHash);
+    res.json({ message: "Password updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
 });
 
-// DELETE /api/auth/account — delete user + all their data, destroy session
-// Aleena
 router.delete("/account", isAuthenticated, async (req, res) => {
-  // Aleena: call deleteUserAndData, then req.logout
-  res.status(501).json({ message: "Not implemented yet" });
+  try {
+    const summary = await deleteUserAndData(req.user._id);
+    req.logout((err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: "Account deleted but logout failed", summary });
+      }
+      res.json({ message: "Account deleted", summary });
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
 });
 
 export default router;

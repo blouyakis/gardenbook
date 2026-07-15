@@ -1,0 +1,16 @@
+/* Aleena — NavigationBar styles. The greeting reuses the brand ink color;
+   the account cluster stays right-aligned on wider screens. */
+
+.gb-nav-greeting {
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+  color: var(--gb-text);
+}
+
+/* On mobile the collapsed menu stacks; give the account items a little
+   breathing room so Logout doesn't hug the Settings link. */
+@media (max-width: 767.98px) {
+  .gb-nav-account {
+    margin-top: 0.5rem;
+  }
+}

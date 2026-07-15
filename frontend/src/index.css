@@ -94,3 +94,9 @@ h3 {
   color: var(--gb-crimson-bright);
   letter-spacing: 0.03em;
 }
+
+.gb-auth-form {
+  max-width: 24rem;
+  width: 100%;
+  margin-inline: auto;
+}
