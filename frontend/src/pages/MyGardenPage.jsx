@@ -33,8 +33,11 @@ export default function MyGardenPage() {
   }, [reloadCalendar]);
 
   const onExport = () => {
-    // Aleena — PDF export. A plain navigation triggers the download:
-    window.location = `/api/calendar/export?week=${week}&gardenId=${gardenId ?? ""}`;
+    // Aleena — PDF export. 
+    const params = new URLSearchParams({ week });
+    if (gardenId) params.set("gardenId", gardenId);
+    if (type) params.set("type", type);
+    window.location = `/api/calendar/export?${params.toString()}`;
   };
 
   return (

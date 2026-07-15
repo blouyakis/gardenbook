@@ -25,13 +25,47 @@ export const findUserById = async (id) => {
 };
 
 export const updateUser = async (id, updates) => {
-  // Aleena: whitelist updatable fields (displayName, region) —
-  // never let this touch email/passwordHash directly.
-  throw new Error("Not implemented");
+  const allowed = {};
+  if (typeof updates.displayName === "string") {
+    allowed.displayName = updates.displayName.trim();
+  }
+  if (updates.region && typeof updates.region === "object") {
+    allowed.region = updates.region;
+  }
+
+  if (Object.keys(allowed).length === 0) {
+    const current = await findUserById(id);
+    if (current) delete current.passwordHash;
+    return current;
+  }
+
+  const updated = await users().findOneAndUpdate(
+    { _id: new ObjectId(id) },
+    { $set: allowed },
+    { returnDocument: "after" }
+  );
+  if (updated) delete updated.passwordHash;
+  return updated;
+};
+
+export const updatePassword = async (id, passwordHash) => {
+  await users().updateOne(
+    { _id: new ObjectId(id) },
+    { $set: { passwordHash } }
+  );
 };
 
 export const deleteUserAndData = async (id) => {
-  // Aleena: delete user's gardens and plantings too — the native
-  // driver has no cascade, so do it manually here.
-  throw new Error("Not implemented");
+  const _id = new ObjectId(id);
+  const db = getDb();
+
+  const plantings = await db.collection("plantings").deleteMany({ userId: _id });
+  const gardens = await db.collection("gardens").deleteMany({ userId: _id });
+  const user = await db.collection("users").deleteOne({ _id });
+
+  return {
+    deletedGardens: gardens.deletedCount,
+    deletedPlantings: plantings.deletedCount,
+    deletedUser: user.deletedCount,
+  };
 };

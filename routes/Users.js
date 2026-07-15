@@ -1,21 +1,31 @@
 import express from "express";
 import { isAuthenticated } from "../middleware/auth.js";
+import { updateUser } from "../models/users.js";
+import { resolveRegion } from "../lib/region.js";
 
 const router = express.Router();
 
-// GET /api/users/me — profile including region
-// Aleena
 router.get("/me", isAuthenticated, (req, res) => {
-  // req.user is already deserialized (passwordHash stripped)
   res.json({ user: req.user });
 });
 
-// PUT /api/users/me — update region/profile
-// Aleena
 router.put("/me", isAuthenticated, async (req, res) => {
-  // Aleena: if zip changed, re-resolve zone + frost dates
-  // (phzmapi + FarmSense), then updateUser().
-  res.status(501).json({ message: "Not implemented yet" });
+  try {
+    const { displayName, zip } = req.body;
+    const updates = {};
+
+    if (typeof displayName === "string") {
+      updates.displayName = displayName;
+    }
+    if (zip && zip !== req.user.region?.zip) {
+      updates.region = await resolveRegion(zip);
+    }
+
+    const user = await updateUser(req.user._id, updates);
+    res.json({ user });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
 });
 
 export default router;
