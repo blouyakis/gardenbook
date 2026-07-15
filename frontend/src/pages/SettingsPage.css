@@ -1,0 +1,10 @@
+/* Aleena — Settings page styles. Constrain the form column width on
+   large screens so the inputs don't stretch edge to edge. */
+
+.gb-settings {
+  max-width: 640px;
+}
+
+.gb-danger-zone {
+  background-color: rgba(168, 74, 81, 0.05);
+}
