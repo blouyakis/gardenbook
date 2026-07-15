@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
-      <h2>Register</h2>
+      <h2 className="text-center">Register</h2>
       {error && <p className="text-danger">{error}</p>}
 
       <Form.Group className="mb-3">
@@ -77,7 +77,7 @@ export default function RegisterPage() {
         <Form.Text>We use this to find your USDA zone and frost dates.</Form.Text>
       </Form.Group>
 
-      <div>
+      <div className="text-center">
         <Button
           className="me-2 btn-gb-primary"
           type="submit"
@@ -86,7 +86,7 @@ export default function RegisterPage() {
           {submitting ? "Creating account…" : "Register"}
         </Button>
       </div>
-      <div className="mt-2">
+      <div className="text-center mt-3">
         Already have an account? <Link to="/login">Login here</Link>
       </div>
     </Form>

@@ -29,7 +29,7 @@ export default function LoginPage() {
 
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
-      <h2>Login</h2>
+      <h2 className="text-center">Login</h2>
       {error && <p className="text-danger">{error}</p>}
 
       <Form.Group className="mb-3">
@@ -58,7 +58,7 @@ export default function LoginPage() {
         />
       </Form.Group>
 
-      <div>
+      <div className="text-center">
         <Button
           className="me-2 btn-gb-primary"
           type="submit"

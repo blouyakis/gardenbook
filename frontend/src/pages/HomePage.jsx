@@ -4,8 +4,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
 
-// Replace the static cards with the user's real gardens?
-// (GET /api/gardens) once Aleena's gardens CRUD is live.
 const GARDEN_LINKS = [
   { label: "MyGardens", to: "/mygarden" },
   { label: "MyVegetables", to: "/mygarden?type=vegetable" },
@@ -16,15 +14,20 @@ const GARDEN_LINKS = [
 
 export default function HomePage() {
   return (
-    <>
-    <div className="text-center" style={{ marginTop: "26vh" }}>
-      <h3 className="gb-wordmark my-4">Gardening, simplified.</h3>
-    </div>
+    <div style={{ paddingBottom: "10vh" }}>
+      <div className="text-center">
+        <h3 className="gb-wordmark my-4">Gardening, simplified.</h3>
+      </div>
       <Row className="g-3">
         {GARDEN_LINKS.map((g) => (
           <Col md={4} xs={6} key={g.to}>
             <Card body className="text-center">
-              <Button as={Link} to={g.to} variant="gb-primary" className="w-100">
+              <Button
+                as={Link}
+                to={g.to}
+                variant="gb-primary"
+                className="w-100"
+              >
                 {g.label}
               </Button>
             </Card>
@@ -32,12 +35,17 @@ export default function HomePage() {
         ))}
         <Col md={4} xs={6}>
           <Card body className="text-center">
-            <Button as={Link} to="/explore" variant="gb-explore" className="w-100">
+            <Button
+              as={Link}
+              to="/explore"
+              variant="gb-explore"
+              className="w-100"
+            >
               Explore Gardens
             </Button>
           </Card>
         </Col>
       </Row>
-    </>
+    </div>
   );
 }
