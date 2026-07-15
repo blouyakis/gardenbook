@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import NavigationBar from "../components/NavigationBar.jsx";
 import Container from "react-bootstrap/Container";
 
@@ -18,3 +19,7 @@ export default function BaseTemplate({ children }) {
     </div>
   );
 }
+
+BaseTemplate.propTypes = {
+  children: PropTypes.node,
+};

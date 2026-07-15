@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node --watch backend.js",
     "seed": "node seed/seed.js",
+    "seed:users": "node seed/seedUsers.js",
+    "seed:testplants": "node seed/seedTestPlants.js",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
