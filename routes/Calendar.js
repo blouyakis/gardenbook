@@ -23,7 +23,6 @@ function weekStartOf(weekParam) {
   const d = new Date(
     Date.UTC(base.getUTCFullYear(), base.getUTCMonth(), base.getUTCDate())
   );
-  // getUTCDay: 0=Sun..6=Sat. Shift so Monday is the first column.
   const offset = (d.getUTCDay() + 6) % 7;
   d.setUTCDate(d.getUTCDate() - offset);
   return d;
@@ -97,7 +96,6 @@ async function buildWeek(userId, week, gardenId = null) {
   });
 }
 
-// GET /api/calendar?week=YYYY-MM-DD — MyGarden weekly view, all gardens
 router.get("/", async (req, res) => {
   try {
     const week = await buildWeek(req.user._id, req.query.week);
@@ -107,14 +105,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /api/calendar/export?week=&gardenId=&type= — PDF via PDFKit
-// NOTE: this MUST be declared before "/:gardenId" or "export" will be
-// swallowed by the param route.
-//
-// Self-contained: it queries plantings directly and joins plant + garden
-// names, so it works independently of the JSON calendar routes. Supports
-// three scopes — all gardens (default), one garden (gardenId), or one
-// type (type) — matching the "export all or a specific garden type" spec.
 router.get("/export", async (req, res) => {
   try {
     const { week, gardenId, type } = req.query;
@@ -169,7 +159,7 @@ router.get("/export", async (req, res) => {
       .find({ _id: { $in: gardenIds.map((id) => new ObjectId(id)) } })
       .toArray();
 
-    const plantName = new Map(plantDocs.map((p) => [p._id, p.commonName]));
+    const plantById = new Map(plantDocs.map((p) => [p._id, p]));
     const gardenById = new Map(gardenDocs.map((g) => [String(g._id), g]));
 
     const columns = days.map(() => []);
@@ -178,11 +168,12 @@ router.get("/export", async (req, res) => {
         (new Date(pl.plantedDate) - start) / (1000 * 60 * 60 * 24)
       );
       if (dayIdx >= 0 && dayIdx < 7) {
+        const plant = plantById.get(pl.plantId);
         const garden = gardenById.get(String(pl.gardenId));
         columns[dayIdx].push({
-          name: plantName.get(pl.plantId) || "Plant",
+          name: plant?.commonName || "Plant",
           garden: garden?.name || "",
-          type: garden?.type || "vegetable",
+          type: plant?.type || "vegetable",
         });
       }
     }
