@@ -44,7 +44,7 @@ export default function MyGardenPage() {
     <>
       <div className="d-flex justify-content-between align-items-center my-3">
         <GardenTypeToggle activeType={type} />
-        <Button variant="outline-secondary" size="sm" onClick={onExport}>
+        <Button variant="gb-outline" size="sm" onClick={onExport}>
           Export PDF
         </Button>
       </div>
