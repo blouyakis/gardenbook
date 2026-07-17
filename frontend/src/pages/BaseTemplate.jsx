@@ -1,5 +1,6 @@
 import NavigationBar from "../components/NavigationBar.jsx";
 import Container from "react-bootstrap/Container";
+import PropTypes from "prop-types";
 
 export default function BaseTemplate({ children }) {
   return (
