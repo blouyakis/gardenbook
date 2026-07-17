@@ -135,5 +135,204 @@
     "startOffsetWeeks": 2,
     "endOffsetWeeks": 12,
     "method": "direct-sow"
+  },
+  {
+    "plantId": 536,
+    "search": "kiwifruit",
+    "commonName": "Kiwifruit",
+    "type": "fruit",
+    "startOffsetWeeks": 1,
+    "endOffsetWeeks": 6,
+    "method": "transplant"
+  },
+  {
+    "plantId": 1154,
+    "search": "star fruit",
+    "commonName": "Star Fruit",
+    "type": "fruit",
+    "startOffsetWeeks": 0,
+    "endOffsetWeeks": 12,
+    "method": "transplant"
+  },
+  {
+    "plantId": 357,
+    "search": "cortland apple",
+    "commonName": "Cortland Apple",
+    "type": "fruit",
+    "season": "spring",
+    "startOffsetWeeks": -2,
+    "endOffsetWeeks": 4,
+    "method": "transplant"
+  },
+  {
+    "plantId": 363,
+    "search": "golden delicious apple",
+    "commonName": "Golden Delicious Apple",
+    "type": "fruit",
+    "season": "spring",
+    "startOffsetWeeks": -2,
+    "endOffsetWeeks": 4,
+    "method": "transplant"
+  },
+  {
+    "plantId": 759,
+    "search": "berry",
+    "commonName": "Serviceberry",
+    "type": "fruit",
+    "season": "spring",
+    "startOffsetWeeks": -2,
+    "endOffsetWeeks": 4,
+    "method": "transplant"
+  },
+  {
+    "plantId": 957,
+    "search": "berry",
+    "commonName": "Chokeberry",
+    "type": "fruit",
+    "season": "spring",
+    "startOffsetWeeks": -2,
+    "endOffsetWeeks": 4,
+    "method": "transplant"
+  },
+  {
+    "plantId": 183,
+    "search": "berry",
+    "commonName": "Strawberry Tree",
+    "type": "fruit",
+    "season": "spring",
+    "startOffsetWeeks": 0,
+    "endOffsetWeeks": 6,
+    "method": "transplant"
+  },
+  {
+    "plantId": 920,
+    "search": "berry",
+    "commonName": "Bearberry",
+    "type": "fruit",
+    "startOffsetWeeks": 0,
+    "endOffsetWeeks": 10,
+    "method": "transplant"
+  },
+  {
+    "plantId": 500,
+    "search": "woolly yarrow",
+    "commonName": "Woolly Yarrow",
+    "type": "flower",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 16,
+    "method": "transplant"
+  },
+  {
+    "plantId": 400,
+    "search": "glossy abelia",
+    "commonName": "Glossy Abelia",
+    "type": "flower",
+    "season": "spring",
+    "startOffsetWeeks": 0,
+    "endOffsetWeeks": 8,
+    "method": "transplant"
+  },
+  {
+    "plantId": 1299,
+    "search": "Chinese ground orchid",
+    "commonName": "Chinese Ground Orchid",
+    "type": "flower",
+    "season": "spring",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 8,
+    "method": "transplant"
+  },
+  {
+    "plantId": 288,
+    "search": "ficus carica",
+    "commonName": "Fig",
+    "type": "fruit",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 8,
+    "method": "transplant"
+  },
+  {
+    "plantId": 367,
+    "search": "malus",
+    "commonName": "Apple",
+    "type": "fruit",
+    "season": "spring",
+    "startOffsetWeeks": -2,
+    "endOffsetWeeks": 4,
+    "method": "transplant"
+  },
+  {
+    "plantId": 534,
+    "search": "actinidia",
+    "commonName": "Hardy Kiwi",
+    "type": "fruit",
+    "startOffsetWeeks": 1,
+    "endOffsetWeeks": 6,
+    "method": "transplant"
+  },
+  {
+    "plantId": 2253,
+    "search": "cucurbita maxima",
+    "commonName": "Pumpkin",
+    "type": "vegetable",
+    "startOffsetWeeks": 4,
+    "endOffsetWeeks": 9,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1321,
+    "search": "brassica oleracea",
+    "commonName": "Broccoli",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 10,
+    "endOffsetWeeks": 14,
+    "method": "transplant"
+  },
+  {
+    "plantId": 1322,
+    "search": "brassica oleracea",
+    "commonName": "Cabbage",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 10,
+    "endOffsetWeeks": 14,
+    "method": "transplant"
+  },
+  {
+    "plantId": 665,
+    "search": "allium",
+    "commonName": "Leek",
+    "type": "vegetable",
+    "startOffsetWeeks": -2,
+    "endOffsetWeeks": 6,
+    "method": "transplant"
+  },
+  {
+    "plantId": 667,
+    "search": "allium",
+    "commonName": "Onion",
+    "type": "vegetable",
+    "startOffsetWeeks": -4,
+    "endOffsetWeeks": 2,
+    "method": "transplant"
+  },
+  {
+    "plantId": 2571,
+    "search": "echinacea",
+    "commonName": "Coneflower",
+    "type": "flower",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 18,
+    "method": "transplant"
+  },
+  {
+    "plantId": 2300,
+    "search": "dahlia",
+    "commonName": "Dahlia",
+    "type": "flower",
+    "startOffsetWeeks": 2,
+    "endOffsetWeeks": 10,
+    "method": "transplant"
   }
 ]

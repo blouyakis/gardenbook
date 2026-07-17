@@ -1,6 +1,13 @@
 import "dotenv/config";
 
-const terms = ["citrullus", "cucumis", "rubus", "vaccinium"];
+const terms = [
+  "kiwifruit",  
+  "star fruit",      
+  "cortland apple",  
+  "golden delicious apple", 
+  "honeycrisp apple",
+  "berry"
+];
 
 const key = process.env.PERENUAL_API_KEY;
 if (!key) {
