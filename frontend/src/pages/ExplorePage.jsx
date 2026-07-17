@@ -32,7 +32,7 @@ export default function ExplorePage() {
   }, [reloadPlants]);
 
   return (
-    <>
+    <div style={{ paddingTop: "22vh" }}>
       <Form.Control
         className="my-3"
         value={query}
@@ -42,8 +42,8 @@ export default function ExplorePage() {
       {user ? (
         <WeekNav week={week} setWeek={setWeek} />
       ) : (
-        <p className="text-center small text-body-secondary my-3">
-          Browse the plant catalog. <Link to="/login">Log in</Link> to see
+        <p className="text-center fs-5 my-3">
+          Browse the plant catalog here or <Link to="/login">Log in</Link> to see
           plantings this week in your region.
         </p>
       )}
@@ -67,6 +67,6 @@ export default function ExplorePage() {
         plantId={selectedPlantId}
         onClose={() => setSelectedPlantId(null)}
       />
-    </>
+    </div>
   );
 }

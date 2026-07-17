@@ -31,6 +31,8 @@ body {
   --bs-body-color: var(--gb-text);
   --bs-border-color: var(--gb-border);
   --bs-tertiary-bg: rgba(253, 250, 241, 0.82);
+  --bs-secondary-color: rgba(109, 90, 71, 0.9);
+  --bs-secondary-color-rgb: 109, 90, 71;
 }
 
 h1,
@@ -102,4 +104,24 @@ h3 {
   max-width: 24rem;
   width: 100%;
   margin-inline: auto;
+}
+
+.btn-gb-outline {
+  border-color: var(--gb-crimson);
+  color: var(--gb-crimson);
+  background-color: transparent;
+}
+.btn-gb-outline:hover,
+.btn-gb-outline:focus-visible {
+  background-color: var(--gb-crimson);
+  color: #fdf6ee;
+}
+
+a {
+  color: var(--gb-crimson);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--gb-crimson-bright);
 }

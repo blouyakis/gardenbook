@@ -21,7 +21,7 @@ export default function GardenTypeToggle({ activeType }) {
             as={Link}
             to={t.to}
             size="sm"
-            variant={isActive ? "gb-primary" : "outline-secondary"}
+            variant={isActive ? "gb-primary" : "gb-outline"}
           >
             {t.label}
           </Button>
