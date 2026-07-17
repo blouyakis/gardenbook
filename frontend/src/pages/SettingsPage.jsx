@@ -62,7 +62,7 @@ export default function SettingsPage() {
     if (!ok) return;
     const res = await fetch("/api/auth/account", { method: "DELETE" });
     if (res.ok) {
-      await logout(); 
+      await logout();
       navigate("/");
     }
   };
@@ -101,9 +101,8 @@ export default function SettingsPage() {
               </Form.Text>
             </Form.Group>
             <p className="text-body-secondary small mb-3">
-              Zone: {region.zone || "—"} · Last frost:{" "}
-              {region.lastFrost || "—"} · First frost:{" "}
-              {region.firstFrost || "—"}
+              Zone: {region.zone || "—"} · Last frost: {region.lastFrost || "—"}{" "}
+              · First frost: {region.firstFrost || "—"}
             </p>
             <Button className="btn-gb-primary" type="submit">
               Save profile

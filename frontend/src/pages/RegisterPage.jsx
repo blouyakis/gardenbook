@@ -72,7 +72,9 @@ export default function RegisterPage() {
           onChange={onChange("zip")}
           required
         />
-        <Form.Text>We use this to find your USDA zone and frost dates.</Form.Text>
+        <Form.Text>
+          We use this to find your USDA zone and frost dates.
+        </Form.Text>
       </Form.Group>
 
       <div className="text-center">

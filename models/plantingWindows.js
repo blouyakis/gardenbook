@@ -14,7 +14,9 @@ function addWeeks(ymd, weeks) {
 }
 
 export const findWindowsByPlant = async (plantId) => {
-  return windows().find({ plantId: Number(plantId) }).toArray();
+  return windows()
+    .find({ plantId: Number(plantId) })
+    .toArray();
 };
 
 export const windowToDates = (window, lastFrostDate) => ({
@@ -37,5 +39,5 @@ export const findPlantsPlantableInWeek = async (lastFrostDate, weekStart) => {
     if (!byPlant.has(w.plantId)) byPlant.set(w.plantId, []);
     byPlant.get(w.plantId).push(w);
   }
-  return byPlant; 
+  return byPlant;
 };

@@ -1,12 +1,12 @@
 import "dotenv/config";
 
 const terms = [
-  "kiwifruit",  
-  "star fruit",      
-  "cortland apple",  
-  "golden delicious apple", 
+  "kiwifruit",
+  "star fruit",
+  "cortland apple",
+  "golden delicious apple",
   "honeycrisp apple",
-  "berry"
+  "berry",
 ];
 
 const key = process.env.PERENUAL_API_KEY;
@@ -38,7 +38,9 @@ for (const q of terms) {
   try {
     data = JSON.parse(raw);
   } catch {
-    console.log(`  NON-JSON RESPONSE (HTTP ${res.status}): ${raw.slice(0, 120)}`);
+    console.log(
+      `  NON-JSON RESPONSE (HTTP ${res.status}): ${raw.slice(0, 120)}`
+    );
     continue;
   }
 

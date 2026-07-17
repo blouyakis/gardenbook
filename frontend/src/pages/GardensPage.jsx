@@ -12,7 +12,7 @@ export default function GardensPage() {
   const [gardens, setGardens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editing, setEditing] = useState(null); 
+  const [editing, setEditing] = useState(null);
 
   const loadGardens = useCallback(async () => {
     setLoading(true);
@@ -61,34 +61,37 @@ export default function GardensPage() {
     setModalOpen(true);
   };
 
-const [openId, setOpenId] = useState(null);
-const [plantings, setPlantings] = useState({});
+  const [openId, setOpenId] = useState(null);
+  const [plantings, setPlantings] = useState({});
 
-async function toggleGarden(gardenId) {
-  if (openId === gardenId) {
-    setOpenId(null);
-    return;
-  }
-  setOpenId(gardenId);
-  if (!plantings[gardenId]) {
-    const res = await fetch(`/api/gardens/${gardenId}/plantings`);
-    if (res.ok) {
-      const data = await res.json();
-      setPlantings((p) => ({ ...p, [gardenId]: data }));
+  async function toggleGarden(gardenId) {
+    if (openId === gardenId) {
+      setOpenId(null);
+      return;
+    }
+    setOpenId(gardenId);
+    if (!plantings[gardenId]) {
+      const res = await fetch(`/api/gardens/${gardenId}/plantings`);
+      if (res.ok) {
+        const data = await res.json();
+        setPlantings((p) => ({ ...p, [gardenId]: data }));
+      }
     }
   }
-}
 
-async function removePlanting(gardenId, plantingId) {
-  const res = await fetch(`/api/gardens/${gardenId}/plantings/${plantingId}`, {
-    method: "DELETE",
-  });
-  if (res.ok)
-    setPlantings((p) => ({
-      ...p,
-      [gardenId]: p[gardenId].filter((pl) => pl._id !== plantingId),
-    }));
-}
+  async function removePlanting(gardenId, plantingId) {
+    const res = await fetch(
+      `/api/gardens/${gardenId}/plantings/${plantingId}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (res.ok)
+      setPlantings((p) => ({
+        ...p,
+        [gardenId]: p[gardenId].filter((pl) => pl._id !== plantingId),
+      }));
+  }
 
   return (
     <div className="gb-gardens">
@@ -174,7 +177,13 @@ async function removePlanting(gardenId, plantingId) {
                           </div>
                         ))
                       )}
-                      <Button size="sm" variant="link" as={Link} to="/explore" className="p-0 mt-2">
+                      <Button
+                        size="sm"
+                        variant="link"
+                        as={Link}
+                        to="/explore"
+                        className="p-0 mt-2"
+                      >
                         + Add plants (Explore)
                       </Button>
                     </div>

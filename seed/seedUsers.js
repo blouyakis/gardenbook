@@ -7,16 +7,58 @@ const DEMO_EMAIL = "demo@neu.edu";
 const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
 
 const FIRST = [
-  "Ava", "Liam", "Mia", "Noah", "Zoe", "Kai", "Ivy", "Leo", "Nora", "Eli",
-  "Ruby", "Owen", "Iris", "Jude", "Cleo", "Finn", "Wren", "Milo", "Sage", "Rhea",
+  "Ava",
+  "Liam",
+  "Mia",
+  "Noah",
+  "Zoe",
+  "Kai",
+  "Ivy",
+  "Leo",
+  "Nora",
+  "Eli",
+  "Ruby",
+  "Owen",
+  "Iris",
+  "Jude",
+  "Cleo",
+  "Finn",
+  "Wren",
+  "Milo",
+  "Sage",
+  "Rhea",
 ];
 const LAST = [
-  "Fields", "Rowe", "Vance", "Bloom", "Frost", "Hale", "Marsh", "Reed",
-  "Thorne", "Vale", "Ash", "Crane", "Dell", "Grove", "Lark", "Moss",
+  "Fields",
+  "Rowe",
+  "Vance",
+  "Bloom",
+  "Frost",
+  "Hale",
+  "Marsh",
+  "Reed",
+  "Thorne",
+  "Vale",
+  "Ash",
+  "Crane",
+  "Dell",
+  "Grove",
+  "Lark",
+  "Moss",
 ];
 const GARDEN_ADJ = [
-  "Backyard", "Sunny", "Corner", "Raised", "Kitchen", "Front", "Terrace",
-  "Rooftop", "Hillside", "Shady", "Riverside", "Windowsill",
+  "Backyard",
+  "Sunny",
+  "Corner",
+  "Raised",
+  "Kitchen",
+  "Front",
+  "Terrace",
+  "Rooftop",
+  "Hillside",
+  "Shady",
+  "Riverside",
+  "Windowsill",
 ];
 
 const pick = (arr, i) => arr[i % arr.length];
@@ -64,7 +106,7 @@ async function seed() {
 
   const sharedHash = await bcrypt.hash("password123", 10);
 
-  const USER_COUNT = 350; 
+  const USER_COUNT = 350;
   const userDocs = [];
   for (let i = 0; i < USER_COUNT; i++) {
     const name = `${pick(FIRST, i)} ${pick(LAST, Math.floor(i / FIRST.length))}`;
@@ -100,7 +142,10 @@ async function seed() {
   const gardenResult = await gardens.insertMany(gardenDocs);
 
   const total =
-    1 + demoGardens.length + userResult.insertedCount + gardenResult.insertedCount;
+    1 +
+    demoGardens.length +
+    userResult.insertedCount +
+    gardenResult.insertedCount;
   console.log(
     `🌱 Seeded ${userResult.insertedCount} users + ${gardenResult.insertedCount} gardens ` +
       `(plus demo account with ${demoGardens.length} gardens) = ${total} documents`

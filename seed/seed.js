@@ -9,13 +9,17 @@ import { cachePlant } from "../models/plants.js";
 const IMAGE_DIR = new URL("../frontend/public/plants/", import.meta.url);
 
 async function fetchSpecies(id, key) {
-  const res = await fetch(`https://perenual.com/api/v2/species/details/${id}?key=${key}`);
+  const res = await fetch(
+    `https://perenual.com/api/v2/species/details/${id}?key=${key}`
+  );
   const raw = await res.text();
   let data;
   try {
     data = JSON.parse(raw);
   } catch {
-    throw new Error(`Could not parse JSON for species (HTTP ${res.status}): ${raw.slice(0, 80)}`);
+    throw new Error(
+      `Could not parse JSON for species (HTTP ${res.status}): ${raw.slice(0, 80)}`
+    );
   }
   if (!res.ok || !data.id) {
     throw new Error(`API error (HTTP ${res.status}): ${raw.slice(0, 120)}`);
@@ -26,10 +30,11 @@ async function fetchSpecies(id, key) {
 async function downloadImage(url, plantId) {
   if (!url) return null;
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to download image: (HTTP ${res.status})`);
+  if (!res.ok)
+    throw new Error(`Failed to download image: (HTTP ${res.status})`);
   const buffer = Buffer.from(await res.arrayBuffer());
   await writeFile(new URL(`${plantId}.jpg`, IMAGE_DIR), buffer);
-  return `/plants/${plantId}.jpg`; 
+  return `/plants/${plantId}.jpg`;
 }
 
 async function seed() {
@@ -37,7 +42,7 @@ async function seed() {
   if (!key) {
     console.error("Error: Set Perenual API key in .env");
     process.exit(1);
-}
+  }
 
   const raw = await readFile(
     new URL("./plantingWindows.sample.json", import.meta.url),
@@ -45,7 +50,7 @@ async function seed() {
   );
   const manifest = JSON.parse(raw);
   if (manifest.some((row) => !row.plantId)) {
-    throw new Error("Manifest rows missing ")
+    throw new Error("Manifest rows missing ");
   }
 
   await connectToDb();
@@ -54,7 +59,10 @@ async function seed() {
   const uniquePlants = new Map();
   for (const row of manifest) {
     if (!uniquePlants.has(row.plantId)) {
-      uniquePlants.set(row.plantId, { commonName: row.commonName, type: row.type });
+      uniquePlants.set(row.plantId, {
+        commonName: row.commonName,
+        type: row.type,
+      });
     }
   }
 
@@ -65,7 +73,9 @@ async function seed() {
       const fetched = (data.common_name || "").toLowerCase();
       const expected = meta.commonName.toLowerCase();
       if (!fetched.includes(expected) && !expected.includes(fetched)) {
-        console.warn(`id ${plantId}: expected "${meta.commonName}" but Perenual has "${data.common_name}" - seeding but verify id`);
+        console.warn(
+          `id ${plantId}: expected "${meta.commonName}" but Perenual has "${data.common_name}" - seeding but verify id`
+        );
       }
 
       let imageUrl = null;
@@ -75,7 +85,9 @@ async function seed() {
           plantId
         );
       } catch (imgErr) {
-        console.warn(`id ${plantId} (${meta.commonName}): no image - ${imgErr.message}`);
+        console.warn(
+          `id ${plantId} (${meta.commonName}): no image - ${imgErr.message}`
+        );
       }
       await cachePlant({
         _id: data.id,
@@ -93,9 +105,13 @@ async function seed() {
       });
 
       successful.add(plantId);
-      console.log(`cached ${meta.commonName} (id ${plantId})${imageUrl ? " + image" : ""}`);
+      console.log(
+        `cached ${meta.commonName} (id ${plantId})${imageUrl ? " + image" : ""}`
+      );
     } catch (err) {
-      console.warn(`skipped ${meta.commonName} (id ${plantId}): ${err.message}`);
+      console.warn(
+        `skipped ${meta.commonName} (id ${plantId}): ${err.message}`
+      );
     }
   }
 
@@ -112,7 +128,8 @@ async function seed() {
   const col = getDb().collection("plantingWindows");
   await col.deleteMany({ plantId: { $in: [...uniquePlants.keys()] } });
   const result = await col.insertMany(windowDocs);
-  console.log(`Seeded ${successful.size}/${uniquePlants.size} plants and ${result.insertedCount} planting windows`
+  console.log(
+    `Seeded ${successful.size}/${uniquePlants.size} plants and ${result.insertedCount} planting windows`
   );
   process.exit(0);
 }

@@ -2,7 +2,17 @@ import Card from "react-bootstrap/Card";
 
 export default function PlantCard({ plant, onClick }) {
   return (
-    <Card onClick={onClick} style={{ cursor: "pointer" }}>
+    <Card 
+    onClick={onClick} 
+    onKeyDown={(e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        onClick();
+      }
+    }} 
+    role="button"
+    tabIndex={0}
+    style={{ cursor: "pointer" }}>
       {plant.imageUrl ? (
         <Card.Img
           variant="top"
@@ -33,3 +43,13 @@ export default function PlantCard({ plant, onClick }) {
     </Card>
   );
 }
+
+PlantCard.propTypes = {
+  plant: PropTypes.shape({
+    commonName: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    method: PropTypes.string,
+    imageUrl: PropTypes.string,
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
+};

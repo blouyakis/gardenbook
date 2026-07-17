@@ -33,7 +33,9 @@ export const fetchFromPerenual = async (speciesId) => {
   const url = `https://perenual.com/api/v2/species/details/${speciesId}?key=${key}`;
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`Perenual responded ${res.status} for species ${speciesId}`);
+    throw new Error(
+      `Perenual responded ${res.status} for species ${speciesId}`
+    );
   }
   const data = await res.json();
 
@@ -44,7 +46,8 @@ export const fetchFromPerenual = async (speciesId) => {
       ? data.scientific_name[0]
       : data.scientific_name || "",
     type: data.type || "",
-    imageUrl: data.default_image?.regular_url || data.default_image?.small_url || null,
+    imageUrl:
+      data.default_image?.regular_url || data.default_image?.small_url || null,
     summary: data.description || "",
     hardiness: {
       min: Number(data.hardiness?.min) || null,
