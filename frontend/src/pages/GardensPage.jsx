@@ -160,7 +160,7 @@ async function removePlanting(gardenId, plantingId) {
                             <span>
                               {pl.name}{" "}
                               <small className="text-muted">
-                                · {pl.plantedDate}
+                                - {pl.plantedDate}
                               </small>
                             </span>
                             <Button

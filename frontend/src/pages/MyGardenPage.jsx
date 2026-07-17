@@ -33,7 +33,6 @@ export default function MyGardenPage() {
   }, [reloadCalendar]);
 
   const onExport = () => {
-    // Aleena — PDF export. 
     const params = new URLSearchParams({ week });
     if (gardenId) params.set("gardenId", gardenId);
     if (type) params.set("type", type);

@@ -51,13 +51,6 @@ async function buildWeek(userId, week, gardenId = null, type = null) {
   endExclusive.setUTCDate(endExclusive.getUTCDate() + 1);
 
   let gardenScope = gardenId;
-  if (!gardenId && type) {
-    const typed = await getDb()
-      .collection("gardens")
-      .find({ userId: new ObjectId(userId), type })
-      .toArray();
-    gardenScope = typed.map((g) => g._id);
-  }
 
   const plantings = await findPlantingsInWeek(
     userId,
@@ -86,7 +79,7 @@ async function buildWeek(userId, week, gardenId = null, type = null) {
           name: plant?.commonName || "Plant",
           type: plant?.type || "vegetable",
         };
-      });
+      }).filter((pl) => !type || pl.type === type);
     return {
       date: iso,
       label: `${DAY_NAMES[(d.getUTCDay() + 6) % 7]} ${formatDate(d)}`,
