@@ -94,6 +94,39 @@ async function ownsGarden(req) {
   return Boolean(g);
 }
 
+//Added to get a garden's associated plant list.
+router.get("/:gardenId/plantings", async (req, res) => {
+  try {
+    if (!(await ownsGarden(req))) {
+      return res.status(404).json({ message: "Garden not found" });
+    }
+    const { getDb } = await import("../db/connection.js");
+    const db = getDb();
+    const plantings = await db
+      .collection("plantings")
+      .find({ userId: req.user._id, gardenId: new ObjectId(req.params.gardenId) })
+      .sort({ plantedDate: 1 })
+      .toArray();
+    const plantIds = [...new Set(plantings.map((p) => p.plantId))];
+    const plantDocs = await db
+      .collection("plants")
+      .find({ _id: { $in: plantIds } })
+      .toArray();
+    const byId = new Map(plantDocs.map((p) => [p._id, p]));
+    res.json(
+      plantings.map((p) => ({
+        _id: String(p._id),
+        plantId: p.plantId,
+        name: byId.get(p.plantId)?.commonName || "Plant",
+        type: byId.get(p.plantId)?.type || "vegetable",
+        plantedDate: p.plantedDate,
+      }))
+    );
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
 router.post("/:gardenId/plantings", async (req, res) => {
   try {
     if (!(await ownsGarden(req))) {

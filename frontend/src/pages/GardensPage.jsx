@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -7,11 +8,6 @@ import Spinner from "react-bootstrap/Spinner";
 import GardenFormModal from "../components/GardenFormModal.jsx";
 import "./GardensPage.css";
 
-// Aleena — the garden management UI. This is my full-CRUD collection:
-//   Create  -> POST   /api/gardens
-//   Read    -> GET    /api/gardens
-//   Update  -> PUT    /api/gardens/:id
-//   Delete  -> DELETE /api/gardens/:id
 export default function GardensPage() {
   const [gardens, setGardens] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,6 +61,35 @@ export default function GardensPage() {
     setModalOpen(true);
   };
 
+const [openId, setOpenId] = useState(null);
+const [plantings, setPlantings] = useState({});
+
+async function toggleGarden(gardenId) {
+  if (openId === gardenId) {
+    setOpenId(null);
+    return;
+  }
+  setOpenId(gardenId);
+  if (!plantings[gardenId]) {
+    const res = await fetch(`/api/gardens/${gardenId}/plantings`);
+    if (res.ok) {
+      const data = await res.json();
+      setPlantings((p) => ({ ...p, [gardenId]: data }));
+    }
+  }
+}
+
+async function removePlanting(gardenId, plantingId) {
+  const res = await fetch(`/api/gardens/${gardenId}/plantings/${plantingId}`, {
+    method: "DELETE",
+  });
+  if (res.ok)
+    setPlantings((p) => ({
+      ...p,
+      [gardenId]: p[gardenId].filter((pl) => pl._id !== plantingId),
+    }));
+}
+
   return (
     <div className="gb-gardens">
       <div className="d-flex justify-content-between align-items-center my-3">
@@ -111,7 +136,49 @@ export default function GardensPage() {
                     >
                       Delete
                     </Button>
+                    <Button
+                      size="sm"
+                      variant="outline-secondary"
+                      onClick={() => toggleGarden(garden._id)}
+                    >
+                      {openId === garden._id ? "Hide plants" : "View plants"}
+                    </Button>
                   </div>
+
+                  {openId === garden._id && (
+                    <div className="mt-3">
+                      {(plantings[garden._id] || []).length === 0 ? (
+                        <p className="text-muted mb-0">
+                          No plants in this garden yet.
+                        </p>
+                      ) : (
+                        plantings[garden._id].map((pl) => (
+                          <div
+                            key={pl._id}
+                            className="d-flex justify-content-between py-1"
+                          >
+                            <span>
+                              {pl.name}{" "}
+                              <small className="text-muted">
+                                · {pl.plantedDate}
+                              </small>
+                            </span>
+                            <Button
+                              size="sm"
+                              variant="link"
+                              className="text-danger p-0"
+                              onClick={() => removePlanting(garden._id, pl._id)}
+                            >
+                              Remove
+                            </Button>
+                          </div>
+                        ))
+                      )}
+                      <Button size="sm" variant="link" as={Link} to="/explore" className="p-0 mt-2">
+                        + Add plants (Explore)
+                      </Button>
+                    </div>
+                  )}
                 </Card.Body>
               </Card>
             </Col>

@@ -1,5 +1,3 @@
-/* Aleena — Gardens management page styles. Uses the shared --gb-* tokens
-   so garden cards match the calendar chip colors by type. */
 
 .gb-garden-card {
   position: relative;

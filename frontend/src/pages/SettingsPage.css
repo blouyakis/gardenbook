@@ -1,6 +1,3 @@
-/* Aleena — Settings page styles. Constrain the form column width on
-   large screens so the inputs don't stretch edge to edge. */
-
 .gb-settings {
   max-width: 640px;
 }

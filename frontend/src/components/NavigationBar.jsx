@@ -6,8 +6,6 @@ import { Link, useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext.jsx";
 import "./NavigationBar.css";
 
-// Aleena — navbar reads the session from AuthContext and swaps the
-// Login link for a greeting + Logout once signed in.
 export default function NavigationBar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();

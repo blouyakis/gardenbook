@@ -4,8 +4,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useAuth } from "../context/AuthContext.jsx";
 
-// Aleena — register with displayName + zip (region). On success the
-// context auto-logs-in, so we can send the user straight to their garden.
 const DEFAULT_FORM = { displayName: "", email: "", password: "", zip: "" };
 
 export default function RegisterPage() {

@@ -7,10 +7,6 @@ import Alert from "react-bootstrap/Alert";
 import { useAuth } from "../context/AuthContext.jsx";
 import "./SettingsPage.css";
 
-// Aleena — the account settings UI. Three independent panels:
-//   1. Profile + region  -> PUT /api/users/me
-//   2. Change password    -> PUT /api/auth/password
-//   3. Delete account     -> DELETE /api/auth/account
 export default function SettingsPage() {
   const { user, setUser, logout } = useAuth();
   const navigate = useNavigate();

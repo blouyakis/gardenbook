@@ -1,13 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-// Aleena — shared auth state.
-//
-// This is the "shared state (context)" the login/register/navbar TODOs
-// referred to. On mount it asks the server who's logged in (GET
-// /api/auth/session); everything else in the app reads `user` from here
-// instead of re-fetching, so the navbar and pages stay in sync.
-
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {

@@ -4,8 +4,6 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useAuth } from "../context/AuthContext.jsx";
 
-// Aleena — login via the shared auth context. On success the context
-// holds the user, so the navbar updates without a page reload.
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
