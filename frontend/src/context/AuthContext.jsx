@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
       }
     })();
     return () => {
-      active = false; 
+      active = false;
     };
   }, []);
 

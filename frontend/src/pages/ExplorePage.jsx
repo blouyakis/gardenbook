@@ -43,8 +43,8 @@ export default function ExplorePage() {
         <WeekNav week={week} setWeek={setWeek} />
       ) : (
         <p className="text-center fs-5 my-3">
-          Browse the plant catalog here or <Link to="/login">Log in</Link> to see
-          plantings this week in your region.
+          Browse the plant catalog here or <Link to="/login">Log in</Link> to
+          see plantings this week in your region.
         </p>
       )}
 

@@ -46,7 +46,8 @@ If the demo data gets modified or deleted, you can restore it by running:
 npm run seed
 ```
 
-This re-seeds the planting windows. 
+This re-seeds the planting windows.
+
 ```bash
 npm run seed:users
 npm run seed
@@ -57,7 +58,7 @@ npm run seed:demo
 
 ## Setup
 
-1. Create a new file in the root called `.env` and copy the environment variables below to `.env` 
+1. Create a new file in the root called `.env` and copy the environment variables below to `.env`
 2. Backend — from the project root: `npm install` then `npm start` (port 3000)
 3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
 4. Seed planting windows — from the project root: `npm run seed`
@@ -173,10 +174,10 @@ CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern Un
 
 ## AI Assistance
 
-- Tool: 
-- Version: 
-- URL: 
-- Date: 
+- Tool:
+- Version:
+- URL:
+- Date:
 
 ---
 

@@ -51,10 +51,7 @@ export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
           </Form.Group>
           <Form.Group className="mb-3">
             <Form.Label>Type</Form.Label>
-            <Form.Select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
+            <Form.Select value={type} onChange={(e) => setType(e.target.value)}>
               {GARDEN_TYPES.map((t) => (
                 <option key={t} value={t}>
                   {t[0].toUpperCase() + t.slice(1)}

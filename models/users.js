@@ -52,7 +52,9 @@ export const deleteUserAndData = async (id) => {
   const _id = new ObjectId(id);
   const db = getDb();
 
-  const plantings = await db.collection("plantings").deleteMany({ userId: _id });
+  const plantings = await db
+    .collection("plantings")
+    .deleteMany({ userId: _id });
   const gardens = await db.collection("gardens").deleteMany({ userId: _id });
   const user = await db.collection("users").deleteOne({ _id });
 

@@ -2,7 +2,7 @@
 // import { connectToDb, getDb } from "../db/connection.js";
 
 // // ============================================================================
-// // TEST SCAFFOLD — Aleena, for local verification only. 
+// // TEST SCAFFOLD — Aleena, for local verification only.
 // // ----------------------------------------------------------------------------
 // // Barbara's real Explore/Plants feature pulls live data from the Perenual API
 // // and caches it. That needs her API layer + a key. To let Aleena test HER OWN

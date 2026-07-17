@@ -104,7 +104,10 @@ router.get("/:gardenId/plantings", async (req, res) => {
     const db = getDb();
     const plantings = await db
       .collection("plantings")
-      .find({ userId: req.user._id, gardenId: new ObjectId(req.params.gardenId) })
+      .find({
+        userId: req.user._id,
+        gardenId: new ObjectId(req.params.gardenId),
+      })
       .sort({ plantedDate: 1 })
       .toArray();
     const plantIds = [...new Set(plantings.map((p) => p.plantId))];
@@ -160,7 +163,8 @@ router.put("/:gardenId/plantings/:id", async (req, res) => {
       req.params.id,
       req.body
     );
-    if (!planting) return res.status(404).json({ message: "Planting not found" });
+    if (!planting)
+      return res.status(404).json({ message: "Planting not found" });
     res.json({ planting });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
@@ -177,7 +181,8 @@ router.delete("/:gardenId/plantings/:id", async (req, res) => {
       req.params.gardenId,
       req.params.id
     );
-    if (!removed) return res.status(404).json({ message: "Planting not found" });
+    if (!removed)
+      return res.status(404).json({ message: "Planting not found" });
     res.json({ message: "Planting removed" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
