@@ -4,24 +4,45 @@ import { findPlants, findPlantById } from "../models/plants.js";
 import {
   findWindowsByPlant,
   windowToDates,
+  findPlantsPlantableInWeek,
 } from "../models/plantingWindows.js";
 
 const router = express.Router();
 
-// ============================================================================
-// TEST SCAFFOLD (Barbara's routes) — Aleena, local verification only.
-// ----------------------------------------------------------------------------
-// Wires Barbara's already-written plant models to routes so the Explore page
-// renders and the add-to-garden flow works end to end. It reads from the
-// (test-seeded) plants cache and does NOT call Perenual or apply the full
-// region/week/zone filtering — that's Barbara's real work to finish.
-// ============================================================================
+function zoneNumber(zone) {
+  const match = String(zone || "").match(/^\d+/);
+  return match ? Number(match[0]) : null;
+}
 
-// GET /api/plants?search=&week=&type= — plant list for Explore
+// GET /api/plants?search=&week=&type= — plant list for Explore.
 router.get("/", isAuthenticated, async (req, res) => {
   try {
-    const { search, type } = req.query;
-    const plants = await findPlants({ search, type });
+    const { search, week, type } = req.query;
+    let plants = await findPlants({ search, type });
+
+    const lastFrost = req.user.region?.lastFrost;
+    if (week && lastFrost) {
+      // Map<plantId, matchedWindows[]> for windows overlapping this week
+      const plantable = await findPlantsPlantableInWeek(lastFrost, week);
+      plants = plants
+        .filter((p) => plantable.has(p._id))
+        .map((p) => {
+          const windows = plantable
+            .get(p._id)
+            .map((w) => windowToDates(w, lastFrost));
+          return { ...p, windows, method: windows[0]?.method || null };
+        });
+    }
+
+    const userZone = zoneNumber(req.user.region?.zone);
+    if (userZone != null) {
+      plants = plants.filter(
+        (p) =>
+          (p.hardiness?.min == null || p.hardiness.min <= userZone) &&
+          (p.hardiness?.max == null || p.hardiness.max >= userZone)
+      );
+    }
+
     res.json(plants);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });

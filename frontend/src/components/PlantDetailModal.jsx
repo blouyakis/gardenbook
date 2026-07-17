@@ -4,13 +4,11 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-// TEST SCAFFOLD (Barbara's component) — Aleena wired the three data calls so
-// the add-to-garden loop works end to end for testing:
 //   GET  /api/plants/:id            -> plant summary + windows
 //   GET  /api/gardens               -> garden <select>
 //   POST /api/gardens/:id/plantings -> add the planting
-// Barbara owns the real detail rendering (when-to-plant windows, etc.).
-export default function PlantDetailModal({ plantId, onClose }) {
+
+export default function PlantDetailModal({ plantId = null, onClose }) {
   const [plant, setPlant] = useState(null);
   const [gardens, setGardens] = useState([]);
   const [form, setForm] = useState({ gardenId: "", plantedDate: "" });
@@ -67,14 +65,17 @@ export default function PlantDetailModal({ plantId, onClose }) {
           <>
             <p>{plant.summary}</p>
             {plant.windows?.length > 0 && (
-              <p className="small text-body-secondary mb-0">
-                When to plant ({plant.method}):{" "}
-                {plant.windows
-                  .map((w) =>
-                    w.startDate ? `${w.startDate} → ${w.endDate}` : w.method
-                  )
-                  .join(", ")}
-              </p>
+              <div className="small text-body-secondary mb-0">
+                <strong>When to plant:</strong>
+                {plant.windows.map((w, i) => (
+                  <div key={i}>
+                    {w.startDate ? `${w.startDate} → ${w.endDate}` : "dates unavailable"}
+                    {" · "}
+                    {w.method}
+                    {w.season ? ` (${w.season})` : ""}
+                  </div>
+                ))}
+              </div>
             )}
           </>
         )}
@@ -113,8 +114,4 @@ export default function PlantDetailModal({ plantId, onClose }) {
 PlantDetailModal.propTypes = {
   plantId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onClose: PropTypes.func.isRequired,
-};
-
-PlantDetailModal.defaultProps = {
-  plantId: null,
 };

@@ -110,9 +110,9 @@
     "method": "direct-sow"
   },
   {
-    "plantId": 2681,
-    "search": "cantaloupe",
-    "commonName": "Cantaloupe",
+    "plantId": 2250,
+    "search": "melon",
+    "commonName": "Melon",
     "type": "fruit",
     "startOffsetWeeks": 6,
     "endOffsetWeeks": 12,

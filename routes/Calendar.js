@@ -38,15 +38,8 @@ function formatDate(date) {
 
 router.use(isAuthenticated);
 
-// ---------------------------------------------------------------------------
-// TEST SCAFFOLD (Barbara's routes) — reuses her findPlantingsInWeek model to
-// return the 7-day structure CalendarGrid expects. Lets Aleena see the
-// MyGarden calendar render with real data. Barbara replaces with her real
-// aggregation (which also filters/joins per her spec).
-// ---------------------------------------------------------------------------
-
-// Build the 7-day array [{ date, label, plantings:[{_id,name,type}] }].
-async function buildWeek(userId, week, gardenId = null) {
+// 7-day array [{ date, label, plantings:[{_id,name,type}] }].
+async function buildWeek(userId, week, gardenId = null, type = null) {
   const start = weekStartOf(week);
   const days = Array.from({ length: 7 }, (_, i) => {
     const d = new Date(start);
@@ -54,20 +47,26 @@ async function buildWeek(userId, week, gardenId = null) {
     return d;
   });
   const startStr = start.toISOString().slice(0, 10);
-  const endStr = days[6].toISOString().slice(0, 10);
   const endExclusive = new Date(days[6]);
   endExclusive.setUTCDate(endExclusive.getUTCDate() + 1);
 
-  // Barbara's model compares plantedDate (a YYYY-MM-DD string) with $gte/$lt,
-  // so we hand it string bounds.
+  let gardenScope = gardenId;
+  if (!gardenId && type) {
+    const typed = await getDb()
+      .collection("gardens")
+      .find({ userId: new ObjectId(userId), type })
+      .toArray();
+    gardenScope = typed.map((g) => g._id);
+  }
+
   const plantings = await findPlantingsInWeek(
     userId,
     startStr,
     endExclusive.toISOString().slice(0, 10),
-    gardenId
+    gardenScope
   );
 
-  // Join plant name + type from the plants cache.
+  // Plant name + type from the plants cache.
   const db = getDb();
   const plantIds = [...new Set(plantings.map((p) => p.plantId))];
   const plantDocs = await db
@@ -98,7 +97,12 @@ async function buildWeek(userId, week, gardenId = null) {
 
 router.get("/", async (req, res) => {
   try {
-    const week = await buildWeek(req.user._id, req.query.week);
+    const week = await buildWeek(
+      req.user._id,
+      req.query.week,
+      null,
+      req.query.type
+    );
     res.json(week);
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
@@ -142,10 +146,7 @@ router.get("/export", async (req, res) => {
       scopeLabel = `${type[0].toUpperCase()}${type.slice(1)} gardens`;
     }
 
-    const plantings = await db
-      .collection("plantings")
-      .find(filter)
-      .toArray();
+    const plantings = await db.collection("plantings").find(filter).toArray();
 
     const plantIds = [...new Set(plantings.map((p) => p.plantId))];
     const gardenIds = [...new Set(plantings.map((p) => String(p.gardenId)))];
@@ -180,15 +181,19 @@ router.get("/export", async (req, res) => {
 
     const filename = `garden-week-${start.toISOString().slice(0, 10)}.pdf`;
     res.setHeader("Content-Type", "application/pdf");
-    res.setHeader(
-      "Content-Disposition",
-      `attachment; filename="${filename}"`
-    );
+    res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
 
-    const doc = new PDFDocument({ size: "letter", layout: "landscape", margin: 36 });
+    const doc = new PDFDocument({
+      size: "letter",
+      layout: "landscape",
+      margin: 36,
+    });
     doc.pipe(res);
 
-    doc.fillColor("#a84a51").fontSize(24).text("GardenBook", { continued: false });
+    doc
+      .fillColor("#a84a51")
+      .fontSize(24)
+      .text("GardenBook", { continued: false });
     doc
       .fillColor("#4a3f35")
       .fontSize(13)

@@ -51,12 +51,16 @@ export const findPlantingsInWeek = async (
   userId,
   weekStart,
   weekEnd,
-  gardenId = null
+  gardenIds = null
 ) => {
   const filter = {
     userId: new ObjectId(userId),
     plantedDate: { $gte: weekStart, $lt: weekEnd },
   };
-  if (gardenId) filter.gardenId = new ObjectId(gardenId);
+  if (gardenIds) {
+    filter.gardenId = Array.isArray(gardenIds)
+      ? { $in: gardenIds.map((id) => new ObjectId(id)) }
+      : new ObjectId(gardenIds);
+  }
   return plantings().find(filter).sort({ plantedDate: 1 }).toArray();
 };

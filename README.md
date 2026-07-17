@@ -47,7 +47,11 @@ npm run seed
 ```
 
 This re-seeds the planting windows. 
-<!-- Add a demo-user seed script (demo account + sample gardens/plantings) and document it here -->
+```bash
+npm run seed:users
+npm run seed
+npm run seed:demo
+```
 
 ---
 
