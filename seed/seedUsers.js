@@ -2,17 +2,6 @@ import "dotenv/config";
 import bcrypt from "bcrypt";
 import { connectToDb, getDb } from "../db/connection.js";
 
-// Aleena — synthetic data seed for the "1k+ records" rubric item.
-// Populates the two collections I own (users + gardens) with well over
-// 1,000 documents, plus a known demo account for graders.
-//
-// Run with: npm run seed:users
-//
-// Idempotent: it first removes any previously-seeded synthetic accounts
-// (email domain @garden.example) and the demo user, then re-inserts, so
-// it can be run repeatedly without piling up duplicates. It never touches
-// accounts created through the real registration flow.
-
 const SYNTHETIC_DOMAIN = "garden.example";
 const DEMO_EMAIL = "demo@neu.edu";
 const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
@@ -38,7 +27,6 @@ async function seed() {
   const users = db.collection("users");
   const gardens = db.collection("gardens");
 
-  // --- Clean out previous synthetic data only ---
   const oldSynthetic = await users
     .find({ email: { $regex: `@${SYNTHETIC_DOMAIN}$` } })
     .toArray();
@@ -52,7 +40,6 @@ async function seed() {
     await users.deleteOne({ _id: demo._id });
   }
 
-  // --- Demo account (real, known password) ---
   const demoHash = await bcrypt.hash("Northeastern", 10);
   const demoDoc = {
     email: DEMO_EMAIL,
@@ -75,13 +62,9 @@ async function seed() {
   }));
   await gardens.insertMany(demoGardens);
 
-  // --- Synthetic users + gardens ---
-  // Hash one password and reuse it for every synthetic user: these are
-  // throwaway demo records, and 350 separate bcrypt hashes would be slow
-  // for no benefit. Real users always get their own hash at registration.
   const sharedHash = await bcrypt.hash("password123", 10);
 
-  const USER_COUNT = 350; // -> ~350 users + ~1,050 gardens = 1,400+ docs
+  const USER_COUNT = 350; 
   const userDocs = [];
   for (let i = 0; i < USER_COUNT; i++) {
     const name = `${pick(FIRST, i)} ${pick(LAST, Math.floor(i / FIRST.length))}`;
@@ -101,7 +84,6 @@ async function seed() {
   const userResult = await users.insertMany(userDocs);
   const insertedUserIds = Object.values(userResult.insertedIds);
 
-  // Give each synthetic user 2-4 gardens.
   const gardenDocs = [];
   insertedUserIds.forEach((userId, i) => {
     const count = 2 + (i % 3); // 2, 3, or 4

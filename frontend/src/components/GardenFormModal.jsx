@@ -4,9 +4,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-// Aleena — one modal for both "create" and "edit". When `garden` is passed
-// it pre-fills the fields (edit mode); when it's null the form starts blank
-// (create mode). The parent decides what onSubmit does (POST vs PUT).
 const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
 
 export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
@@ -15,7 +12,6 @@ export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
   const [error, setError] = useState(null);
   const [saving, setSaving] = useState(false);
 
-  // Sync the form whenever we open it for a different garden.
   useEffect(() => {
     setName(garden?.name ?? "");
     setType(garden?.type ?? "vegetable");
