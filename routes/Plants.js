@@ -1,5 +1,4 @@
 import express from "express";
-import { isAuthenticated } from "../middleware/auth.js";
 import { findPlants, findPlantById } from "../models/plants.js";
 import {
   findWindowsByPlant,
@@ -15,12 +14,12 @@ function zoneNumber(zone) {
 }
 
 // GET /api/plants?search=&week=&type= — plant list for Explore.
-router.get("/", isAuthenticated, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const { search, week, type } = req.query;
     let plants = await findPlants({ search, type });
 
-    const lastFrost = req.user.region?.lastFrost;
+    const lastFrost = req.user?.region?.lastFrost;
     if (week && lastFrost) {
       // Map<plantId, matchedWindows[]> for windows overlapping this week
       const plantable = await findPlantsPlantableInWeek(lastFrost, week);
@@ -34,7 +33,7 @@ router.get("/", isAuthenticated, async (req, res) => {
         });
     }
 
-    const userZone = zoneNumber(req.user.region?.zone);
+    const userZone = zoneNumber(req.user?.region?.zone);
     if (userZone != null) {
       plants = plants.filter(
         (p) =>
@@ -50,13 +49,13 @@ router.get("/", isAuthenticated, async (req, res) => {
 });
 
 // GET /api/plants/:id — plant summary + when-to-plant windows for user's region
-router.get("/:id", isAuthenticated, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const plant = await findPlantById(req.params.id);
     if (!plant) return res.status(404).json({ message: "Plant not found" });
 
     const windows = await findWindowsByPlant(req.params.id);
-    const lastFrost = req.user.region?.lastFrost;
+    const lastFrost = req.user?.region?.lastFrost;
     // Convert week-offset windows to concrete dates when we know the frost date.
     const dated = lastFrost
       ? windows.map((w) => windowToDates(w, lastFrost))
