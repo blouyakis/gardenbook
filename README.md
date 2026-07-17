@@ -10,7 +10,8 @@ Full stack web application using Node + Express 5 + MongoDB native driver + Reac
 
 ## APIs
 
-Perenual (plant catalog, photos, summaries, zones), USDA Hardiness Zone — phzmapi.org (ZIP -> zone), FarmSense Frost Date (NOAA data by lat/lon)
+Perenual (plant catalog, photos, summaries, zones), USDA Hardiness Zone — phzmapi.org (ZIP -> zone)
+An earlier design used the FarmSense frost API, but its endpoint was retired, frost dates are now estimated from the resolved zone so registration never depends on a live external call. Zones 1–13 are supported, including frost-free zones 11–13.
 
 ---
 
@@ -103,6 +104,10 @@ PORT=3000
 
 [Click here to view the Slides](https://.......)
 
+### Video Demo
+
+[Watch the Video Demo](https://.... to be added)
+
 ### Running the App (production build)
 
 ```bash
@@ -118,6 +123,7 @@ Then go to `http://localhost:3000` in your browser. (During development, use the
 
 - Account registration with automatic region detection (ZIP -> USDA zone + frost dates)
 - Gardens organized by type: vegetables, fruits, herbs, flowers
+- View a garden's plants: expand any garden on the Gardens page to see and remove its plantings
 - MyGarden weekly calendar with garden type toggle
 - Explore page: search every plant plantable in your region for any week, past or future
 - Plant detail view with region-specific planting windows
@@ -135,6 +141,8 @@ config/
   passport.js             — Passport local strategy config
 middleware/
   auth.js                 — isAuthenticated session guard
+lib/
+  region.js               — ZIP → USDA zone (phzmapi) + local frost-date derivation
 models/
   users.js                — User data access
   gardens.js              — Garden data access
@@ -149,15 +157,21 @@ routes/
   Calendar.js             — Weekly views + PDF export
 seed/
   seed.js                 — Seeds plantingWindows
+  seedUsers.js            — Demo account + gardens + synthetic users
+  seedDemoPlantings.js    — Demo account's plantings
   plantingWindows.sample.json
 frontend/
   src/
     main.jsx              — React entry, router
     index.css             — Brand theme
-    pages/                — BaseTemplate, Home, MyGarden, Explore, Login, Register
+    pages/                — BaseTemplate, Home, MyGarden, Explore, Login, Register, 
+                            Gardens, Settings
     components/           — NavigationBar, GardenTypeToggle, WeekNav,
-                            CalendarGrid, PlantCard, PlantDetailModal
+                            CalendarGrid, PlantCard, PlantDetailModal, GardenFormModal,
+                            RequireAuth
+    context/              - AuthContext
   public/                 — background image, fonts
+    plants/               - cached plant images
 ```
 
 ---
@@ -173,10 +187,10 @@ CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern Un
 
 ## AI Assistance
 
-- Tool: 
-- Version: 
-- URL: 
-- Date: 
+- Tool: Claude (Anthropic)
+- Version: Opus 4.8
+- URL: https://claude.ai
+- Usage: Used for creating stubs to help with observing development flow, and identifying bugs across areas with shared scopes.
 
 ---
 
