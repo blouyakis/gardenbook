@@ -127,7 +127,7 @@ frontend/
 
 ## Database Design
 
-MongoDB with the native driver & MongoDB Atlas. 
+MongoDB with the native driver & MongoDB Atlas.
 
 Five collections:
 
