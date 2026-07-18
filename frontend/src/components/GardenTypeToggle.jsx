@@ -30,3 +30,7 @@ export default function GardenTypeToggle({ activeType }) {
     </ButtonGroup>
   );
 }
+
+GardenTypeToggle.propTypes = {
+  activeType: PropTypes.string,
+};

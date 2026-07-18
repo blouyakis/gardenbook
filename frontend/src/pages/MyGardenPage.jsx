@@ -10,8 +10,8 @@ import Button from "react-bootstrap/Button";
 export default function MyGardenPage() {
   const { gardenId } = useParams();
   const [searchParams] = useSearchParams();
-  const type = searchParams.get("type") 
-  const [week, setWeek] = useState(currentMonday()); 
+  const type = searchParams.get("type");
+  const [week, setWeek] = useState(currentMonday());
   const [days, setDays] = useState([]);
 
   const reloadCalendar = useCallback(async () => {
@@ -26,13 +26,14 @@ export default function MyGardenPage() {
       return;
     }
     setDays(await res.json());
-    }, [gardenId, type, week]);
+  }, [gardenId, type, week]);
 
   useEffect(() => {
     reloadCalendar();
   }, [reloadCalendar]);
 
   const onExport = () => {
+    // Aleena — PDF export.
     const params = new URLSearchParams({ week });
     if (gardenId) params.set("gardenId", gardenId);
     if (type) params.set("type", type);
