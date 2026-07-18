@@ -109,7 +109,7 @@ PORT=3000
 
 ### Video Demo
 
-[Watch the Video Demo](https://.... to be added)
+[Watch the Video Demo](https://drive.google.com/file/d/1hFakVI2IovxdgBpFGDHkV9ZcTOSARU2E/view?usp=sharing)
 
 ### Running the App (production build)
 
