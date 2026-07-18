@@ -79,7 +79,8 @@ async function buildWeek(userId, week, gardenId = null, type = null) {
           name: plant?.commonName || "Plant",
           type: plant?.type || "vegetable",
         };
-      }).filter((pl) => !type || pl.type === type);
+      })
+      .filter((pl) => !type || pl.type === type);
     return {
       date: iso,
       label: `${DAY_NAMES[(d.getUTCDay() + 6) % 7]} ${formatDate(d)}`,

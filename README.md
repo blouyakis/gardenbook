@@ -114,8 +114,8 @@ PORT=3000
 ### Running the App (production build)
 
 ```bash
-cd frontend 
-npm run build 
+cd frontend
+npm run build
 npm run dev
 cd ..
 npm start
@@ -199,11 +199,13 @@ CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern Un
 ## AI Assistance
 
 Tool: Claude (Anthropic)
+
 - Version: Fable 5
 - URL: https://claude.ai
 - Usage: Used for creating findIds.js and for formatting plantingWindows.sample.json to generate the seeded data from Perenual API.
 
 Tool: Claude (Anthropic)
+
 - Version: Opus 4.8
 - URL: https://claude.ai
 - Usage: Used for creating stubs to help with observing development flow, and identifying bugs across areas with shared scopes.

@@ -3,17 +3,18 @@ import PropTypes from "prop-types";
 
 export default function PlantCard({ plant, onClick }) {
   return (
-    <Card 
-    onClick={onClick} 
-    onKeyDown={(e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        onClick();
-      }
-    }} 
-    role="button"
-    tabIndex={0}
-    style={{ cursor: "pointer" }}>
+    <Card
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      style={{ cursor: "pointer" }}
+    >
       {plant.imageUrl ? (
         <Card.Img
           variant="top"
@@ -26,7 +27,7 @@ export default function PlantCard({ plant, onClick }) {
           className="d-flex align-items-center justify-content-center"
           style={{
             height: "8rem",
-            backgroundColor: "var(--gb-${plant.type}, var(--gb-surface))",
+            backgroundColor: `var(--gb-${plant.type}, var(--gb-surface))`,
             opacity: 0.35,
           }}
         >
