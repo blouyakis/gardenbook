@@ -35,9 +35,9 @@ Khoury College of Computer Sciences, Northeastern University
 
 The application is deployed and publicly accessible at:
 
-[GardenBook](https://gardenbook-tozv.onrender.com/mygarden)
+[GardenBook](https://gardenbook-tozv.onrender.com)
 
-URL: https://gardenbook-tozv.onrender.com/mygarden
+URL: https://gardenbook-tozv.onrender.com
 
 A demo account has been pre-loaded with sample data so you can explore the application without creating an account or adding data manually.
 
