@@ -1,7 +1,47 @@
 .gb-settings {
-  max-width: 640px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 11rem;
 }
 
+.gb-settings-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.gb-settings-row > .card {
+  flex: 1;
+}
+
+/* stack on small screens */
+@media (max-width: 768px) {
+  .gb-settings-row {
+    flex-direction: column;
+  }
+}
+
+.gb-settings h2 {
+  text-align: center;
+}
+
+/* card: maroon outline, no red anywhere */
 .gb-danger-zone {
-  background-color: rgba(168, 74, 81, 0.05);
+  background-color: rgba(253, 250, 241, 0.92);
+  border-color: var(--gb-crimson);
+}
+.gb-danger-zone .card-title {
+  color: var(--gb-crimson);
+}
+
+/* button: muscari blue, maroon on hover */
+.btn-gb-delete {
+  background-color: var(--gb-explore);
+  border-color: var(--gb-crimson);
+  color: #f4f2fb;
+}
+.btn-gb-delete:hover,
+.btn-gb-delete:focus-visible {
+  background-color: var(--gb-crimson);
+  border-color: var(--gb-crimson);
+  color: #fdf6ee;
 }

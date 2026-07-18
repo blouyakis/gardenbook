@@ -157,22 +157,27 @@ routes/
   Gardens.js              — Gardens CRUD + nested plantings
   Calendar.js             — Weekly views + PDF export
 seed/
-  seed.js                 — Seeds plantingWindows
-  seedUsers.js            — Demo account + gardens + synthetic users
-  seedDemoPlantings.js    — Demo account's plantings
-  plantingWindows.sample.json
+  seed.js                 — Seeds the plant catalog from Perenual (fetch, verify,
+                            download images locally) + curated planting windows
+  seedUsers.js            — Demo account + gardens + 1k+ synthetic records
+  seedDemoPlantings.js    — Demo account's plantings for the current week
+  findIds.js              — Dev helper: finds free-tier Perenual species ids
+                            when extending the catalog
+  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost offsets)
 frontend/
+  index.html              — HTML shell (favicon, Adobe Fonts kit)
+  images/                 — Design mockups referenced by DESIGN.md
   src/
-    main.jsx              — React entry, router
-    index.css             — Brand theme
-    pages/                — BaseTemplate, Home, MyGarden, Explore, Login, Register, 
-                            Gardens, Settings
-    components/           — NavigationBar, GardenTypeToggle, WeekNav,
-                            CalendarGrid, PlantCard, PlantDetailModal, GardenFormModal,
-                            RequireAuth
-    context/              - AuthContext
-  public/                 — background image, fonts
-    plants/               - cached plant images
+    main.jsx              — React entry, router, auth-guarded routes
+    index.css             — Brand theme (colors, fonts, custom button variants)
+    pages/                — BaseTemplate, Home, MyGarden, Explore, Login, Register,
+                            Gardens, Settings (+ per-page CSS where styled)
+    components/           — NavigationBar, GardenTypeToggle, WeekNav, CalendarGrid,
+                            PlantCard, PlantDetailModal, GardenFormModal, RequireAuth
+                            (+ per-component CSS where styled)
+    context/              — AuthContext (shared session state)
+  public/                 — background image, favicon
+    plants/               — locally cached plant images (Perenual, CC BY-SA 2.0)
 ```
 
 ---
