@@ -45,6 +45,12 @@ app.use("/api/plants", plantsRouter);
 app.use("/api/gardens", gardensRouter);
 app.use("/api/calendar", calendarRouter);
 
+// API responses depend on session state — never let the browser cache them.
+app.use("/api", (req, res, next) => {
+  res.set("Cache-Control", "no-store");
+  next();
+});
+
 // SPA fallback (Express 5 splat syntax)
 app.get("*splat", function (req, res) {
   res.sendFile("index.html", {
