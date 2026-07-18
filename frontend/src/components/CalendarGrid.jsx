@@ -1,6 +1,7 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import PropTypes from "prop-types";
 
 export default function CalendarGrid({ days = [] }) {
   const today = new Date().toLocaleDateString("en-CA");

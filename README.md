@@ -188,10 +188,11 @@ CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern Un
 
 ## AI Assistance
 
-- Tool:
-- Version:
-- URL:
-- Date:
+- Tool: Claude (Anthropic)
+- Version: Fable 5
+- URL: https://claude.ai
+- Usage: Used for creating findIds.js and for formatting plantingWindows.sample.json to generate the seeded data from Perenual API.
+
 - Tool: Claude (Anthropic)
 - Version: Opus 4.8
 - URL: https://claude.ai

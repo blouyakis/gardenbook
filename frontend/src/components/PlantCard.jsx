@@ -1,4 +1,5 @@
 import Card from "react-bootstrap/Card";
+import PropTypes from "prop-types";
 
 export default function PlantCard({ plant, onClick }) {
   return (
