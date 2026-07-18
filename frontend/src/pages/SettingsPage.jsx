@@ -71,93 +71,95 @@ export default function SettingsPage() {
 
   return (
     <div className="gb-settings">
-      <h2 className="my-3">Settings</h2>
+      <h2 className="my-3 text-center">Settings</h2>
+      <div className="gb-settings-row">
+        {/* Profile + region */}
+        <Card className="mb-4">
+          <Card.Body>
+            <Card.Title>Profile &amp; region</Card.Title>
+            {profileMsg && (
+              <Alert variant={profileMsg.type} className="py-2">
+                {profileMsg.text}
+              </Alert>
+            )}
+            <Form onSubmit={saveProfile}>
+              <Form.Group className="mb-3">
+                <Form.Label>Display name</Form.Label>
+                <Form.Control
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group className="mb-2">
+                <Form.Label>ZIP code</Form.Label>
+                <Form.Control
+                  value={zip}
+                  onChange={(e) => setZip(e.target.value)}
+                />
+                <Form.Text>
+                  Changing this re-detects your USDA zone and frost dates.
+                </Form.Text>
+              </Form.Group>
+              <p className="text-body-secondary small mb-3">
+                Zone: {region.zone || "—"} · Last frost:{" "}
+                {region.lastFrost || "—"} · First frost:{" "}
+                {region.firstFrost || "—"}
+              </p>
+              <Button className="btn-gb-primary" type="submit">
+                Save profile
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
 
-      {/* Profile + region */}
-      <Card className="mb-4">
-        <Card.Body>
-          <Card.Title>Profile &amp; region</Card.Title>
-          {profileMsg && (
-            <Alert variant={profileMsg.type} className="py-2">
-              {profileMsg.text}
-            </Alert>
-          )}
-          <Form onSubmit={saveProfile}>
-            <Form.Group className="mb-3">
-              <Form.Label>Display name</Form.Label>
-              <Form.Control
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group className="mb-2">
-              <Form.Label>ZIP code</Form.Label>
-              <Form.Control
-                value={zip}
-                onChange={(e) => setZip(e.target.value)}
-              />
-              <Form.Text>
-                Changing this re-detects your USDA zone and frost dates.
-              </Form.Text>
-            </Form.Group>
-            <p className="text-body-secondary small mb-3">
-              Zone: {region.zone || "—"} · Last frost: {region.lastFrost || "—"}{" "}
-              · First frost: {region.firstFrost || "—"}
-            </p>
-            <Button className="btn-gb-primary" type="submit">
-              Save profile
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-
-      {/* Change password */}
-      <Card className="mb-4">
-        <Card.Body>
-          <Card.Title>Change password</Card.Title>
-          {pwMsg && (
-            <Alert variant={pwMsg.type} className="py-2">
-              {pwMsg.text}
-            </Alert>
-          )}
-          <Form onSubmit={changePassword}>
-            <Form.Group className="mb-3">
-              <Form.Label>Current password</Form.Label>
-              <Form.Control
-                type="password"
-                value={pw.current}
-                onChange={(e) => setPw({ ...pw, current: e.target.value })}
-                required
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>New password</Form.Label>
-              <Form.Control
-                type="password"
-                value={pw.next}
-                onChange={(e) => setPw({ ...pw, next: e.target.value })}
-                required
-              />
-            </Form.Group>
-            <Button className="btn-gb-primary" type="submit">
-              Update password
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-
+        {/* Change password */}
+        <Card className="mb-4">
+          <Card.Body>
+            <Card.Title>Change password</Card.Title>
+            {pwMsg && (
+              <Alert variant={pwMsg.type} className="py-2">
+                {pwMsg.text}
+              </Alert>
+            )}
+            <Form onSubmit={changePassword}>
+              <Form.Group className="mb-3">
+                <Form.Label>Current password</Form.Label>
+                <Form.Control
+                  type="password"
+                  value={pw.current}
+                  onChange={(e) => setPw({ ...pw, current: e.target.value })}
+                  required
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>New password</Form.Label>
+                <Form.Control
+                  type="password"
+                  value={pw.next}
+                  onChange={(e) => setPw({ ...pw, next: e.target.value })}
+                  required
+                />
+              </Form.Group>
+              <Button className="btn-gb-primary" type="submit">
+                Update password
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+      </div>
       {/* Danger zone */}
-      <Card className="border-danger gb-danger-zone">
+      <Card className="gb-danger-zone">
         <Card.Body>
-          <Card.Title className="text-danger">Delete account</Card.Title>
+          <Card.Title>Delete account</Card.Title>
           <p className="text-body-secondary">
             This removes your account and every garden and planting you own.
           </p>
-          <Button variant="danger" onClick={deleteAccount}>
+          <Button className="btn-gb-delete" onClick={deleteAccount}>
             Delete my account
           </Button>
         </Card.Body>
       </Card>
+      ;
     </div>
   );
 }
