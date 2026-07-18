@@ -47,6 +47,56 @@ The application is a single-page React app with 6 routes:
 
 ---
 
+### Project Structure
+
+```
+backend.js                — Express server entry point
+db/
+  connection.js           — MongoDB connection (native driver) + indexes
+config/
+  passport.js             — Passport local strategy config
+middleware/
+  auth.js                 — isAuthenticated session guard
+lib/
+  region.js               — ZIP → USDA zone (phzmapi) + local frost-date derivation
+models/
+  users.js                — User data access
+  gardens.js              — Garden data access
+  plantings.js            — Planting data access
+  plants.js               — Plant catalog / Perenual cache
+  plantingWindows.js      — Curated planting-window queries
+routes/
+  Auth.js                 — Register, login, logout, session, password, account
+  Users.js                — Profile + region
+  Plants.js               — Explore plant list + plant detail
+  Gardens.js              — Gardens CRUD + nested plantings
+  Calendar.js             — Weekly views + PDF export
+seed/
+  seed.js                 — Seeds the plant catalog from Perenual (fetch, verify,
+                            download images locally) + curated planting windows
+  seedUsers.js            — Demo account + gardens + 1k+ synthetic records
+  seedDemoPlantings.js    — Demo account's plantings for the current week
+  findIds.js              — Dev helper: finds free-tier Perenual species ids
+                            when extending the catalog
+  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost offsets)
+frontend/
+  index.html              — HTML shell (favicon, Adobe Fonts kit)
+  images/                 — Design mockups referenced by DESIGN.md
+  src/
+    main.jsx              — React entry, router, auth-guarded routes
+    index.css             — Brand theme (colors, fonts, custom button variants)
+    pages/                — BaseTemplate, Home, MyGarden, Explore, Login, Register,
+                            Gardens, Settings (+ per-page CSS where styled)
+    components/           — NavigationBar, GardenTypeToggle, WeekNav, CalendarGrid,
+                            PlantCard, PlantDetailModal, GardenFormModal, RequireAuth
+                            (+ per-component CSS where styled)
+    context/              — AuthContext (shared session state)
+  public/                 — background image, favicon
+    plants/               — locally cached plant images (Perenual, CC BY-SA 2.0)
+```
+
+---
+
 ## GitHub
 
 [Click to view GitHub](https://github.com/blouyakis/gardenbook)
@@ -77,7 +127,9 @@ The application is a single-page React app with 6 routes:
 
 ## Database Design
 
-MongoDB with the native driver (no Mongoose). Five collections:
+MongoDB with the native driver & MongoDB Atlas. 
+
+Five collections:
 
 - **users** — `{ email (unique index), passwordHash, displayName, region: { zip, zone, lastFrost, firstFrost }, createdAt }`
 - **gardens** — `{ userId, name, type, createdAt }`
@@ -118,11 +170,15 @@ Barbara Louyakis: External plant API integration (proxy routes, region/week filt
 ![Explore mockup](frontend/images/explore_pastel.png)
 ![Plant detail mockup](frontend/images/plantdetail_pastel.png)
 
-### Final Screenshots
+### Final Page Views
 
-![Login page](frontend/images/login_page.png)
-![Register page](frontend/images/register_page.png)
-![Home page](frontend/images/homepage_page.png)
-![MyGarden page](frontend/images/mygarden_page.png)
-![Explore page](frontend/images/explore_page.png)
-![Plant detail page](frontend/images/plantdetail_page.png)
+![Home](frontend/images/homepage.png)
+![Home](frontend/images/about.png)
+![Home](frontend/images/login.png)
+![Home](frontend/images/register.png)
+![Home](frontend/images/explore.png)
+![Home](frontend/images/plantdetail.png)
+![Home](frontend/images/gardens.png)
+![Home](frontend/images/addgarden.png)
+![Home](frontend/images/mygarden.png)
+![Home](frontend/images/settings.png)

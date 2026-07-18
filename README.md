@@ -2,6 +2,8 @@
 
 GardenBook is a full-stack web application that helps gardeners plan what to plant and when to plant it. Users can explore plants without an account or create an account, set their region, and organize plants into garden types: vegetables, fruits, herbs, and flowers. The MyGarden page displays a weekly calendar of the user's selected plants on their intended planting dates. They can toggle the calendar by garden type or view the full garden. The Explore page displays every plant that can be grown in the user's region, sorted by what should be planted during the specified week. This feature pulls data from Perenual's public API and lets users browse past and future weeks. They can also export any weekly calendar view, all gardens from MyGarden or a specific type of garden, as a PDF that they can save locally or print.
 
+![Explore Screen View](frontend/images/explore.png)
+
 ---
 
 ## Development Environment
@@ -33,9 +35,9 @@ Khoury College of Computer Sciences, Northeastern University
 
 The application is deployed and publicly accessible at:
 
-[GardenBook](https://....)
+[GardenBook](https://gardenbook-tozv.onrender.com/mygarden)
 
-URL: https://....
+URL: https://gardenbook-tozv.onrender.com/mygarden
 
 A demo account has been pre-loaded with sample data so you can explore the application without creating an account or adding data manually.
 
@@ -103,7 +105,7 @@ PORT=3000
 
 ### Slides
 
-[Click here to view the Slides](https://.......)
+[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSz0LjgOflYeKMuzApabbc4j2eQMvZJCbNm0nYsYJIffOhAJvbJJnps_iTmCvpNVR-YuyRB_Z7DF4tf/pub?start=false&loop=false&delayms=3000)
 
 ### Video Demo
 
@@ -112,7 +114,10 @@ PORT=3000
 ### Running the App (production build)
 
 ```bash
-cd frontend && npm run build && cd ..
+cd frontend 
+npm run build 
+npm run dev
+cd ..
 npm start
 ```
 
@@ -193,12 +198,12 @@ CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern Un
 
 ## AI Assistance
 
-- Tool: Claude (Anthropic)
+Tool: Claude (Anthropic)
 - Version: Fable 5
 - URL: https://claude.ai
 - Usage: Used for creating findIds.js and for formatting plantingWindows.sample.json to generate the seeded data from Perenual API.
 
-- Tool: Claude (Anthropic)
+Tool: Claude (Anthropic)
 - Version: Opus 4.8
 - URL: https://claude.ai
 - Usage: Used for creating stubs to help with observing development flow, and identifying bugs across areas with shared scopes.
