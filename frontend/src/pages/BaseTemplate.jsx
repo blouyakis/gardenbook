@@ -1,5 +1,5 @@
 import NavigationBar from "../components/NavigationBar.jsx";
-import Container from "react-bootstrap/Container";
+import Container from "react-bootstrap/Container";                  // really good use of react elements throughout the project
 import PropTypes from "prop-types";
 
 export default function BaseTemplate({ children }) {
