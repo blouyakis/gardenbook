@@ -80,17 +80,25 @@ export default function GardensPage() {
   }
 
   async function removePlanting(gardenId, plantingId) {
-    const res = await fetch(
-      `/api/gardens/${gardenId}/plantings/${plantingId}`,
-      {
-        method: "DELETE",
-      }
-    );
-    if (res.ok)
-      setPlantings((p) => ({
-        ...p,
-        [gardenId]: p[gardenId].filter((pl) => pl._id !== plantingId),
-      }));
+  const confirmed = window.confirm(
+    "Are you sure you want to remove this plant from your garden?",
+  );
+
+  if (!confirmed) return;
+
+  const res = await fetch(
+    `/api/gardens/${gardenId}/plantings/${plantingId}`,
+    {
+      method: "DELETE",
+    },
+  );
+
+  if (res.ok) {
+    setPlantings((p) => ({
+      ...p,
+      [gardenId]: p[gardenId].filter((pl) => pl._id !== plantingId),
+    }));
+  }
   }
 
   return (
