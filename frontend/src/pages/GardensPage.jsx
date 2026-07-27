@@ -120,6 +120,7 @@ export default function GardensPage() {
                 <Card.Body>
                   <span
                     className="gb-type-dot"
+                    aria-hidden="true"
                     style={{ backgroundColor: `var(--gb-${garden.type})` }}
                   />
                   <Card.Title className="fs-5">{garden.name}</Card.Title>

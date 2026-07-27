@@ -20,11 +20,6 @@
   }
 }
 
-.gb-settings h2 {
-  text-align: center;
-}
-
-/* card: maroon outline, no red anywhere */
 .gb-danger-zone {
   background-color: rgba(253, 250, 241, 0.92);
   border-color: var(--gb-crimson);
@@ -33,11 +28,11 @@
   color: var(--gb-crimson);
 }
 
-/* button: muscari blue, maroon on hover */
+/* delete: quiet outline at rest, terracotta fill on hover/focus */
 .btn-gb-delete {
-  background-color: var(--gb-explore);
+  background-color: transparent;
   border-color: var(--gb-crimson);
-  color: #f4f2fb;
+  color: var(--gb-crimson);
 }
 .btn-gb-delete:hover,
 .btn-gb-delete:focus-visible {

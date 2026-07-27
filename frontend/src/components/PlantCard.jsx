@@ -31,8 +31,7 @@ export default function PlantCard({ plant, onClick }) {
           aria-hidden="true"
           style={{
             height: "8rem",
-            backgroundColor: `var(--gb-${plant.type}, var(--gb-surface))`,
-            opacity: 0.35,
+            backgroundColor: `var(--gb-${plant.type}-tint, var(--gb-surface))`,
           }}
         >
           🌱🌸🌿
