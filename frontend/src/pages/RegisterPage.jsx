@@ -38,7 +38,11 @@ export default function RegisterPage() {
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
       <h1 className="text-center fs-2">Register</h1>
-      {error && <p className="text-danger" role="alert">{error}</p>}
+      {error && (
+        <p className="text-danger" role="alert">
+          {error}
+        </p>
+      )}
 
       <Form.Group className="mb-3" controlId="register-name">
         <Form.Label>Name</Form.Label>

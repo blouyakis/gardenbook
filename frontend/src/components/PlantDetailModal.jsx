@@ -87,7 +87,11 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
             )}
           </>
         )}
-        {error && <p className="text-danger mt-2 mb-0" role="alert">{error}</p>}
+        {error && (
+          <p className="text-danger mt-2 mb-0" role="alert">
+            {error}
+          </p>
+        )}
       </Modal.Body>
       <Modal.Footer>
         {user ? (

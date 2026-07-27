@@ -42,7 +42,11 @@ export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
           <Modal.Title>{garden ? "Edit garden" : "New garden"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {error && <p className="text-danger" role="alert">{error}</p>}
+          {error && (
+            <p className="text-danger" role="alert">
+              {error}
+            </p>
+          )}
           <Form.Group className="mb-3" controlId="garden-name">
             <Form.Label>Name</Form.Label>
             <Form.Control

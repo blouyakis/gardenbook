@@ -32,7 +32,11 @@ export default function LoginPage() {
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
       <h1 className="text-center fs-2">Login</h1>
-      {error && <p className="text-danger" role="alert">{error}</p>}
+      {error && (
+        <p className="text-danger" role="alert">
+          {error}
+        </p>
+      )}
 
       <Form.Group className="mb-3" controlId="login-email">
         <Form.Label>Email address</Form.Label>

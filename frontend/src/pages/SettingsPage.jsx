@@ -127,7 +127,10 @@ export default function SettingsPage() {
               </Alert>
             )}
             <Form onSubmit={changePassword}>
-              <Form.Group className="mb-3" controlId="settings-current-password">
+              <Form.Group
+                className="mb-3"
+                controlId="settings-current-password"
+              >
                 <Form.Label>Current password</Form.Label>
                 <Form.Control
                   type="password"
