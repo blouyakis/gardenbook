@@ -7,6 +7,9 @@ import Alert from "react-bootstrap/Alert";
 import { useAuth } from "../context/AuthContext.jsx";
 import "./SettingsPage.css";
 
+// Added screen reader accessibility: controlId=" "
+// Added autoComplete attributes for password fields
+
 export default function SettingsPage() {
   const { user, setUser, logout } = useAuth();
   const navigate = useNavigate();
@@ -83,14 +86,14 @@ export default function SettingsPage() {
               </Alert>
             )}
             <Form onSubmit={saveProfile}>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3" controlId="settings-display-name">
                 <Form.Label>Display name</Form.Label>
                 <Form.Control
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="mb-2">
+              <Form.Group className="mb-2" controlId="settings-zip">
                 <Form.Label>ZIP code</Form.Label>
                 <Form.Control
                   value={zip}
@@ -122,19 +125,21 @@ export default function SettingsPage() {
               </Alert>
             )}
             <Form onSubmit={changePassword}>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3" controlId="settings-current-password">
                 <Form.Label>Current password</Form.Label>
                 <Form.Control
                   type="password"
+                  autoComplete="current-password"
                   value={pw.current}
                   onChange={(e) => setPw({ ...pw, current: e.target.value })}
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3" controlId="settings-new-password">
                 <Form.Label>New password</Form.Label>
                 <Form.Control
                   type="password"
+                  autoComplete="new-password"
                   value={pw.next}
                   onChange={(e) => setPw({ ...pw, next: e.target.value })}
                   required

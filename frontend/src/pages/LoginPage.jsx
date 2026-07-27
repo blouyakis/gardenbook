@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useAuth } from "../context/AuthContext.jsx";
 
+// Added screen reader accessibility: controlId=" "
+
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
@@ -30,7 +32,7 @@ export default function LoginPage() {
       <h2 className="text-center">Login</h2>
       {error && <p className="text-danger">{error}</p>}
 
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="login-email">
         <Form.Label>Email address</Form.Label>
         <Form.Control
           type="email"
@@ -43,7 +45,7 @@ export default function LoginPage() {
         />
       </Form.Group>
 
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="login-password">
         <Form.Label>Password</Form.Label>
         <Form.Control
           type="password"

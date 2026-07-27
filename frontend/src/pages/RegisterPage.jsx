@@ -4,6 +4,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useAuth } from "../context/AuthContext.jsx";
 
+// Added screen reader accessibility: controlId=" "
+// Added autoComplete attributes for all form fields
+
 const DEFAULT_FORM = { displayName: "", email: "", password: "", zip: "" };
 
 export default function RegisterPage() {
@@ -35,39 +38,43 @@ export default function RegisterPage() {
       <h2 className="text-center">Register</h2>
       {error && <p className="text-danger">{error}</p>}
 
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="register-name">
         <Form.Label>Name</Form.Label>
         <Form.Control
           placeholder="Enter your name"
+          autoComplete="name"
           value={form.displayName}
           onChange={onChange("displayName")}
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="register-email">
         <Form.Label>Email address</Form.Label>
         <Form.Control
           type="email"
           placeholder="Enter email"
+          autoComplete="email"
           value={form.email}
           onChange={onChange("email")}
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="register-password">
         <Form.Label>Password</Form.Label>
         <Form.Control
           type="password"
           placeholder="Password"
+          autoComplete="new-password"
           value={form.password}
           onChange={onChange("password")}
           required
         />
       </Form.Group>
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3" controlId="register-zip">
         <Form.Label>ZIP code</Form.Label>
         <Form.Control
           placeholder="02116"
+          autoComplete="postal-code"
           value={form.zip}
           onChange={onChange("zip")}
           required

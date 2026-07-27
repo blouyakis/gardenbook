@@ -90,6 +90,7 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
         {user ? (
           <Form onSubmit={onAdd} className="d-flex gap-2 w-100">
             <Form.Select
+              aria-label="Choose a garden"
               value={form.gardenId}
               onChange={(e) => setForm({ ...form, gardenId: e.target.value })}
               required
@@ -103,6 +104,7 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
             </Form.Select>
             <Form.Control
               type="date"
+              aria-label="Select planting date"
               value={form.plantedDate}
               onChange={(e) =>
                 setForm({ ...form, plantedDate: e.target.value })
