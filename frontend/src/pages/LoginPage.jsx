@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { useAuth } from "../context/AuthContext.jsx";
 
 // Added screen reader accessibility: controlId=" "
+// Made errors audible with role="alert"
 
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -30,7 +31,7 @@ export default function LoginPage() {
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
       <h2 className="text-center">Login</h2>
-      {error && <p className="text-danger">{error}</p>}
+      {error && <p className="text-danger" role="alert">{error}</p>}
 
       <Form.Group className="mb-3" controlId="login-email">
         <Form.Label>Email address</Form.Label>

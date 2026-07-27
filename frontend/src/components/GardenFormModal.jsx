@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 // Added screen reader accessibility: controlId=" "
+// Made errors audible with role="alert"
 
 const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
 
@@ -41,7 +42,7 @@ export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
           <Modal.Title>{garden ? "Edit garden" : "New garden"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {error && <p className="text-danger">{error}</p>}
+          {error && <p className="text-danger" role="alert">{error}</p>}
           <Form.Group className="mb-3" controlId="garden-name">
             <Form.Label>Name</Form.Label>
             <Form.Control

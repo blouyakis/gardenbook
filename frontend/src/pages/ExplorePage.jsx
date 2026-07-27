@@ -8,6 +8,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
+// Added screen reader accessibility: visually hidden status for plants found during search
+
 export default function ExplorePage() {
   const { user } = useAuth();
   const [query, setQuery] = useState("");
@@ -47,6 +49,10 @@ export default function ExplorePage() {
           see plantings this week in your region.
         </p>
       )}
+
+      <p className="visually-hidden" role="status">
+        {plants?.length ?? 0} plants found
+      </p>
 
       <Row className="g-3">
         {!plants?.length ? (

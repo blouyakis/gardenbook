@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 
 // Added screen reader accessibility: controlId=" "
 // Added autoComplete attributes for all form fields
+// Made errors audible with role="alert"
 
 const DEFAULT_FORM = { displayName: "", email: "", password: "", zip: "" };
 
@@ -36,7 +37,7 @@ export default function RegisterPage() {
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
       <h2 className="text-center">Register</h2>
-      {error && <p className="text-danger">{error}</p>}
+      {error && <p className="text-danger" role="alert">{error}</p>}
 
       <Form.Group className="mb-3" controlId="register-name">
         <Form.Label>Name</Form.Label>
