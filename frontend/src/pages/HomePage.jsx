@@ -6,6 +6,7 @@ import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext.jsx";
 
 // Removed <hr> from inside <p> and separated paragraphs for better readability
+// Made the main heading an h1 for better accessibility, kept size with fs-3 in className
 
 const GARDEN_LINKS = [
   { label: "MyGardens", to: "/mygarden" },
@@ -66,7 +67,7 @@ export default function HomePage() {
   return (
     <div>
       <div className="text-center">
-        <h3 className="gb-wordmark my-4">Gardening, simplified.</h3>
+        <h1 className="gb-wordmark my-4 fs-3">Gardening, simplified.</h1>
       </div>
       <Row className="g-3">
         {GARDEN_LINKS.map((g) => (

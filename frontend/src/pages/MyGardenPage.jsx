@@ -6,7 +6,9 @@ import WeekNav, { currentMonday } from "../components/WeekNav.jsx";
 import CalendarGrid from "../components/CalendarGrid.jsx";
 import Button from "react-bootstrap/Button";
 
-// Barbara — MyGarden weekly calendar (all gardens + per-garden).
+// Added an h1 heading for the page for better accessibility, kept size with fs-2 in className
+
+// MyGarden weekly calendar (all gardens + per-garden).
 export default function MyGardenPage() {
   const { gardenId } = useParams();
   const [searchParams] = useSearchParams();
@@ -42,6 +44,7 @@ export default function MyGardenPage() {
 
   return (
     <>
+      <h1 className="text-center fs-2">My Garden</h1>
       <div className="d-flex justify-content-between align-items-center my-3">
         <GardenTypeToggle activeType={type} />
         <Button variant="gb-outline" size="sm" onClick={onExport}>

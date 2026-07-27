@@ -45,3 +45,7 @@
   border-color: var(--gb-crimson);
   color: #fdf6ee;
 }
+
+.gb-settings .card-title {
+  font-family: "EB Garamond", Georgia, serif;
+}

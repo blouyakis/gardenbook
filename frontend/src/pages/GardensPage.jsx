@@ -8,6 +8,8 @@ import Spinner from "react-bootstrap/Spinner";
 import GardenFormModal from "../components/GardenFormModal.jsx";
 import "./GardensPage.css";
 
+// Made the main heading an h1 for better accessibility, kept size with fs-2 in className
+
 export default function GardensPage() {
   const [gardens, setGardens] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -96,7 +98,7 @@ export default function GardensPage() {
   return (
     <div className="gb-gardens">
       <div className="d-flex justify-content-between align-items-center my-3">
-        <h2 className="mb-0">My Gardens</h2>
+        <h1 className="mb-0 fs-2">My Gardens</h1>
         <Button className="btn-gb-primary" onClick={openCreate}>
           + New garden
         </Button>

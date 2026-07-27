@@ -9,6 +9,8 @@ import "./SettingsPage.css";
 
 // Added screen reader accessibility: controlId=" "
 // Added autoComplete attributes for password fields
+// Made the main heading an h1 for better accessibility, kept size with fs-2 in className
+// Modified Card.Title to use as="h2" for better accessibility and consistent heading hierarchy
 
 export default function SettingsPage() {
   const { user, setUser, logout } = useAuth();
@@ -74,12 +76,12 @@ export default function SettingsPage() {
 
   return (
     <div className="gb-settings">
-      <h2 className="my-3 text-center">Settings</h2>
+      <h1 className="my-3 text-center fs-2">Settings</h1>
       <div className="gb-settings-row">
         {/* Profile + region */}
         <Card className="mb-4">
           <Card.Body>
-            <Card.Title>Profile &amp; region</Card.Title>
+            <Card.Title as="h2">Profile &amp; region</Card.Title>
             {profileMsg && (
               <Alert variant={profileMsg.type} className="py-2">
                 {profileMsg.text}
@@ -118,7 +120,7 @@ export default function SettingsPage() {
         {/* Change password */}
         <Card className="mb-4">
           <Card.Body>
-            <Card.Title>Change password</Card.Title>
+            <Card.Title as="h2">Change password</Card.Title>
             {pwMsg && (
               <Alert variant={pwMsg.type} className="py-2">
                 {pwMsg.text}
@@ -155,7 +157,7 @@ export default function SettingsPage() {
       {/* Danger zone */}
       <Card className="gb-danger-zone">
         <Card.Body>
-          <Card.Title>Delete account</Card.Title>
+          <Card.Title as="h2">Delete account</Card.Title>
           <p className="text-body-secondary">
             This removes your account and every garden and planting you own.
           </p>
@@ -164,7 +166,6 @@ export default function SettingsPage() {
           </Button>
         </Card.Body>
       </Card>
-      ;
     </div>
   );
 }

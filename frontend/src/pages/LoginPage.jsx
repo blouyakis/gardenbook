@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 
 // Added screen reader accessibility: controlId=" "
 // Made errors audible with role="alert"
+// Made the main heading an h1 for better accessibility, kept size with fs-2 in className
 
 export default function LoginPage() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -30,7 +31,7 @@ export default function LoginPage() {
 
   return (
     <Form onSubmit={onSubmit} className="gb-auth-form">
-      <h2 className="text-center">Login</h2>
+      <h1 className="text-center fs-2">Login</h1>
       {error && <p className="text-danger" role="alert">{error}</p>}
 
       <Form.Group className="mb-3" controlId="login-email">

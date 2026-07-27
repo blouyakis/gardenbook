@@ -9,6 +9,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
 // Added screen reader accessibility: visually hidden status for plants found during search
+// Added an h1 heading for the page for better accessibility, kept size with fs-2 in className
 
 export default function ExplorePage() {
   const { user } = useAuth();
@@ -35,6 +36,7 @@ export default function ExplorePage() {
 
   return (
     <div style={{ paddingTop: "22vh" }}>
+      <h1 className="text-center fs-2">Explore Plants</h1>
       <Form.Control
         className="my-3"
         value={query}
