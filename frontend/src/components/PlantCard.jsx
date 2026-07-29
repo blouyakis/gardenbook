@@ -1,6 +1,9 @@
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 
+// Silenced the emoji's from screen readers via <div aria-hidden="true">
+// Used <alt=""> to silence repetitive plant names from screen readers
+
 export default function PlantCard({ plant, onClick }) {
   return (
     <Card
@@ -19,16 +22,16 @@ export default function PlantCard({ plant, onClick }) {
         <Card.Img
           variant="top"
           src={plant.imageUrl}
-          alt={plant.commonName}
+          alt=""
           style={{ height: "8rem", objectFit: "cover" }}
         />
       ) : (
         <div
           className="d-flex align-items-center justify-content-center"
+          aria-hidden="true"
           style={{
             height: "8rem",
-            backgroundColor: `var(--gb-${plant.type}, var(--gb-surface))`,
-            opacity: 0.35,
+            backgroundColor: `var(--gb-${plant.type}-tint, var(--gb-surface))`,
           }}
         >
           🌱🌸🌿

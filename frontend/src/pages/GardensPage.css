@@ -15,4 +15,5 @@
   height: 0.75rem;
   border-radius: 50%;
   display: inline-block;
+  border: 1px solid var(--gb-text-muted);
 }

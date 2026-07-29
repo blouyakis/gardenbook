@@ -4,6 +4,9 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+// Added screen reader accessibility: controlId=" "
+// Made errors audible with role="alert"
+
 const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
 
 export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
@@ -39,8 +42,12 @@ export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
           <Modal.Title>{garden ? "Edit garden" : "New garden"}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {error && <p className="text-danger">{error}</p>}
-          <Form.Group className="mb-3">
+          {error && (
+            <p className="text-danger" role="alert">
+              {error}
+            </p>
+          )}
+          <Form.Group className="mb-3" controlId="garden-name">
             <Form.Label>Name</Form.Label>
             <Form.Control
               value={name}
@@ -49,7 +56,7 @@ export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          <Form.Group className="mb-3" controlId="garden-type">
             <Form.Label>Type</Form.Label>
             <Form.Select value={type} onChange={(e) => setType(e.target.value)}>
               {GARDEN_TYPES.map((t) => (

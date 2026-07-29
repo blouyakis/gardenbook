@@ -47,7 +47,7 @@ export default function CalendarGrid({ days = [] }) {
                   key={p._id}
                   className="small rounded px-1 my-1"
                   style={{
-                    backgroundColor: `var(--gb-${p.type}, var(--gb-surface))`,
+                    backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
                   }}
                 >
                   {p.name}

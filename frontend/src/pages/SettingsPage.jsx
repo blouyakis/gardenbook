@@ -7,6 +7,11 @@ import Alert from "react-bootstrap/Alert";
 import { useAuth } from "../context/AuthContext.jsx";
 import "./SettingsPage.css";
 
+// Added screen reader accessibility: controlId=" "
+// Added autoComplete attributes for password fields
+// Made the main heading an h1 for better accessibility, kept size with fs-2 in className
+// Modified Card.Title to use as="h2" for better accessibility and consistent heading hierarchy
+
 export default function SettingsPage() {
   const { user, setUser, logout } = useAuth();
   const navigate = useNavigate();
@@ -71,26 +76,26 @@ export default function SettingsPage() {
 
   return (
     <div className="gb-settings">
-      <h2 className="my-3 text-center">Settings</h2>
+      <h1 className="my-3 text-center fs-2">Settings</h1>
       <div className="gb-settings-row">
         {/* Profile + region */}
         <Card className="mb-4">
           <Card.Body>
-            <Card.Title>Profile &amp; region</Card.Title>
+            <Card.Title as="h2">Profile &amp; region</Card.Title>
             {profileMsg && (
               <Alert variant={profileMsg.type} className="py-2">
                 {profileMsg.text}
               </Alert>
             )}
             <Form onSubmit={saveProfile}>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3" controlId="settings-display-name">
                 <Form.Label>Display name</Form.Label>
                 <Form.Control
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="mb-2">
+              <Form.Group className="mb-2" controlId="settings-zip">
                 <Form.Label>ZIP code</Form.Label>
                 <Form.Control
                   value={zip}
@@ -115,26 +120,31 @@ export default function SettingsPage() {
         {/* Change password */}
         <Card className="mb-4">
           <Card.Body>
-            <Card.Title>Change password</Card.Title>
+            <Card.Title as="h2">Change password</Card.Title>
             {pwMsg && (
               <Alert variant={pwMsg.type} className="py-2">
                 {pwMsg.text}
               </Alert>
             )}
             <Form onSubmit={changePassword}>
-              <Form.Group className="mb-3">
+              <Form.Group
+                className="mb-3"
+                controlId="settings-current-password"
+              >
                 <Form.Label>Current password</Form.Label>
                 <Form.Control
                   type="password"
+                  autoComplete="current-password"
                   value={pw.current}
                   onChange={(e) => setPw({ ...pw, current: e.target.value })}
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
+              <Form.Group className="mb-3" controlId="settings-new-password">
                 <Form.Label>New password</Form.Label>
                 <Form.Control
                   type="password"
+                  autoComplete="new-password"
                   value={pw.next}
                   onChange={(e) => setPw({ ...pw, next: e.target.value })}
                   required
@@ -150,7 +160,7 @@ export default function SettingsPage() {
       {/* Danger zone */}
       <Card className="gb-danger-zone">
         <Card.Body>
-          <Card.Title>Delete account</Card.Title>
+          <Card.Title as="h2">Delete account</Card.Title>
           <p className="text-body-secondary">
             This removes your account and every garden and planting you own.
           </p>
@@ -159,7 +169,6 @@ export default function SettingsPage() {
           </Button>
         </Card.Body>
       </Card>
-      ;
     </div>
   );
 }

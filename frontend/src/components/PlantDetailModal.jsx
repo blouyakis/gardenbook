@@ -6,6 +6,9 @@ import Form from "react-bootstrap/Form";
 import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext.jsx";
 
+// Added screen reader accessibility: aria-labels for form controls
+// Made errors audible with role="alert"
+
 //   GET  /api/plants/:id            -> plant summary + windows
 //   GET  /api/gardens               -> garden <select>
 //   POST /api/gardens/:id/plantings -> add the planting
@@ -84,12 +87,17 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
             )}
           </>
         )}
-        {error && <p className="text-danger mt-2 mb-0">{error}</p>}
+        {error && (
+          <p className="text-danger mt-2 mb-0" role="alert">
+            {error}
+          </p>
+        )}
       </Modal.Body>
       <Modal.Footer>
         {user ? (
           <Form onSubmit={onAdd} className="d-flex gap-2 w-100">
             <Form.Select
+              aria-label="Choose a garden"
               value={form.gardenId}
               onChange={(e) => setForm({ ...form, gardenId: e.target.value })}
               required
@@ -103,6 +111,7 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
             </Form.Select>
             <Form.Control
               type="date"
+              aria-label="Select planting date"
               value={form.plantedDate}
               onChange={(e) =>
                 setForm({ ...form, plantedDate: e.target.value })

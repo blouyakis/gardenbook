@@ -1,18 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Rafaella&display=swap");
 
+/* Changed the root block to match color palette from Adobe design system for consistent theming */
+
 :root {
-  --gb-bg: #f6efdd; /* butter-cream page */
-  --gb-surface: #fdfaf1; /* warm paper white (cards, panels) */
-  --gb-border: #dfcf9f; /* soft gold frame */
-  --gb-crimson: #a84a51; /* dusty brick rose — primary actions */
-  --gb-crimson-bright: #c05e63; /* wordmark, accents, "today" */
-  --gb-text: #4a3f35; /* warm ink brown */
-  --gb-text-muted: #8d7f6f;
-  --gb-vegetable: #6f9660; /* vine-leaf green */
-  --gb-herb: #c9963f; /* sunflower gold */
-  --gb-fruit: #7c8cc4; /* muscari blue */
-  --gb-flower: #9c7fb5; /* lavender */
-  --gb-explore: #7c8cc4; /* muscari blue — Explore accent */
+  /* Adobe palette — identity colors */
+  --gb-bg: #f2e9d8; /* cream — page background */
+  --gb-surface: #fdfaf1; /* card/panel paper (unchanged) */
+  --gb-border: #d7d0b3; /* sage tint frame */
+  --gb-butter: #f2e3b6; /* butter — highlights */
+  --gb-sage: #a6a26d; /* decorative only */
+  --gb-text: #4a3f35; /* unchanged — 8.48 on cream */
+  --gb-text-muted: #6d6154; /* darkened — 4.99, was failing at 3.39 */
+
+  /* functional (deep) variants — anything that carries text */
+  --gb-crimson: #9d4a43; /* terracotta-deep — primary buttons, 4.99 */
+  --gb-crimson-bright: #bf665e; /* full terracotta — large headings only */
+  --gb-explore: #565973; /* slate-deep — Explore button, 5.67 */
+
+  /* garden types — full hue for dots/borders */
+  --gb-vegetable: #a6a26d; /* sage */
+  --gb-herb: #f2e3b6; /* butter */
+  --gb-fruit: #797c99; /* slate */
+  --gb-flower: #bf665e; /* terracotta */
+
+  /* garden types — tints for chip backgrounds (ink text passes on all) */
+  --gb-vegetable-tint: #d7d0b3; /* 6.6  */
+  --gb-herb-tint: #f2e7cc; /* 8.32 */
+  --gb-fruit-tint: #c8c3c2; /* 5.86 */
+  --gb-flower-tint: #e0bbad; /* 5.79 */
 }
 
 body {
@@ -89,8 +104,8 @@ h3 {
   color: #f4f2fb;
 }
 .btn-gb-explore:hover {
-  background-color: #8d9bd0;
-  border-color: #8d9bd0;
+  background-color: #4a4d63;
+  border-color: #4a4d63;
   color: #fff;
 }
 
@@ -98,6 +113,10 @@ h3 {
   font-family: "rafaella", "Cinzel Decorative", Georgia, serif;
   color: var(--gb-crimson-bright);
   letter-spacing: 0.03em;
+}
+
+.navbar-brand.gb-wordmark {
+  color: var(--gb-crimson);
 }
 
 .gb-auth-form {
