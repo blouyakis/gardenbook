@@ -1,0 +1,24 @@
+.gb-add-to-garden .form-select {
+  flex: 1 1 auto;
+}
+
+.gb-add-to-garden .form-control[type="date"] {
+  flex: 0 0 11rem;
+}
+
+@media (max-width: 576px) {
+  .gb-add-to-garden {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .gb-add-to-garden .form-select,
+  .gb-add-to-garden .form-control,
+  .gb-add-to-garden .btn {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+   .gb-add-to-garden .form-control[type="date"] {
+    flex-basis: auto;
+    height: auto;
+  }
+}
