@@ -88,7 +88,7 @@ export default function HomePage() {
               variant="gb-explore"
               className="w-100"
             >
-              Explore Gardens
+              Explore Plants
             </Button>
           </Card>
         </Col>

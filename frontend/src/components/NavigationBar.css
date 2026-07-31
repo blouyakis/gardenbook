@@ -2,10 +2,61 @@
   font-family: "EB Garamond", Georgia, serif;
   font-weight: 600;
   color: var(--gb-text);
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .gb-nav-main {
+    order: 1;
+  }
+  .gb-nav-greeting {
+    order: 2;
+    margin-right: 0.5rem;
+  }
+  .gb-nav-account {
+    order: 3;
+  }
 }
 
 @media (max-width: 767.98px) {
-  .gb-nav-account {
-    margin-top: 0.5rem;
+  .navbar-collapse {
+    margin-top: 0;
+    padding: 0;
+    border-radius: 0 0 0.75rem 0.75rem;
+    overflow: hidden;
+  }
+
+  .navbar-collapse .nav-link,
+  .gb-nav-greeting,
+  .gb-logout.btn-gb-outline {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    border-bottom: 1px solid var(--gb-border);
+    padding: 0.85rem 1rem;
+    margin: 0;
+  }
+
+  .gb-nav-greeting {
+    color: var(--gb-text-muted);
+    font-size: 1rem;
+  }
+
+  .gb-nav-account .gb-logout {
+    border-bottom: none;
+  }
+
+  .gb-logout.btn-gb-outline {
+    display: block;
+    width: 100%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    background: transparent;
+    color: var(--gb-crimson);
+    text-align: left;
   }
 }

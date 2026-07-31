@@ -35,10 +35,15 @@ body {
   background-image: url("/background.png");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   min-height: 100vh;
   color: var(--gb-text);
   font-family: "EB Garamond", Georgia, serif;
+}
+
+@media (min-width: 768px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 [data-bs-theme="light"] {
@@ -62,19 +67,40 @@ h3 {
 }
 
 .navbar .nav-link {
-  background-color: var(--gb-crimson);
-  color: #fdf6ee;
-  border-radius: 999px;
-  padding: 0.25rem 0.9rem;
-  margin-right: 0.4rem;
+  color: var(--gb-crimson);
   font-family: "EB Garamond", Georgia, serif;
   font-weight: 600;
+  padding: 0.4rem 0.25rem;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus-visible {
-  background-color: var(--gb-crimson-bright);
-  color: #fff;
+  color: var(--gb-crimson-bright);
+}
+
+@media (min-width: 768px) {
+  .navbar .nav-link {
+    background-color: var(--gb-crimson);
+    color: #fdf6ee;
+    border-radius: 999px;
+    padding: 0.25rem 0.9rem;
+    margin-right: 0.4rem;
+  }
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus-visible {
+    background-color: var(--gb-crimson-bright);
+    color: #fff;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-collapse {
+    background-color: var(--gb-surface);
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem 1rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    box-shadow: 0 6px 12px rgba(74, 63, 53, 0.15);
+  }
 }
 
 .card {
@@ -151,6 +177,11 @@ h3 {
   color: var(--gb-crimson) !important;
 }
 
+.btn-gb-primary:focus-visible,
+.btn-gb-outline:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(157, 74, 67, 0.4) !important;
+}
+
 a {
   color: var(--gb-crimson);
 }
@@ -158,9 +189,4 @@ a {
 a:hover,
 a:focus-visible {
   color: var(--gb-crimson-bright);
-}
-
-.btn-gb-primary:focus-visible,
-.btn-gb-outline:focus-visible {
-  box-shadow: 0 0 0 0.2rem rgba(157, 74, 67, 0.4) !important;
 }
