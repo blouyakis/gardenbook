@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { useParams, useSearchParams } from "react-router";
+import { useParams, useSearchParams, Link } from "react-router";
 
 import GardenTypeToggle from "../components/GardenTypeToggle.jsx";
 import WeekNav, { currentMonday } from "../components/WeekNav.jsx";
@@ -43,16 +43,21 @@ export default function MyGardenPage() {
   };
 
   return (
-    <>
+    <div className="gb-calendar-page">
       <h1 className="text-center fs-2">My Garden</h1>
-      <div className="d-flex justify-content-between align-items-center my-3">
-        <GardenTypeToggle activeType={type} />
-        <Button variant="gb-outline" size="sm" onClick={onExport}>
-          Export PDF
-        </Button>
-      </div>
+      <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 my-3">
+          <GardenTypeToggle activeType={type} />
+          <div className="d-flex gap-2">
+            <Button as={Link} to="/gardens?new=1" variant="gb-primary" size="sm">
+              + New garden
+            </Button>
+            <Button variant="gb-outline" size="sm" onClick={onExport}>
+              Export PDF
+            </Button>
+          </div>
+        </div>
       <WeekNav week={week} setWeek={setWeek} />
       <CalendarGrid days={days} />
-    </>
+    </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -103,6 +103,16 @@ export default function GardensPage() {
   }
   }
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("new") === "1") {
+      openCreate();
+      searchParams.delete("new");
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
+
   return (
     <div className="gb-gardens">
       <div className="d-flex justify-content-between align-items-center my-3">
@@ -138,9 +148,15 @@ export default function GardensPage() {
                   <div className="d-flex gap-2 align-items-center">
                     <Button
                       size="sm"
-                      className={
-                        openId === garden._id ? "btn-gb-outline" : "btn-gb-primary"
-                      }
+                      as={Link}
+                      to="/explore"
+                      className="btn-gb-primary"
+                    >
+                      + Add
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="btn-gb-outline"
                       onClick={() => toggleGarden(garden._id)}
                     >
                       {openId === garden._id ? "Hide plants" : "View plants"}
