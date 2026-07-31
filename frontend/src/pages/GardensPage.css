@@ -17,3 +17,28 @@
   display: inline-block;
   border: 1px solid var(--gb-text-muted);
 }
+
+.gb-plant-list {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.gb-plant-list.open {
+  grid-template-rows: 1fr;
+}
+
+.gb-plant-list-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.gb-plant-list.open .gb-plant-list-inner {
+  margin-top: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gb-plant-list {
+    transition: none;
+  }
+}

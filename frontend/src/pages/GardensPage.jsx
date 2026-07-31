@@ -135,7 +135,16 @@ export default function GardensPage() {
                   <Card.Subtitle className="mb-3 text-body-secondary text-capitalize">
                     {garden.type}
                   </Card.Subtitle>
-                  <div className="d-flex gap-2">
+                  <div className="d-flex gap-2 align-items-center">
+                    <Button
+                      size="sm"
+                      className={
+                        openId === garden._id ? "btn-gb-outline" : "btn-gb-primary"
+                      }
+                      onClick={() => toggleGarden(garden._id)}
+                    >
+                      {openId === garden._id ? "Hide plants" : "View plants"}
+                    </Button>
                     <Button
                       size="sm"
                       variant="outline-secondary"
@@ -145,22 +154,20 @@ export default function GardensPage() {
                     </Button>
                     <Button
                       size="sm"
-                      variant="outline-danger"
+                      variant="link"
+                      className="p-0 ms-auto"
+                      style={{ color: "var(--gb-crimson)" }}
                       onClick={() => deleteGarden(garden)}
                     >
                       Delete
                     </Button>
-                    <Button
-                      size="sm"
-                      variant="outline-secondary"
-                      onClick={() => toggleGarden(garden._id)}
-                    >
-                      {openId === garden._id ? "Hide plants" : "View plants"}
-                    </Button>
                   </div>
-
-                  {openId === garden._id && (
-                    <div className="mt-3">
+                  <div
+                    className={`gb-plant-list ${
+                      openId === garden._id ? "open" : ""
+                    }`}
+                  >
+                    <div className="gb-plant-list-inner">
                       {(plantings[garden._id] || []).length === 0 ? (
                         <p className="text-muted mb-0">
                           No plants in this garden yet.
@@ -180,7 +187,8 @@ export default function GardensPage() {
                             <Button
                               size="sm"
                               variant="link"
-                              className="text-danger p-0"
+                              className="p-0"
+                              style={{ color: "var(--gb-crimson)" }}
                               onClick={() => removePlanting(garden._id, pl._id)}
                             >
                               Remove
@@ -190,15 +198,14 @@ export default function GardensPage() {
                       )}
                       <Button
                         size="sm"
-                        variant="link"
                         as={Link}
                         to="/explore"
-                        className="p-0 mt-2"
+                        className="btn-gb-primary mt-2"
                       >
                         + Add plants (Explore)
                       </Button>
                     </div>
-                  )}
+                  </div>
                 </Card.Body>
               </Card>
             </Col>

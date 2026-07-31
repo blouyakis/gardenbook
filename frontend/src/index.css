@@ -98,6 +98,14 @@ h3 {
   color: #fff;
 }
 
+.btn-gb-primary:active,
+.btn-gb-primary:focus,
+.btn-gb-primary:focus-visible {
+  background-color: var(--gb-crimson-bright) !important;
+  border-color: var(--gb-crimson-bright) !important;
+  color: #fff !important;
+}
+
 .btn-gb-explore {
   background-color: var(--gb-explore);
   border-color: var(--gb-explore);
@@ -136,6 +144,13 @@ h3 {
   color: #fdf6ee;
 }
 
+.btn-gb-outline:active,
+.btn-gb-outline:focus {
+  background-color: transparent !important;
+  border-color: var(--gb-crimson) !important;
+  color: var(--gb-crimson) !important;
+}
+
 a {
   color: var(--gb-crimson);
 }
@@ -143,4 +158,9 @@ a {
 a:hover,
 a:focus-visible {
   color: var(--gb-crimson-bright);
+}
+
+.btn-gb-primary:focus-visible,
+.btn-gb-outline:focus-visible {
+  box-shadow: 0 0 0 0.2rem rgba(157, 74, 67, 0.4) !important;
 }
