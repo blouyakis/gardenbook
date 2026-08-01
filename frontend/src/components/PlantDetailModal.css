@@ -1,5 +1,7 @@
 .gb-add-to-garden .form-select {
-  flex: 1 1 auto;
+  flex: 1 1 9rem;
+  min-width: 0;
+  text-overflow: ellipsis;
 }
 
 .gb-add-to-garden .form-control[type="date"] {
