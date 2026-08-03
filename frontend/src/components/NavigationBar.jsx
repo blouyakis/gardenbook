@@ -23,7 +23,11 @@ export default function NavigationBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          {user && (
+            <span className="gb-nav-greeting">Hi, {user.displayName}</span>
+          )}
+
+          <Nav className="me-auto gb-nav-main">
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
@@ -50,16 +54,13 @@ export default function NavigationBar() {
           <Nav className="align-items-md-center gb-nav-account">
             {user ? (
               <>
-                <span className="gb-nav-greeting me-2">
-                  Hi, {user.displayName}
-                </span>
                 <Nav.Link as={Link} to="/settings">
                   Settings
                 </Nav.Link>
                 <Button
                   variant="gb-outline"
                   size="sm"
-                  className="ms-md-2"
+                  className="gb-logout ms-md-2"
                   onClick={onLogout}
                 >
                   Logout

@@ -1,19 +1,19 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
 import { useAuth } from "../context/AuthContext.jsx";
+import "./HomePage.css";
 
 // Removed <hr> from inside <p> and separated paragraphs for better readability
 // Made the main heading an h1 for better accessibility, kept size with fs-3 in className
 
 const GARDEN_LINKS = [
-  { label: "MyGardens", to: "/mygarden" },
-  { label: "MyVegetables", to: "/mygarden?type=vegetable" },
-  { label: "MyHerbs", to: "/mygarden?type=herb" },
-  { label: "MyFruits", to: "/mygarden?type=fruit" },
-  { label: "MyFlowers", to: "/mygarden?type=flower" },
+  { label: "My Gardens", to: "/mygarden", type: "gardens", img: "/tiles/gardens.png" },
+  { label: "My Vegetables", to: "/mygarden?type=vegetable", type: "vegetable", img: "/tiles/vegetables.png" },
+  { label: "My Herbs", to: "/mygarden?type=herb", type: "herb", img: "/tiles/herbs.png" },
+  { label: "My Fruits", to: "/mygarden?type=fruit", type: "fruit", img: "/tiles/fruits.png" },
+  { label: "My Flowers", to: "/mygarden?type=flower", type: "flower", img: "/tiles/flowers.png" },
 ];
 
 export default function HomePage() {
@@ -62,35 +62,34 @@ export default function HomePage() {
   // Logged-in: the garden view
   return (
     <div>
-      <div className="text-center">
-        <h1 className="gb-wordmark my-4 fs-3">Gardening, simplified.</h1>
+      <div className="text-center gb-page-heading">
+        <h1 className="gb-wordmark fs-3">Gardening, simplified.</h1>
+        <p className="text-body-secondary">
+          Welcome back, {user.displayName}. Where would you like to start?
+        </p>
       </div>
-      <Row className="g-3">
+      <Row className="g-3 justify-content-center">
         {GARDEN_LINKS.map((g) => (
-          <Col md={4} xs={6} key={g.to}>
-            <Card body className="text-center">
-              <Button
-                as={Link}
-                to={g.to}
-                variant="gb-primary"
-                className="w-100"
-              >
-                {g.label}
-              </Button>
-            </Card>
+          <Col lg={4} md={4} sm={6} xs={6} key={g.to}>
+            <Link
+              to={g.to}
+              className="gb-home-tile"
+              style={{ "--tile-accent": `var(--gb-${g.type}, var(--gb-crimson))` }}
+            >
+              <img className="gb-home-tile-img" src={g.img} alt="" />
+              <span className="gb-home-tile-label">{g.label}</span>
+            </Link>
           </Col>
         ))}
-        <Col md={4} xs={6}>
-          <Card body className="text-center">
-            <Button
-              as={Link}
-              to="/explore"
-              variant="gb-explore"
-              className="w-100"
-            >
-              Explore Gardens
-            </Button>
-          </Card>
+        <Col lg={4} md={4} sm={6} xs={6}>
+          <Link
+            to="/explore"
+            className="gb-home-tile gb-home-tile-explore"
+            style={{ "--tile-accent": "var(--gb-explore)" }}
+          >
+            <img className="gb-home-tile-img" src="/tiles/explore.png" alt="" />
+            <span className="gb-home-tile-label">Explore Plants</span>
+          </Link>
         </Col>
       </Row>
     </div>

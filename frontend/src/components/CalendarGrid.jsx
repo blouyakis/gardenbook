@@ -2,6 +2,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
+import { Link } from "react-router";
 
 export default function CalendarGrid({ days = [] }) {
   const today = new Date().toLocaleDateString("en-CA");
@@ -42,17 +43,23 @@ export default function CalendarGrid({ days = [] }) {
               >
                 {day.label}
               </div>
-              {day.plantings?.map((p) => (
-                <div
-                  key={p._id}
-                  className="small rounded px-1 my-1"
-                  style={{
-                    backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
-                  }}
-                >
-                  {p.name}
+              {day.plantings?.length ? (
+                day.plantings.map((p) => (
+                  <div
+                    key={p._id}
+                    className="small rounded px-1 my-1"
+                    style={{
+                      backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
+                    }}
+                  >
+                    {p.name}
+                  </div>
+                ))
+              ) : (
+                <div className="text-body-secondary fst-italic mb-1">
+                  Nothing planted yet
                 </div>
-              ))}
+              )}
             </Card>
           </Col>
         );

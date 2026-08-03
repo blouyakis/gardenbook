@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
@@ -103,6 +103,16 @@ export default function GardensPage() {
   }
   }
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get("new") === "1") {
+      openCreate();
+      searchParams.delete("new");
+      setSearchParams(searchParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
+
   return (
     <div className="gb-gardens">
       <div className="d-flex justify-content-between align-items-center my-3">
@@ -135,7 +145,22 @@ export default function GardensPage() {
                   <Card.Subtitle className="mb-3 text-body-secondary text-capitalize">
                     {garden.type}
                   </Card.Subtitle>
-                  <div className="d-flex gap-2">
+                  <div className="d-flex gap-2 align-items-center">
+                    <Button
+                      size="sm"
+                      as={Link}
+                      to="/explore"
+                      className="btn-gb-primary"
+                    >
+                      + Add
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="btn-gb-outline"
+                      onClick={() => toggleGarden(garden._id)}
+                    >
+                      {openId === garden._id ? "Hide plants" : "View plants"}
+                    </Button>
                     <Button
                       size="sm"
                       variant="outline-secondary"
@@ -145,22 +170,20 @@ export default function GardensPage() {
                     </Button>
                     <Button
                       size="sm"
-                      variant="outline-danger"
+                      variant="link"
+                      className="p-0 ms-auto"
+                      style={{ color: "var(--gb-crimson)" }}
                       onClick={() => deleteGarden(garden)}
                     >
                       Delete
                     </Button>
-                    <Button
-                      size="sm"
-                      variant="outline-secondary"
-                      onClick={() => toggleGarden(garden._id)}
-                    >
-                      {openId === garden._id ? "Hide plants" : "View plants"}
-                    </Button>
                   </div>
-
-                  {openId === garden._id && (
-                    <div className="mt-3">
+                  <div
+                    className={`gb-plant-list ${
+                      openId === garden._id ? "open" : ""
+                    }`}
+                  >
+                    <div className="gb-plant-list-inner">
                       {(plantings[garden._id] || []).length === 0 ? (
                         <p className="text-muted mb-0">
                           No plants in this garden yet.
@@ -180,7 +203,8 @@ export default function GardensPage() {
                             <Button
                               size="sm"
                               variant="link"
-                              className="text-danger p-0"
+                              className="p-0"
+                              style={{ color: "var(--gb-crimson)" }}
                               onClick={() => removePlanting(garden._id, pl._id)}
                             >
                               Remove
@@ -190,15 +214,14 @@ export default function GardensPage() {
                       )}
                       <Button
                         size="sm"
-                        variant="link"
                         as={Link}
                         to="/explore"
-                        className="p-0 mt-2"
+                        className="btn-gb-primary mt-2"
                       >
                         + Add plants (Explore)
                       </Button>
                     </div>
-                  )}
+                  </div>
                 </Card.Body>
               </Card>
             </Col>

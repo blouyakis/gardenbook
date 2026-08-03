@@ -1,0 +1,49 @@
+.gb-home-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1.25rem 1rem;
+  border-radius: 0.85rem;
+  background-color: var(--gb-surface);
+  border: 1px solid var(--gb-border);
+  color: var(--gb-text);
+  text-decoration: none;
+  text-align: center;
+  height: 100%;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.gb-home-tile:hover,
+.gb-home-tile:focus-visible {
+  color: var(--gb-text);
+  box-shadow: 0 4px 14px rgba(74, 63, 53, 0.16);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.gb-home-tile:focus-visible {
+  box-shadow:
+    0 4px 14px rgba(74, 63, 53, 0.16),
+    0 0 0 0.2rem rgba(157, 74, 67, 0.35);
+}
+
+.gb-home-tile-img {
+  width: 100%;
+  max-width: 8.5rem;
+  height: 7rem;
+  object-fit: contain;
+}
+
+.gb-home-tile-label {
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.gb-home-tile-explore {
+  background-color: color-mix(in srgb, var(--gb-explore) 8%, var(--gb-surface));
+}
