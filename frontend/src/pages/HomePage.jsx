@@ -55,7 +55,7 @@ export default function HomePage() {
           <Button as={Link} to="/register" variant="gb-primary">
             Create an account
           </Button>
-          <Button as={Link} to="/login" variant="outline-secondary">
+          <Button as={Link} to="/login" variant="gb-primary">
             Login
           </Button>
         </div>
