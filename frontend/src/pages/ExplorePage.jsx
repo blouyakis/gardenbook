@@ -37,6 +37,12 @@ export default function ExplorePage() {
   return (
     <div style={{ paddingTop: "22vh" }}>
       <h1 className="text-center fs-2">Explore Plants</h1>
+      {user && (
+        <p className="text-center text-body-secondary fs-5">
+          Displays plants that can be planted during the selected week in your region. 
+          Use the search bar to find specific plants.
+        </p>
+      )}
       <Form.Control
         className="my-3"
         value={query}
