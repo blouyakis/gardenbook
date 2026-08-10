@@ -96,7 +96,10 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
       </Modal.Body>
       <Modal.Footer>
         {user ? (
-          <Form onSubmit={onAdd} className="gb-add-to-garden d-flex gap-2 w-100 flex-wrap">
+          <Form
+            onSubmit={onAdd}
+            className="gb-add-to-garden d-flex gap-2 w-100 flex-wrap"
+          >
             <Form.Select
               aria-label="Choose a garden"
               value={form.gardenId}
