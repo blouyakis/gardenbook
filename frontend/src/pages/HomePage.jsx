@@ -55,8 +55,7 @@ export default function HomePage() {
         </div>
         <p
           className="mx-auto"
-          style={{ maxWidth: "36rem", marginTop: "100px" }}
-          style={{ maxWidth: "36rem" }}
+          style={{ maxWidth: "36rem", marginTop: "75px" }}
         >
           GardenBook tells you what to plant and when to plant it. Enter your
           ZIP code and we detect your USDA hardiness zone and frost dates

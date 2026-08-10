@@ -32,9 +32,10 @@
 
 body {
   background-color: var(--gb-bg);
-  background-image: url("/background.png");
-  background-size: cover;
-  background-position: center;
+  background-image: url("/bg-vine.png"), url("/bg-flowers.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center top, center bottom;
+  background-size: min(100%, 1100px) auto, min(100%, 1120px) auto;
   min-height: 100vh;
   color: var(--gb-text);
   font-family: "EB Garamond", Georgia, serif;
@@ -53,6 +54,11 @@ body {
   --bs-tertiary-bg: rgba(253, 250, 241, 0.82);
   --bs-secondary-color: rgba(109, 90, 71, 0.9);
   --bs-secondary-color-rgb: 109, 90, 71;
+}
+
+.gb-main {
+  padding-top: clamp(70px, 12vw, 155px);
+  padding-bottom: 1.5rem;
 }
 
 h1,
