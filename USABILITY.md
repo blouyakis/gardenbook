@@ -1,6 +1,8 @@
 # GardenBook Usability Study Protocol
  
 Shared protocol for all moderated sessions. Both moderators followed this document exactly — same script, same tasks, same order, same measures — so results from all six sessions can be compared and combined.
+
+[Click this link to view the Usability Study Report for GardenBook](https://docs.google.com/document/d/e/2PACX-1vRuwm28OCzWYhUsTufUqYF2MEbF9HBWn1d6vcPVjUPsmecj3Edub9lPIOF6Qo9j6ndMQTgegda8ZdeB/pub)
  
 ## Study Overview
  
@@ -39,26 +41,35 @@ Read the scripted sections aloud as written so all participants receive the same
 > Welcome and thank you for participating in this usability study. This is not a test, it is to help me better understand human interactions with my application so I can improve it. You are free to stop at any time, so do not feel obligated to continue if you do not want to. You are not being tested or evaluated; I am only evaluating the application while you interact with it. First, I need to request your permission to conduct audio and visual recording of you and your screen. Do you consent?
  
 *(If consent is not given, thank the participant and end the session. Do not record.)*
+
+### 2. Demographics Questions
+
+Ask verbally after consent, before setup. Read first: "You may decline to answer any of these questions."
+
+>1. What is your age range? (18–24 / 25–34 / 35–49 / 50–64 / 65+ / prefer not to say)
+>2. Do you garden, or have you gardened in the past? (regularly / occasionally / never / prefer not to say)
+>3. How comfortable are you using websites and apps in general? (1–5 / prefer not to say)
+>4. Have you ever used a gardening or plant-related app before? Which?
  
-### 2. Setup (read aloud)
+### 3. Setup (read aloud)
  
 > Great, now I will ask you to share your screen with me. I will send you the link to the application we will be evaluating today. As you navigate throughout the application, I would like you to think out loud. Tell me everything that comes to your mind as you are using the website.
 
->Share this link with user, inform of long loading time: [Link to GardenBook](https://gardenbook-tozv.onrender.com)
+Share this link with user, inform of long loading time: [Link to GardenBook](https://gardenbook-tozv.onrender.com)
 
 >I have shared the link with you and I can see your screen now, so once you have the application loaded we will get started.
  
-### 3. First Impressions (read aloud)
+### 4. First Impressions (read aloud)
  
 > I see you have the application loaded. Take a minute to look at the page, and then I'd like you to tell me what you think the application is used for.
  
 Record their answer verbatim before giving any explanation.
  
-### 4. Context Statement (read aloud, after they answer)
+### 5. Context Statement (read aloud, after they answer)
  
-> This is a website designed for gardeners. The site enables users to search for plants that thrive in their region and helps them build gardens based on the best time of year to plant each species in their region. When you navigate to the login screen, you will want to register and enter your ZIP code so the application can identify your region.
+> This is a website designed for gardeners. The site enables users to search for plants that thrive in their region and helps them build gardens based on the best time of year to plant each species in their region. When you navigate to the login screen, you will want to register and enter your ZIP code so the application can identify your region. As you use the application, please imagine you are a gardener planning what to plant this season.
  
-### 5. Tasks
+### 6. Tasks
  
 Read each task aloud, one at a time, in this order. Do not help unless the participant is completely stuck for more than ~2 minutes; if you must help, note it and mark the task "assisted." Remind participants to keep thinking out loud if they go quiet ("What are you thinking right now?").
  
@@ -74,7 +85,7 @@ Read each task aloud, one at a time, in this order. Do not help unless the parti
  
 For each task, record: completion (success / assisted / fail), time on task, errors observed, and notable quotes.
  
-### 6. Post-Study Survey
+### 7. Post-Study Survey
  
 Given immediately after the last task, before the debrief conversation.
  
@@ -98,7 +109,7 @@ Given immediately after the last task, before the debrief conversation.
 
 **Open response:** Do you have any suggestions for improving the application?
  
-### 7. Debrief Questions (verbal, semi-structured)
+### 8. Debrief Questions (verbal, semi-structured)
  
 1. What was your overall impression of the application?
 2. What was the most confusing or frustrating moment, and what did you expect to happen instead?
@@ -106,13 +117,24 @@ Given immediately after the last task, before the debrief conversation.
 4. Was there anything you expected the application to do that it didn't?
 5. Was there any wording, label, or image you found unclear?
 6. If you could change one thing, what would it be?
-### 8. Closing (read aloud)
+
+### 9. Closing (read aloud)
  
 > Thank you so much for your participation. If you don't have any other suggestions, I will stop the recording and you can leave the room now. Have a wonderful day!
  
 ## Analysis (after all six sessions)
  
-Compile every observed issue into a shared findings list. For each issue record: description, which task(s) it appeared in, how many participants hit it, severity, and priority.
+Compile every observed issue into a shared findings list. 
+
+For each issue record: description, which task(s) it appeared in, how many participants
+hit it, severity, priority, and implementation status (was the fix implemented? how?).
+
+**Post-session procedure:** 
+
+Immediately after each session, write down
+all notes from memory. Then rewatch the recording, looking for moments of frustration or
+struggle, and add timestamped notes for each. Only after both passes are a participant's
+notes considered complete.
  
 **Severity rating (assign to each issue):**
  
@@ -130,6 +152,7 @@ Compile every observed issue into a shared findings list. For each issue record:
 - **Should** — fix if time allows
 - **Could** — nice to have
 - **Won't** — out of scope for this project
+
 Prioritize primarily by severity × number of participants affected.
  
 ## Moderator Consistency Rules
