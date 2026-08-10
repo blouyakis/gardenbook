@@ -25,9 +25,13 @@ export default function HomePage() {
   if (!user) {
     return (
       <div className="text-center" style={{ paddingBottom: "10vh" }}>
+        <div style={{ marginTop: "60px" }}>
+          <h1 className="gb-wordmark fs-1">GardenBook</h1>
+        </div>  
         <p
           className="mx-auto"
           style={{ maxWidth: "36rem", marginTop: "100px" }}
+          style={{ maxWidth: "36rem" }}
         >
           GardenBook tells you what to plant and when to plant it. Enter your
           ZIP code and we detect your USDA hardiness zone and frost dates
