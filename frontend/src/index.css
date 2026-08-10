@@ -34,8 +34,12 @@ body {
   background-color: var(--gb-bg);
   background-image: url("/bg-vine.png"), url("/bg-flowers.png");
   background-repeat: no-repeat, no-repeat;
-  background-position: center top, center bottom;
-  background-size: min(100%, 1100px) auto, min(100%, 1120px) auto;
+  background-position:
+    center top,
+    center bottom;
+  background-size:
+    min(100%, 1100px) auto,
+    min(100%, 1120px) auto;
   min-height: 100vh;
   color: var(--gb-text);
   font-family: "EB Garamond", Georgia, serif;

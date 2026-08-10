@@ -2,20 +2,20 @@ import "dotenv/config";
 
 const terms = [
   // vegetables
-  "pisum",          // peas — fall crop, sow early August
-  "phaseolus",      // bush beans — last sowing window
-  "brassica",       // broad net: collards, mustard, kohlrabi, rapini all live here
-  "cichorium",      // endive / escarole
+  "pisum", // peas — fall crop, sow early August
+  "phaseolus", // bush beans — last sowing window
+  "brassica", // broad net: collards, mustard, kohlrabi, rapini all live here
+  "cichorium", // endive / escarole
   // herbs
-  "petroselinum",   // parsley
+  "petroselinum", // parsley
   // fall flowers
-  "viola",          // pansies / violas
+  "viola", // pansies / violas
   "calendula",
   // August-planted perennials
   "iris",
-  "hemerocallis",   // daylily
+  "hemerocallis", // daylily
   "hosta",
-  "paeonia",        // peony — really a Sept planter, tail end of August at best
+  "paeonia", // peony — really a Sept planter, tail end of August at best
 ];
 
 const key = process.env.PERENUAL_API_KEY;
