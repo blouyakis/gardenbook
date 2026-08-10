@@ -21,7 +21,7 @@ export default function LoginPage() {
     setSubmitting(true);
     try {
       await login(credentials.email, credentials.password);
-      navigate("/mygarden");
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {

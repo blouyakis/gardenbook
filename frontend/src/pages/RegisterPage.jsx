@@ -27,7 +27,7 @@ export default function RegisterPage() {
     setSubmitting(true);
     try {
       await register(form);
-      navigate("/mygarden");
+      navigate("/");
     } catch (err) {
       setError(err.message);
     } finally {
