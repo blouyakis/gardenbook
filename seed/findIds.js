@@ -1,12 +1,11 @@
 import "dotenv/config";
 
 const terms = [
-  "kiwifruit",
-  "star fruit",
-  "cortland apple",
-  "golden delicious apple",
-  "honeycrisp apple",
-  "berry",
+  "spinacia",      // true spinach
+  "lactuca",       // lettuce
+  "raphanus",      // radish
+  "chinensis",     // bok choy (Brassica rapa subsp. chinensis)
+  "pak choi",      // fallback bok choy term
 ];
 
 const key = process.env.PERENUAL_API_KEY;

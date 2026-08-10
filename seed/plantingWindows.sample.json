@@ -334,5 +334,45 @@
     "startOffsetWeeks": 2,
     "endOffsetWeeks": 10,
     "method": "transplant"
-  }
+  },
+  {
+  "plantId": 2795,
+  "search": "arugula",
+  "commonName": "Arugula",
+  "type": "vegetable",
+  "season": "fall",
+  "startOffsetWeeks": 15,
+  "endOffsetWeeks": 20,
+  "method": "direct-sow"
+},
+{
+  "plantId": 1333,
+  "search": "turnip",
+  "commonName": "Turnip",
+  "type": "vegetable",
+  "season": "fall",
+  "startOffsetWeeks": 13,
+  "endOffsetWeeks": 17,
+  "method": "direct-sow"
+},
+{
+  "plantId": 1275,
+  "search": "swiss chard",
+  "commonName": "Swiss Chard",
+  "type": "vegetable",
+  "season": "fall",
+  "startOffsetWeeks": 13,
+  "endOffsetWeeks": 16,
+  "method": "direct-sow"
+},
+{
+  "plantId": 1330,
+  "search": "chinensis",
+  "commonName": "Bok Choy",
+  "type": "vegetable",
+  "season": "fall",
+  "startOffsetWeeks": 15,
+  "endOffsetWeeks": 19,
+  "method": "direct-sow"
+}
 ]
