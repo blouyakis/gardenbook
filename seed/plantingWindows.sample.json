@@ -334,5 +334,135 @@
     "startOffsetWeeks": 2,
     "endOffsetWeeks": 10,
     "method": "transplant"
+  },
+  {
+    "plantId": 2795,
+    "search": "arugula",
+    "commonName": "Arugula",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 20,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1333,
+    "search": "turnip",
+    "commonName": "Turnip",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 13,
+    "endOffsetWeeks": 17,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1275,
+    "search": "swiss chard",
+    "commonName": "Swiss Chard",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 13,
+    "endOffsetWeeks": 16,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1330,
+    "search": "chinensis",
+    "commonName": "Bok Choy",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 19,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1315,
+    "search": "brassica",
+    "commonName": "Mustard Greens",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 20,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1326,
+    "search": "brassica",
+    "commonName": "Kohlrabi",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 14,
+    "endOffsetWeeks": 17,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1329,
+    "search": "brassica",
+    "commonName": "Asian Greens",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 19,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1334,
+    "search": "brassica",
+    "commonName": "Broccoli Raab",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 19,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1335,
+    "search": "brassica",
+    "commonName": "Tatsoi",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 20,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1332,
+    "search": "brassica",
+    "commonName": "Chinese Cabbage",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 12,
+    "endOffsetWeeks": 16,
+    "method": "transplant"
+  },
+  {
+    "plantId": 1879,
+    "search": "cichorium",
+    "commonName": "Chicory",
+    "type": "vegetable",
+    "season": "fall",
+    "startOffsetWeeks": 13,
+    "endOffsetWeeks": 17,
+    "method": "direct-sow"
+  },
+  {
+    "plantId": 1328,
+    "search": "brassica",
+    "commonName": "Ornamental Cabbage",
+    "type": "flower",
+    "season": "fall",
+    "startOffsetWeeks": 17,
+    "endOffsetWeeks": 22,
+    "method": "transplant"
+  },
+  {
+    "plantId": 1473,
+    "search": "calendula",
+    "commonName": "Marigold",
+    "type": "flower",
+    "season": "fall",
+    "startOffsetWeeks": 15,
+    "endOffsetWeeks": 18,
+    "method": "direct-sow"
   }
 ]

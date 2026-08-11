@@ -9,11 +9,36 @@ import "./HomePage.css";
 // Made the main heading an h1 for better accessibility, kept size with fs-3 in className
 
 const GARDEN_LINKS = [
-  { label: "My Gardens", to: "/mygarden", type: "gardens", img: "/tiles/gardens.png" },
-  { label: "My Vegetables", to: "/mygarden?type=vegetable", type: "vegetable", img: "/tiles/vegetables.png" },
-  { label: "My Herbs", to: "/mygarden?type=herb", type: "herb", img: "/tiles/herbs.png" },
-  { label: "My Fruits", to: "/mygarden?type=fruit", type: "fruit", img: "/tiles/fruits.png" },
-  { label: "My Flowers", to: "/mygarden?type=flower", type: "flower", img: "/tiles/flowers.png" },
+  {
+    label: "My Gardens",
+    to: "/mygarden",
+    type: "gardens",
+    img: "/tiles/gardens.png",
+  },
+  {
+    label: "My Vegetables",
+    to: "/mygarden?type=vegetable",
+    type: "vegetable",
+    img: "/tiles/vegetables.png",
+  },
+  {
+    label: "My Herbs",
+    to: "/mygarden?type=herb",
+    type: "herb",
+    img: "/tiles/herbs.png",
+  },
+  {
+    label: "My Fruits",
+    to: "/mygarden?type=fruit",
+    type: "fruit",
+    img: "/tiles/fruits.png",
+  },
+  {
+    label: "My Flowers",
+    to: "/mygarden?type=flower",
+    type: "flower",
+    img: "/tiles/flowers.png",
+  },
 ];
 
 export default function HomePage() {
@@ -25,10 +50,10 @@ export default function HomePage() {
   if (!user) {
     return (
       <div className="text-center" style={{ paddingBottom: "10vh" }}>
-        <p
-          className="mx-auto"
-          style={{ maxWidth: "36rem", marginTop: "100px" }}
-        >
+        <div style={{ marginTop: "60px" }}>
+          <h1 className="gb-wordmark fs-1">GardenBook</h1>
+        </div>
+        <p className="mx-auto" style={{ maxWidth: "36rem", marginTop: "75px" }}>
           GardenBook tells you what to plant and when to plant it. Enter your
           ZIP code and we detect your USDA hardiness zone and frost dates
           automatically — then every recommendation is matched to your region
@@ -51,7 +76,7 @@ export default function HomePage() {
           <Button as={Link} to="/register" variant="gb-primary">
             Create an account
           </Button>
-          <Button as={Link} to="/login" variant="outline-secondary">
+          <Button as={Link} to="/login" variant="gb-primary">
             Login
           </Button>
         </div>
@@ -74,7 +99,9 @@ export default function HomePage() {
             <Link
               to={g.to}
               className="gb-home-tile"
-              style={{ "--tile-accent": `var(--gb-${g.type}, var(--gb-crimson))` }}
+              style={{
+                "--tile-accent": `var(--gb-${g.type}, var(--gb-crimson))`,
+              }}
             >
               <img className="gb-home-tile-img" src={g.img} alt="" />
               <span className="gb-home-tile-label">{g.label}</span>

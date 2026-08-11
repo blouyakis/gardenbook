@@ -58,7 +58,6 @@ root.render(
                 </RequireAuth>
               }
             />
-            <Route path="/explore" element={<ExplorePage />} />
           </Routes>
         </BaseTemplate>
       </AuthProvider>

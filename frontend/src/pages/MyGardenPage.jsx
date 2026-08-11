@@ -46,16 +46,16 @@ export default function MyGardenPage() {
     <div className="gb-calendar-page">
       <h1 className="text-center fs-2">My Garden</h1>
       <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 my-3">
-          <GardenTypeToggle activeType={type} />
-          <div className="d-flex gap-2">
-            <Button as={Link} to="/gardens?new=1" variant="gb-primary" size="sm">
-              + New garden
-            </Button>
-            <Button variant="gb-outline" size="sm" onClick={onExport}>
-              Export PDF
-            </Button>
-          </div>
+        <GardenTypeToggle activeType={type} />
+        <div className="d-flex gap-2">
+          <Button as={Link} to="/gardens?new=1" variant="gb-primary" size="sm">
+            + New garden
+          </Button>
+          <Button variant="gb-outline" size="sm" onClick={onExport}>
+            Export PDF
+          </Button>
         </div>
+      </div>
       <WeekNav week={week} setWeek={setWeek} />
       <CalendarGrid days={days} />
     </div>

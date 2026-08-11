@@ -7,10 +7,7 @@ export default function BaseTemplate({ children }) {
     <div className="d-flex flex-column min-vh-100">
       <NavigationBar />
 
-      <Container
-        as="main"
-        className="flex-grow-1 d-flex flex-column justify-content-center py-4"
-      >
+      <Container as="main" className="flex-grow-1 d-flex flex-column gb-main">
         {children}
       </Container>
 
