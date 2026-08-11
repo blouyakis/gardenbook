@@ -44,6 +44,90 @@
   font-size: 1.15rem;
 }
 
-.gb-home-tile-explore {
-  background-color: color-mix(in srgb, var(--gb-explore) 8%, var(--gb-surface));
+.gb-home-explore-banner {
+  display: flex;
+  align-items: center;
+  gap: 1.00rem;
+  padding: 1.25rem 1.75rem;
+  border-radius: 12px;
+  background-color: color-mix(in srgb, var(--gb-crimson) 6%, var(--gb-surface));
+  border: 1px solid var(--gb-border);
+  border-left: 4px solid var(--gb-crimson);
+  color: var(--gb-text);
+  text-decoration: none;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.gb-home-explore-banner:hover,
+.gb-home-explore-banner:focus-visible {
+  color: var(--gb-text);
+  box-shadow: 0 4px 14px rgba(74, 63, 53, 0.16);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.gb-home-explore-banner:focus-visible {
+  box-shadow:
+    0 4px 14px rgba(74, 63, 53, 0.16),
+    0 0 0 0.2rem rgba(157, 74, 67, 0.35);
+}
+
+.gb-home-explore-img {
+  flex-shrink: 0;
+  width: 7rem;
+  height: 7rem;
+  object-fit: contain;
+}
+
+.gb-home-explore-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.gb-home-explore-cue {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--gb-crimson);
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.gb-home-explore-cue svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.gb-home-explore-title {
+  font-family: "EB Garamond", Georgia, serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.gb-home-explore-sub {
+  font-size: 0.85rem;
+  color: var(--gb-text-muted);
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 575.98px) {
+  .gb-home-explore-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .gb-home-explore-text {
+    align-items: center;
+  }
+
+  .gb-home-explore-cue {
+    justify-content: center;
+  }
 }

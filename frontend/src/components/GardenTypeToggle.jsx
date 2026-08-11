@@ -9,6 +9,7 @@ const TYPES = [
   { label: "Herbs", to: "/mygarden?type=herb" },
   { label: "Fruits", to: "/mygarden?type=fruit" },
   { label: "Flowers", to: "/mygarden?type=flower" },
+  { label: "Mixed", to: "/mygarden?type=mixed" },
 ];
 
 export default function GardenTypeToggle({ activeType }) {

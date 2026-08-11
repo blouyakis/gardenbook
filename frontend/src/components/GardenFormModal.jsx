@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 // Added screen reader accessibility: controlId=" "
 // Made errors audible with role="alert"
 
-const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
+const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower", "mixed"];
 
 export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
   const [name, setName] = useState("");

@@ -13,6 +13,7 @@ const TYPE_COLORS = {
   herb: "#c9963f",
   fruit: "#7c8cc4",
   flower: "#9c7fb5",
+  mixed: "#918b8b",
 };
 
 function weekStartOf(weekParam) {

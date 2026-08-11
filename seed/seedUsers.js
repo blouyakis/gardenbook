@@ -4,7 +4,8 @@ import { connectToDb, getDb } from "../db/connection.js";
 
 const SYNTHETIC_DOMAIN = "garden.example";
 const DEMO_EMAIL = "demo@neu.edu";
-const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
+const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower", "mixed"];
+const DEFAULT_GARDEN_NAME = "My Garden";
 
 const FIRST = [
   "Ava",
@@ -95,13 +96,23 @@ async function seed() {
     },
     createdAt: new Date(),
   };
+  
   const demoResult = await users.insertOne(demoDoc);
-  const demoGardens = GARDEN_TYPES.map((type, i) => ({
+  const demoGardens = GARDEN_TYPES.filter((t) => t !== "mixed").map(
+    (type, i) => ({
+      userId: demoResult.insertedId,
+      name: `${pick(GARDEN_ADJ, i)} ${type}s`,
+      type,
+      createdAt: new Date(),
+    })
+  );
+  // Default garden addition here.
+  demoGardens.push({
     userId: demoResult.insertedId,
-    name: `${pick(GARDEN_ADJ, i)} ${type}s`,
-    type,
+    name: DEFAULT_GARDEN_NAME,
+    type: "mixed",
     createdAt: new Date(),
-  }));
+  });
   await gardens.insertMany(demoGardens);
 
   const sharedHash = await bcrypt.hash("password123", 10);
@@ -128,7 +139,15 @@ async function seed() {
 
   const gardenDocs = [];
   insertedUserIds.forEach((userId, i) => {
-    const count = 2 + (i % 3); // 2, 3, or 4
+    // Default garden every user gets.
+    gardenDocs.push({
+      userId,
+      name: DEFAULT_GARDEN_NAME,
+      type: "mixed",
+      createdAt: new Date(),
+    });
+
+    const count = 2 + (i % 3);
     for (let g = 0; g < count; g++) {
       const type = pick(GARDEN_TYPES, i + g);
       gardenDocs.push({

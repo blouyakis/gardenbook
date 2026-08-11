@@ -10,7 +10,7 @@ import "./HomePage.css";
 
 const GARDEN_LINKS = [
   {
-    label: "My Gardens",
+    label: "My Calendar",
     to: "/mygarden",
     type: "gardens",
     img: "/tiles/gardens.png",
@@ -38,6 +38,12 @@ const GARDEN_LINKS = [
     to: "/mygarden?type=flower",
     type: "flower",
     img: "/tiles/flowers.png",
+  },
+  {
+    label: "My Mixed",
+    to: "/mygarden?type=mixed",
+    type: "mixed",
+    img: "/tiles/mixed.png",
   },
 ];
 
@@ -88,7 +94,7 @@ export default function HomePage() {
   return (
     <div>
       <div className="text-center gb-page-heading">
-        <h1 className="gb-wordmark fs-3">Gardening, simplified.</h1>
+        <h1 className="gb-wordmark fs-2">Gardening, simplified.</h1>
         <p className="text-body-secondary">
           Welcome back, {user.displayName}. Where would you like to start?
         </p>
@@ -108,14 +114,36 @@ export default function HomePage() {
             </Link>
           </Col>
         ))}
-        <Col lg={4} md={4} sm={6} xs={6}>
-          <Link
-            to="/explore"
-            className="gb-home-tile gb-home-tile-explore"
-            style={{ "--tile-accent": "var(--gb-explore)" }}
-          >
-            <img className="gb-home-tile-img" src="/tiles/explore.png" alt="" />
-            <span className="gb-home-tile-label">Explore Plants</span>
+      </Row>
+      <Row className="g-3 justify-content-center mt-3">
+        <Col xs={12}>
+          <Link to="/explore" className="gb-home-explore-banner">
+            <img
+              className="gb-home-explore-img"
+              src="/tiles/explore.png"
+              alt=""
+            />
+            <span className="gb-home-explore-text">
+              <span className="gb-home-explore-title">Explore Plants</span>
+              <span className="gb-home-explore-sub">
+                Browse the full catalog and find what&apos;s ready to plant this
+                week
+              </span>
+            </span>
+            <span className="gb-home-explore-cue" aria-hidden="true">
+              Browse
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </span>
           </Link>
         </Col>
       </Row>
