@@ -76,7 +76,7 @@ export default function SettingsPage() {
 
   return (
     <div className="gb-settings">
-      <h1 className="my-3 text-center fs-2">Settings</h1>
+      <h1 className="mb-3 text-center fs-2">Settings</h1>
       <div className="gb-settings-row">
         {/* Profile + region */}
         <Card className="mb-4">

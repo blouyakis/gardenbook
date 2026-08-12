@@ -62,7 +62,7 @@ body {
 
 .gb-main {
   padding-top: clamp(70px, 12vw, 155px);
-  padding-bottom: 1.5rem;
+  padding-bottom: clamp(140px, 22vw, 250px);
 }
 
 h1,
