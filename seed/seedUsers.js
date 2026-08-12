@@ -96,7 +96,7 @@ async function seed() {
     },
     createdAt: new Date(),
   };
-  
+
   const demoResult = await users.insertOne(demoDoc);
   const demoGardens = GARDEN_TYPES.filter((t) => t !== "mixed").map(
     (type, i) => ({
