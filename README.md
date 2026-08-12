@@ -105,11 +105,11 @@ PORT=3000
 
 ### Slides
 
-[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSz0LjgOflYeKMuzApabbc4j2eQMvZJCbNm0nYsYJIffOhAJvbJJnps_iTmCvpNVR-YuyRB_Z7DF4tf/pub?start=false&loop=false&delayms=3000)
+[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
 
 ### Video Demo
 
-[Watch the Video Demo](https://drive.google.com/file/d/1hFakVI2IovxdgBpFGDHkV9ZcTOSARU2E/view?usp=sharing)
+[Watch the Video Demo](<<<INSERT NEW VIDEO DEMO HERE>>>)
 
 ### Running the App (production build)
 
