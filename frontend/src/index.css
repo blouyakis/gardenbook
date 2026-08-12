@@ -75,7 +75,8 @@ h3 {
 
 .navbar.bg-body-tertiary {
   --bs-tertiary-bg-rgb: 253, 250, 241;
-  --bs-bg-opacity: 0;
+  --bs-bg-opacity: 0.78;
+  backdrop-filter: blur(1px);
 }
 
 .navbar .nav-link {
@@ -163,6 +164,9 @@ h3 {
 
 .navbar-brand.gb-wordmark {
   color: var(--gb-crimson);
+  text-shadow:
+    0 0 6px var(--gb-bg),
+    0 0 12px var(--gb-bg);
 }
 
 .gb-auth-form {

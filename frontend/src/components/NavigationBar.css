@@ -29,7 +29,7 @@
 
   .navbar-collapse .nav-link,
   .gb-nav-greeting,
-  .gb-logout.btn-gb-outline {
+  .gb-logout {
     font-family: "EB Garamond", Georgia, serif;
     font-size: 1rem;
     font-weight: 600;
@@ -48,7 +48,7 @@
     border-bottom: none;
   }
 
-  .gb-logout.btn-gb-outline {
+  .gb-logout {
     display: block;
     width: 100%;
     border-top: none;
