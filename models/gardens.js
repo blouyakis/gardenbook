@@ -3,11 +3,13 @@ import { getDb } from "../db/connection.js";
 
 // Aleena — gardens CRUD
 // Document shape: { _id, userId, name, type, createdAt }
-// type: "vegetable" | "herb" | "fruit" | "flower"
+// type: "vegetable" | "herb" | "fruit" | "flower" | "mixed"
 
 const gardens = () => getDb().collection("gardens");
 
-export const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower"];
+export const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower", "mixed"];
+export const DEFAULT_GARDEN_NAME = "My Garden";
+export const DEFAULT_GARDEN_TYPE = "mixed";
 const oid = (v) => (v instanceof ObjectId ? v : new ObjectId(v));
 
 export const findGardensByUser = async (userId) => {
@@ -56,6 +58,14 @@ export const updateGarden = async (userId, gardenId, updates) => {
     { returnDocument: "after" }
   );
   return updated;
+};
+
+//Added a default garden creation instead of empty dropdown in Explore.
+export const createDefaultGarden = async (userId) => {
+  return createGarden(userId, {
+    name: DEFAULT_GARDEN_NAME,
+    type: DEFAULT_GARDEN_TYPE,
+  });
 };
 
 export const deleteGarden = async (userId, gardenId) => {

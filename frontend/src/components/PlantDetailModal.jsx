@@ -34,12 +34,17 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
     })();
   }, [plantId]);
 
-  // Load the user's gardens for the dropdown.
+  // Load the user's gardens for the dropdown. Added default selection here.
   useEffect(() => {
     if (!plantId || !user) return;
     (async () => {
       const res = await fetch("/api/gardens");
-      if (res.ok) setGardens((await res.json()).gardens);
+      if (!res.ok) return;
+      const { gardens: fetchedGardens } = await res.json();
+      setGardens(fetchedGardens);
+      if (fetchedGardens.length > 0) {
+        setForm((f) => ({ ...f, gardenId: fetchedGardens[0]._id }));
+      }
     })();
   }, [plantId, user]);
 
@@ -95,7 +100,21 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
         )}
       </Modal.Body>
       <Modal.Footer>
-        {user ? (
+        {user && gardens.length === 0 ? (
+          <div className="w-100 text-center">
+            <p className="text-body-secondary mb-2">
+              You don&apos;t have a garden yet.
+            </p>
+            <Button
+              as={Link}
+              to="/gardens?new=1"
+              variant="gb-primary"
+              className="w-100"
+            >
+              Create a garden
+            </Button>
+          </div>
+        ) : user ? (
           <Form
             onSubmit={onAdd}
             className="gb-add-to-garden d-flex gap-2 w-100 flex-wrap"
@@ -106,7 +125,6 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
               onChange={(e) => setForm({ ...form, gardenId: e.target.value })}
               required
             >
-              <option value="">Select a garden</option>
               {gardens.map((garden) => (
                 <option key={garden._id} value={garden._id}>
                   {garden.name}

@@ -34,7 +34,7 @@ export default function NavigationBar() {
             {user && (
               <>
                 <Nav.Link as={Link} to="/mygarden">
-                  MyGarden
+                  MyCalendar
                 </Nav.Link>
                 <Nav.Link as={Link} to="/gardens">
                   Gardens

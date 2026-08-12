@@ -10,6 +10,7 @@ import {
   deleteUserAndData,
 } from "../models/users.js";
 import { resolveRegion } from "../lib/region.js";
+import { createDefaultGarden } from "../models/gardens.js";
 
 const router = express.Router();
 
@@ -38,6 +39,13 @@ router.post("/register", async (req, res) => {
       displayName,
       region,
     });
+
+    // Default garden addition plus failsafe error message.
+    try {
+      await createDefaultGarden(user._id);
+    } catch (gardenError) {
+      console.error("Could not create default garden:", gardenError.message);
+    }
 
     delete user.passwordHash;
     res.status(201).json({ message: "User created successfully", user });

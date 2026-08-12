@@ -22,12 +22,14 @@
   --gb-herb: #f2e3b6; /* butter */
   --gb-fruit: #797c99; /* slate */
   --gb-flower: #bf665e; /* terracotta */
+  --gb-mixed: #918b8b; /* gray */
 
   /* garden types — tints for chip backgrounds (ink text passes on all) */
   --gb-vegetable-tint: #d7d0b3; /* 6.6  */
   --gb-herb-tint: #f2e7cc; /* 8.32 */
   --gb-fruit-tint: #c8c3c2; /* 5.86 */
   --gb-flower-tint: #e0bbad; /* 5.79 */
+  --gb-mixed-tint: #ddd4c3; /* 6.99 */
 }
 
 body {
