@@ -66,9 +66,20 @@ async function seed() {
     }
   }
 
+  const refresh = process.argv.includes("--refresh");
+  const plantsCol = getDb().collection("plants");
+
   const successful = new Set();
   for (const [plantId, meta] of uniquePlants) {
     try {
+      if (!refresh) {
+        const cached = await plantsCol.findOne({ _id: plantId }, { projection: { _id: 1 } });
+        if (cached) {
+          successful.add(plantId);
+          console.log(`already cached ${meta.commonName} (id ${plantId}) - skipped fetch`);
+          continue;
+        }
+      }
       const data = await fetchSpecies(plantId, key);
       const fetched = (data.common_name || "").toLowerCase();
       const expected = meta.commonName.toLowerCase();
@@ -126,7 +137,7 @@ async function seed() {
     }));
 
   const col = getDb().collection("plantingWindows");
-  await col.deleteMany({ plantId: { $in: [...uniquePlants.keys()] } });
+  await col.deleteMany({ plantId: { $in: [...successful] } });
   const result = await col.insertMany(windowDocs);
   console.log(
     `Seeded ${successful.size}/${uniquePlants.size} plants and ${result.insertedCount} planting windows`

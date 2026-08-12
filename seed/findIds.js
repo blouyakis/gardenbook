@@ -1,21 +1,24 @@
 import "dotenv/config";
 
 const terms = [
-  // vegetables
-  "pisum", // peas — fall crop, sow early August
-  "phaseolus", // bush beans — last sowing window
-  "brassica", // broad net: collards, mustard, kohlrabi, rapini all live here
-  "cichorium", // endive / escarole
-  // herbs
-  "petroselinum", // parsley
-  // fall flowers
-  "viola", // pansies / violas
-  "calendula",
-  // August-planted perennials
-  "iris",
-  "hemerocallis", // daylily
-  "hosta",
-  "paeonia", // peony — really a Sept planter, tail end of August at best
+  // fall vegetables
+  "valerianella",     // mâche / corn salad
+  "endivia",          // endive & escarole (different species from your chicory)
+  "anthriscus",       // chervil
+  "foeniculum",       // bulb fennel
+  // late-summer perennials
+  "chrysanthemum",    // garden mums — THE August plant
+  "aster",            // fall asters (also try "symphyotrichum")
+  "sedum",            // autumn sedums
+  "phlox",
+  "dianthus",         // 2396 already flashed by in an earlier search
+  "rudbeckia",        // black-eyed susan
+  "coreopsis",
+  "heuchera",         // coral bells
+  "nepeta",           // catmint
+  // sleepers
+  "fragaria",         // strawberry
+  "digitalis",        // foxglove — biennial, sown/planted late summer
 ];
 
 const key = process.env.PERENUAL_API_KEY;

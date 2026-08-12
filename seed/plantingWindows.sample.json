@@ -280,7 +280,7 @@
     "method": "direct-sow"
   },
   {
-    "plantId": 1321,
+    "plantId": 1327,
     "search": "brassica oleracea",
     "commonName": "Broccoli",
     "type": "vegetable",
@@ -464,5 +464,92 @@
     "startOffsetWeeks": 15,
     "endOffsetWeeks": 18,
     "method": "direct-sow"
-  }
+  },
+  {
+  "plantId": 1325,
+  "search": "brassica",
+  "commonName": "Brussels Sprouts",
+  "type": "vegetable",
+  "season": "fall",
+  "startOffsetWeeks": 7,
+  "endOffsetWeeks": 11,
+  "method": "transplant"
+},
+{
+  "plantId": 1317,
+  "search": "brassica",
+  "commonName": "Rutabaga",
+  "type": "vegetable",
+  "season": "fall",
+  "startOffsetWeeks": 9,
+  "endOffsetWeeks": 13,
+  "method": "direct-sow"
+},
+{
+  "plantId": 1861,
+  "search": "chrysanthemum",
+  "commonName": "Garden Mum",
+  "type": "flower",
+  "season": "fall",
+  "startOffsetWeeks": 16,
+  "endOffsetWeeks": 22,
+  "method": "transplant"
+},
+{
+  "plantId": 1051,
+  "search": "aster",
+  "commonName": "Aster",
+  "type": "flower",
+  "season": "fall",
+  "startOffsetWeeks": 15,
+  "endOffsetWeeks": 22,
+  "method": "transplant"
+},
+{
+  "plantId": 2062,
+  "search": "coreopsis",
+  "commonName": "Coreopsis",
+  "type": "flower",
+  "startOffsetWeeks": 2,
+  "endOffsetWeeks": 20,
+  "method": "transplant"
+},
+{
+  "plantId": 2384,
+  "search": "dianthus",
+  "commonName": "Sweet William",
+  "type": "flower",
+  "season": "fall",
+  "startOffsetWeeks": 15,
+  "endOffsetWeeks": 19,
+  "method": "transplant"
+},
+{
+  "plantId": 2487,
+  "search": "digitalis",
+  "commonName": "Foxglove",
+  "type": "flower",
+  "season": "fall",
+  "startOffsetWeeks": 15,
+  "endOffsetWeeks": 19,
+  "method": "transplant"
+},
+{
+  "plantId": 2978,
+  "search": "foeniculum",
+  "commonName": "Fennel",
+  "type": "herb",
+  "startOffsetWeeks": 12,
+  "endOffsetWeeks": 15,
+  "method": "direct-sow"
+},
+{
+  "plantId": 589,
+  "search": "foeniculum",
+  "commonName": "Anise Hyssop",
+  "type": "herb",
+  "startOffsetWeeks": 15,
+  "endOffsetWeeks": 20,
+  "method": "transplant"
+}
 ]
