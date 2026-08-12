@@ -2,23 +2,23 @@ import "dotenv/config";
 
 const terms = [
   // fall vegetables
-  "valerianella",     // mâche / corn salad
-  "endivia",          // endive & escarole (different species from your chicory)
-  "anthriscus",       // chervil
-  "foeniculum",       // bulb fennel
+  "valerianella", // mâche / corn salad
+  "endivia", // endive & escarole (different species from your chicory)
+  "anthriscus", // chervil
+  "foeniculum", // bulb fennel
   // late-summer perennials
-  "chrysanthemum",    // garden mums — THE August plant
-  "aster",            // fall asters (also try "symphyotrichum")
-  "sedum",            // autumn sedums
+  "chrysanthemum", // garden mums — THE August plant
+  "aster", // fall asters (also try "symphyotrichum")
+  "sedum", // autumn sedums
   "phlox",
-  "dianthus",         // 2396 already flashed by in an earlier search
-  "rudbeckia",        // black-eyed susan
+  "dianthus", // 2396 already flashed by in an earlier search
+  "rudbeckia", // black-eyed susan
   "coreopsis",
-  "heuchera",         // coral bells
-  "nepeta",           // catmint
+  "heuchera", // coral bells
+  "nepeta", // catmint
   // sleepers
-  "fragaria",         // strawberry
-  "digitalis",        // foxglove — biennial, sown/planted late summer
+  "fragaria", // strawberry
+  "digitalis", // foxglove — biennial, sown/planted late summer
 ];
 
 const key = process.env.PERENUAL_API_KEY;

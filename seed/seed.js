@@ -73,10 +73,15 @@ async function seed() {
   for (const [plantId, meta] of uniquePlants) {
     try {
       if (!refresh) {
-        const cached = await plantsCol.findOne({ _id: plantId }, { projection: { _id: 1 } });
+        const cached = await plantsCol.findOne(
+          { _id: plantId },
+          { projection: { _id: 1 } }
+        );
         if (cached) {
           successful.add(plantId);
-          console.log(`already cached ${meta.commonName} (id ${plantId}) - skipped fetch`);
+          console.log(
+            `already cached ${meta.commonName} (id ${plantId}) - skipped fetch`
+          );
           continue;
         }
       }
