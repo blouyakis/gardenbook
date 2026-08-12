@@ -58,7 +58,7 @@ export default function NavigationBar() {
                   Settings
                 </Nav.Link>
                 <Button
-                  variant="gb-outline"
+                  variant="gb-explore"
                   size="sm"
                   className="gb-logout ms-md-2"
                   onClick={onLogout}
