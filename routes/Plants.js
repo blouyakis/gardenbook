@@ -26,10 +26,13 @@ router.get("/", async (req, res) => {
       plants = plants
         .filter((p) => plantable.has(p._id))
         .map((p) => {
-          const windows = plantable
-            .get(p._id)
-            .map((w) => windowToDates(w, lastFrost));
-          return { ...p, windows, method: windows[0]?.method || null };
+          const windows = plantable.get(p._id);
+          return {
+            ...p,
+            windows,
+            method: windows[0]?.method || null,
+            flexOnly: windows.every((w) => !w.coreMatch),
+          };
         });
     }
 

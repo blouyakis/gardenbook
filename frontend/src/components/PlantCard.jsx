@@ -5,8 +5,17 @@ import PropTypes from "prop-types";
 // Used <alt=""> to silence repetitive plant names from screen readers
 
 export default function PlantCard({ plant, onClick }) {
+  const hasWindow = Array.isArray(plant.windows);
+  const flex = plant.flexOnly === true;
   return (
     <Card
+      className={
+        hasWindow
+          ? flex
+            ? "border-warning border-2"
+            : "border-success border-2"
+          : ""
+      }
       onClick={onClick}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -44,6 +53,11 @@ export default function PlantCard({ plant, onClick }) {
         <Card.Text className="small text-body-secondary">
           {plant.type} {plant.method ? `· ${plant.method}` : ""}
         </Card.Text>
+        {flex && (
+          <Card.Text className="small text-warning-emphasis mb-0">
+            <span aria-hidden="true">⚡</span> Edge of planting window
+          </Card.Text>
+        )}
       </Card.Body>
     </Card>
   );
@@ -55,6 +69,8 @@ PlantCard.propTypes = {
     type: PropTypes.string,
     method: PropTypes.string,
     imageUrl: PropTypes.string,
+    flexOnly: PropTypes.bool,
+    windows: PropTypes.array,
   }).isRequired,
   onClick: PropTypes.func.isRequired,
 };

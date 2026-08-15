@@ -59,10 +59,7 @@ async function seed() {
   const uniquePlants = new Map();
   for (const row of manifest) {
     if (!uniquePlants.has(row.plantId)) {
-      uniquePlants.set(row.plantId, {
-        commonName: row.commonName,
-        type: row.type,
-      });
+      uniquePlants.set(row.plantId, row);
     }
   }
 
@@ -85,6 +82,25 @@ async function seed() {
           continue;
         }
       }
+
+      if (meta.manual) {
+        await cachePlant({
+          _id: plantId,
+          commonName: meta.commonName,
+          scientificName: meta.scientificName || "",
+          type: meta.type,
+          imageUrl: meta.imageUrl || null,
+          summary: meta.summary || "",
+          hardiness: {
+            min: meta.hardinessMin ?? null,
+            max: meta.hardinessMax ?? null,
+          },
+        });
+        successful.add(plantId);
+        console.log(`cached ${meta.commonName} (manual id ${plantId})`);
+        continue;
+      }
+
       const data = await fetchSpecies(plantId, key);
       const fetched = (data.common_name || "").toLowerCase();
       const expected = meta.commonName.toLowerCase();
@@ -133,13 +149,25 @@ async function seed() {
 
   const windowDocs = manifest
     .filter((row) => successful.has(row.plantId))
-    .map(({ plantId, startOffsetWeeks, endOffsetWeeks, method, season }) => ({
-      plantId,
-      startOffsetWeeks,
-      endOffsetWeeks,
-      method,
-      ...(season && { season }),
-    }));
+    .map(
+      ({
+        plantId,
+        startOffsetWeeks,
+        endOffsetWeeks,
+        method,
+        season,
+        flexWeeksBefore,
+        flexWeeksAfter,
+      }) => ({
+        plantId,
+        startOffsetWeeks,
+        endOffsetWeeks,
+        method,
+        ...(season && { season }),
+        ...(flexWeeksBefore && { flexWeeksBefore }),
+        ...(flexWeeksAfter && { flexWeeksAfter }),
+      })
+    );
 
   const col = getDb().collection("plantingWindows");
   await col.deleteMany({ plantId: { $in: [...successful] } });
