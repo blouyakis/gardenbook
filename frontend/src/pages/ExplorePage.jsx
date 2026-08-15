@@ -7,6 +7,7 @@ import PlantDetailModal from "../components/PlantDetailModal.jsx";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 // Added screen reader accessibility: visually hidden status for plants found during search
 // Added an h1 heading for the page for better accessibility, kept size with fs-2 in className
@@ -25,17 +26,21 @@ export default function ExplorePage() {
   const [week, setWeek] = useState(currentMonday());
   const [plants, setPlants] = useState([]);
   const [selectedPlantId, setSelectedPlantId] = useState(null);
+  const [browseAll, setBrowseAll] = useState(false);
+  const [typeFilter, setTypeFilter] = useState("");
 
   const reloadPlants = useCallback(async () => {
-    const params = new URLSearchParams({ week });
+    const params = new URLSearchParams();
+    if (user && !browseAll) params.set("week", week);
     if (query) params.set("search", query);
+    if (typeFilter) params.set("type", typeFilter);
     const res = await fetch(`/api/plants?${params}`);
     if (!res.ok) {
       setPlants([]);
       return;
     }
     setPlants(await res.json());
-  }, [query, week]);
+  }, [query, week, user, browseAll, typeFilter]);
 
   useEffect(() => {
     const timeout = setTimeout(reloadPlants, 300);
@@ -47,8 +52,9 @@ export default function ExplorePage() {
       <h1 className="text-center fs-2">Explore Plants</h1>
       {user && (
         <p className="text-center text-body-secondary fs-5">
-          Displays plants that can be planted during the selected week in your
-          region. Go to the Plant Library to search all plants.
+          {browseAll
+            ? "Browse the full plant catalog. Use the search bar or type filter to find specific plants."
+            : "Plants you can plant during the selected week in your region. Switch to All plants to browse the full catalog."}
         </p>
       )}
       <Form.Control
