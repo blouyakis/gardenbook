@@ -1,13 +1,34 @@
-# GardenBook Usability Study Protocol
+# GardenBook Usability Study August 2026
 
 Shared protocol for all moderated sessions. Both moderators followed this document exactly — same script, same tasks, same order, same measures — so results from all six sessions can be compared and combined.
 
-[Click this link to view the Usability Study Report for GardenBook](https://docs.google.com/document/d/e/2PACX-1vRuwm28OCzWYhUsTufUqYF2MEbF9HBWn1d6vcPVjUPsmecj3Edub9lPIOF6Qo9j6ndMQTgegda8ZdeB/pub)
+[Click this link to view the complete Usability Study Report for GardenBook](https://docs.google.com/document/d/e/2PACX-1vRuwm28OCzWYhUsTufUqYF2MEbF9HBWn1d6vcPVjUPsmecj3Edub9lPIOF6Qo9j6ndMQTgegda8ZdeB/pub)
+
+## Evidence of Recordings
+
+You can access the video recordings of each interview here:
+
+Participant 1: [Erin Magnusson Video Link](https://drive.google.com/file/d/18d0y7TyXkmpM9QK0Bxpm6yNRHgfK-LzT/view?usp=sharing)
+
+Participant 2: [Artemis Louyakis Video Link](https://drive.google.com/file/d/1d_0VE7mZ-5AGuLKplQNhvLI_ig0CoLjB/view?usp=sharing)
+
+Participant 3: [Denise Louyakis Video Link](https://drive.google.com/file/d/1ijvc7c17waiq6cJJZg7DopO7BJKJNlK8/view?usp=sharing)
+
+Participant 4: [Sam Tyrrell Video Link](https://drive.google.com/file/d/1d2WHKL1xrq3su9ZgusRQIxHZmtDuoLcR/view?usp=sharing)
+
+Participant 5: [Patrick Walsh Video Link](https://drive.google.com/file/d/1kUUr3Zdo0TX_uT2Grvip8wm5uBLAhgNH/view?usp=sharing)
+
+Participant 6: []()
+
+Participant 7: []()
+
+Participant 8: []()
+
 
 ## Study Overview
 
 - **Application:** GardenBook (deployed build, not localhost)
-- **Moderators:** Barbara (3 participants), Aleena (3 participants)
+- **Moderators:** Barbara (5 participants), Aleena (3 participants)
 - **Session length:** ~30–40 minutes
 - **Format:** Remote, moderated, think-aloud protocol with screen sharing
 - **Goal:** Evaluate how easily new users can understand the application, register an account, and use GardenBook's core features.
@@ -27,7 +48,7 @@ Shared protocol for all moderated sessions. Both moderators followed this docume
 - Screen capture of participant actions
 - Audio of the entire session
 - Task completion (success / partial / fail, using the criteria in the task table)
-- Time on task (start when the task is read aloud, stop at completion or abandonment)
+- Time on task (observed whether tasks were quickly done or took time to discover)
 - Moderator notes (quotes, hesitations, errors, workarounds)
 - Interview/debrief responses
 - Survey responses
@@ -53,7 +74,7 @@ Ask verbally after consent, before setup. Read first: "You may decline to answer
 
 ### 3. Setup (read aloud)
 
-> Great, now I will ask you to share your screen with me. I will send you the link to the application we will be evaluating today. As you navigate throughout the application, I would like you to think out loud. Tell me everything that comes to your mind as you are using the website.
+> Great, now I will ask you to share your screen with me. I will send you the link to the application we will be evaluating today. As you navigate through the application, I would like you to think out loud. Tell me everything that comes to your mind as you are using the website.
 
 Share this link with user, inform of long loading time: [Link to GardenBook](https://gardenbook-tozv.onrender.com)
 
@@ -65,11 +86,7 @@ Share this link with user, inform of long loading time: [Link to GardenBook](htt
 
 Record their answer verbatim before giving any explanation.
 
-### 5. Context Statement (read aloud, after they answer)
-
-> This is a website designed for gardeners. The site enables users to search for plants that thrive in their region and helps them build gardens based on the best time of year to plant each species in their region. When you navigate to the login screen, you will want to register and enter your ZIP code so the application can identify your region. As you use the application, please imagine you are a gardener planning what to plant this season.
-
-### 6. Tasks
+### 5. Tasks
 
 Read each task aloud, one at a time, in this order. Do not help unless the participant is completely stuck for more than ~2 minutes; if you must help, note it and mark the task "assisted." Remind participants to keep thinking out loud if they go quiet ("What are you thinking right now?").
 
@@ -82,10 +99,11 @@ Read each task aloud, one at a time, in this order. Do not help unless the parti
 | 5   | "Add a plant to the garden you just created."                                      | Plant appears in the garden                                                           |
 | 6   | "Find your planting calendar and tell me what is scheduled for this week."         | Locates calendar view and reads the current week correctly                            |
 | 7   | "Log out, then log back in."                                                       | Completes both; note where they land after login                                      |
+| 8  | "Now try to download a PDF of your entire calendar." | Completes download of PDF, displays PDF on screen |
 
 For each task, record: completion (success / assisted / fail), time on task, errors observed, and notable quotes.
 
-### 7. Post-Study Survey
+### 6. Post-Study Survey
 
 Given immediately after the last task, before the debrief conversation.
 
@@ -109,32 +127,13 @@ Given immediately after the last task, before the debrief conversation.
 
 **Open response:** Do you have any suggestions for improving the application?
 
-### 8. Debrief Questions (verbal, semi-structured)
-
-1. What was your overall impression of the application?
-2. What was the most confusing or frustrating moment, and what did you expect to happen instead?
-3. What was the easiest part?
-4. Was there anything you expected the application to do that it didn't?
-5. Was there any wording, label, or image you found unclear?
-6. If you could change one thing, what would it be?
-
-### 9. Closing (read aloud)
+### 7. Closing (read aloud)
 
 > Thank you so much for your participation. If you don't have any other suggestions, I will stop the recording and you can leave the room now. Have a wonderful day!
 
-## Analysis (after all six sessions)
-
-Compile every observed issue into a shared findings list.
-
-For each issue record: description, which task(s) it appeared in, how many participants
-hit it, severity, priority, and implementation status (was the fix implemented? how?).
-
 **Post-session procedure:**
 
-Immediately after each session, write down
-all notes from memory. Then rewatch the recording, looking for moments of frustration or
-struggle, and add timestamped notes for each. Only after both passes are a participant's
-notes considered complete.
+Immediately after each session, write down all notes from memory. Then rewatch the recording, looking for moments of frustration or struggle, and add timestamped notes for each. Only after both passes are a participant's notes considered complete.
 
 **Severity rating (assign to each issue):**
 
@@ -151,7 +150,7 @@ notes considered complete.
 - **Must** — fix before final submission
 - **Should** — fix if time allows
 - **Could** — nice to have
-- **Won't** — out of scope for this project
+- **Would** — out of scope for this project
 
 Prioritize primarily by severity × number of participants affected.
 
@@ -162,3 +161,56 @@ Prioritize primarily by severity × number of participants affected.
 - Never lead ("Try clicking Explore") — if stuck, ask "What would you try next?" first.
 - Note-taking template and survey format identical across both moderators.
 - Do not fix or explain bugs during the session; note them and move on.
+
+## Analysis (after all six sessions)
+
+We compiled every observed issue into a shared findings list.
+
+>Issue: Cannot access a master list of all plants from logged in view. The logged out Explore page should be accessible from the logged in Explore page.
+Change: Master database of plants should be accessible from logged in view. Organize by plant type and add filtering options.
+Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
+Priority: (**Must**, Could, Should, Would)
+Was it implemented? How?
+
+>Issue: Plant database is limited and many common plants are still missing. Searching is further complicated by the limitations of the database size. 
+Change: Add more plants to database. Organize by plant type and seasons. Expand on planting windows so each plant gets some time added to the front and back of the planting window for plants that have greater flexibility or climate. Note the range with colored borders in the search screen and a warning to the user.
+Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
+Priority: (**Must**, Could, Should, Would)
+Was it implemented? How?
+
+>Issue: Adding a plant to a specific garden is not intuitive and the dropdown menu for which garden to add to is unclear
+Change: Add a popup button for ‘Which garden would you like to add this plant to?’ so the user has to select an option when confirming to add the plant on a selected day. 
+Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+Priority: (Must, Could, **Should**, Would)
+Was it implemented? How?
+
+>Issue: Lacks useful information
+Change: Add a sun meter, harvest schedule, watering schedule for each plant
+Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+Priority: (Must, Could, **Should**, Would)
+Was it implemented? How?
+
+>Issue: I want to see plant details when I click the plant in my garden or my calendar
+Change: Adjust so the plant details page appears when the user clicks the plant from the garden view or the calendar view
+Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+Priority: (Must, **Could**, Should, Would)
+Was it implemented? How?
+
+>Issue: Users want to know what the plant will look like during different stages of growth.
+Change: Add photos to the plant details view that show the plant in different stages of growth including photo of when its ready to harvest. 
+Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+Priority: (Must, **Could**, Should, Would)
+Was it implemented? How?
+
+>Issue: Lacks a reward system and user interactions
+Change: Options for user feedback to add notes to specific plants and submit their notes for moderator review. Create a points system and level ratings for users who are top contributors. 
+Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+Priority: (Must, Could, Should, **Would**)
+Was it implemented? How?
+
+>Issue: Lacks a social component
+Change: Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging. 
+Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+Priority: (Must, Could, Should, **Would**)
+Was it implemented? How?
+
