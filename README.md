@@ -65,7 +65,7 @@ npm run seed:demo
 2. Backend — from the project root: `npm install` then `npm start` (port 3000)
 3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
 4. Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo`
-5. Open http://localhost:5173 (Vite proxies `/api` to the backend)
+5. Open http://localhost:5173 
 
 ### Environment Variables
 
