@@ -65,7 +65,7 @@ npm run seed:demo
 2. Backend — from the project root: `npm install` then `npm start` (port 3000)
 3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
 4. Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo`
-5. Open http://localhost:5173 
+5. Open http://localhost:5173
 
 ### Environment Variables
 
@@ -74,7 +74,7 @@ Create a `.env` file in the project root with the following:
 ```
 MONGODB_URI=mongodb://localhost:27017
 DB_NAME=gardenbook
-SESSION_SECRET=f7db1769e44fb6792827e696ee02d0550de39409b9dc52bf3eba28c4911e330e
+SESSION_SECRET=<generate one>
 PERENUAL_API_KEY=sk-ZE6L6a4e9544bb54418670
 PORT=3000
 ```
