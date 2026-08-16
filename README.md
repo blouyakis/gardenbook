@@ -6,23 +6,6 @@ GardenBook is a full-stack web application that helps gardeners plan what to pla
 
 ---
 
-## Development Environment
-
-Full stack web application using Node + Express 5 + MongoDB native driver + React 19 (hooks), React Router, Vite, Passport (session auth), bcrypt (password hashing), PDFKit (calendar PDF export), React Bootstrap (UI)
-
-## APIs
-
-Perenual (plant catalog, photos, summaries, zones), USDA Hardiness Zone — phzmapi.org (ZIP -> zone)
-An earlier design used the FarmSense frost API, but its endpoint was retired, frost dates are now estimated from the resolved zone so registration never depends on a live external call. Zones 1–13 are supported, including frost-free zones 11–13.
-
----
-
-## Database
-
-Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the API has a 100 req/day rate limit, so we serve from cache), `plantingWindows` (our curated frost-offset data)
-
----
-
 ## Class
 
 [CS 5610 Web Development](https://johnguerra.co/classes/webDevelopment_online_summer_2026/)
@@ -31,98 +14,18 @@ Khoury College of Computer Sciences, Northeastern University
 
 ---
 
-## Live Demo
+## Development Environment
 
-The application is deployed and publicly accessible at:
+Full stack web application using Node + Express 5 + MongoDB native driver + React 19 (hooks), React Router, Vite, Passport (session auth), bcrypt (password hashing), PDFKit (calendar PDF export), React Bootstrap (UI)
 
-[GardenBook](https://gardenbook-tozv.onrender.com)
+### APIs
 
-URL: https://gardenbook-tozv.onrender.com
+Perenual (plant catalog, photos, summaries, zones), USDA Hardiness Zone — phzmapi.org (ZIP -> zone)
+An earlier design used the FarmSense frost API, but its endpoint was retired, frost dates are now estimated from the resolved zone so registration never depends on a live external call. Zones 1–13 are supported, including frost-free zones 11–13.
 
-A demo account has been pre-loaded with sample data so you can explore the application without creating an account or adding data manually.
+### Mongo DB Atlas
 
-### Resetting the Demo Data
-
-If the demo data gets modified or deleted, you can restore it by running:
-
-```bash
-npm run seed
-```
-
-This re-seeds the planting windows.
-
-```bash
-npm run seed:users
-npm run seed
-npm run seed:demo
-```
-
----
-
-## Setup
-
-1. Create a new file in the root called `.env` and copy the environment variables below to `.env`
-2. Backend — from the project root: `npm install` then `npm start` (port 3000)
-3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
-4. Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo`
-5. Open http://localhost:5173
-
-### Environment Variables
-
-Create a `.env` file in the project root with the following:
-
-```
-MONGODB_URI=mongodb://localhost:27017
-DB_NAME=gardenbook
-SESSION_SECRET=<generate one>
-PERENUAL_API_KEY=<see comment in canvas assignment>
-PORT=3000
-```
-
-### Login Credentials
-
-| Field    | Value        |
-| -------- | ------------ |
-| Email    | demo@neu.edu |
-| Password | Northeastern |
-
-### How to Access
-
-1. Go to the live URL above
-2. Enter the credentials above and click **Log In**
-3. Browse the MyGarden weekly calendar, or open Explore to see what can be planted in the demo region this week
-
----
-
-## Ownership
-
-- **Aleena** — auth + sessions, users/region, gardens CRUD, PDF export, all-plants explore view, context-aware garden picker
-- **Barbara** — plant API integration + cache, Explore, plantings, calendar views, catalog expansion, manual seeding, flexible planting windows, plant detail access from gardens and calendar, password confirmation, accessibility features
-- **Shared** — Usability study and debugging
-
----
-
-## Project Information
-
-### Slides
-
-[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
-
-### Video Demo
-
-[Watch the Video Demo](<<<INSERT NEW VIDEO DEMO HERE>>>)
-
-### Running the App (production build)
-
-```bash
-cd frontend
-npm run build
-npm run dev
-cd ..
-npm start
-```
-
-Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
+Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the API has a 100 req/day rate limit, so we serve from cache), `plantingWindows` (our curated frost-offset data)
 
 ---
 
@@ -145,60 +48,88 @@ Then go to `http://localhost:3000` in your browser. (During development, use the
 
 ---
 
-## Project Structure
+## Project Information
+
+### Live Demo
+
+The application is deployed and publicly accessible at:
+
+[GardenBook](https://gardenbook-tozv.onrender.com)
+
+URL: https://gardenbook-tozv.onrender.com
+
+A demo account has been pre-loaded with sample data so you can explore the application without creating an account or adding data manually.
+
+### Slide Presentation
+
+[Click here to view the Slide Presentation](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
+
+### Video Demonstration
+
+[Click here to watch the Video Demonstration](<<<INSERT NEW VIDEO DEMO HERE>>>)
+
+---
+
+## Setup
+
+> 1.  Create a new file in the root called `.env`, generate a session secret and copy the Perenual API key from the canvas assignment submission comment section
+>
+> Environment Variables:
+>
+> Create a `.env` file in the project root with the following:
 
 ```
-backend.js                — Express server entry point
-db/
-  connection.js           — MongoDB connection (native driver) + indexes
-config/
-  passport.js             — Passport local strategy config
-middleware/
-  auth.js                 — isAuthenticated session guard
-lib/
-  region.js               — ZIP → USDA zone (phzmapi) + local frost-date derivation
-models/
-  users.js                — User data access
-  gardens.js              — Garden data access
-  plantings.js            — Planting data access
-  plants.js               — Plant catalog / Perenual cache
-  plantingWindows.js      — Curated planting-window queries
-routes/
-  Auth.js                 — Register, login, logout, session, password, account
-  Users.js                — Profile + region
-  Plants.js               — Explore plant list + plant detail
-  Gardens.js              — Gardens CRUD + nested plantings
-  Calendar.js             — Weekly views + PDF export
-seed/
-  seed.js                 — Seeds the plant catalog from Perenual (fetch, verify,
-                            download images locally) plus manual entries for
-                            common species outside the free tier, + curated
-                            planting windows
-  seedUsers.js            — Demo account + 350 synthetic users with gardens
-                            and plantings
-  seedDemoPlantings.js    — Demo account's plantings for the current week
-  findIds.js              — Dev helper: finds free-tier Perenual species ids
-                            when extending the catalog
-  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost
-                            offsets, flex ranges)
-frontend/
-  index.html              — HTML shell (favicon, Adobe Fonts kit)
-  vite.config.js          — Vite config + dev-server API proxy
-  images/                 — Design mockups referenced by DESIGN.md
-  src/
-    main.jsx              — React entry, router, auth-guarded routes
-    index.css             — Brand theme (colors, fonts, custom button variants)
-    pages/                — BaseTemplate, Home, MyGarden, Explore, Login, Register,
-                            Gardens, Settings (+ per-page CSS where styled)
-    components/           — NavigationBar, GardenTypeToggle, WeekNav, CalendarGrid,
-                            PlantCard, PlantDetailModal, GardenFormModal, RequireAuth
-                            (+ per-component CSS where styled)
-    context/              — AuthContext (shared session state)
-  public/                 — background art, favicon
-    tiles/                — home page card illustrations
-    plants/               — locally cached plant images via Perenual
-                            (per-image licenses per Perenual's API)
+MONGODB_URI=mongodb://localhost:27017
+DB_NAME=gardenbook
+SESSION_SECRET=<generate one>
+PERENUAL_API_KEY=<see comment in canvas assignment>
+PORT=3000
 ```
+
+> 2.  Backend — from the project root: `npm install` then `npm start` (port 3000)
+
+> 3.  Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
+
+> 4.  Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo` - If the demo data gets modified or deleted, you can restore it by running:
+
+```bash
+npm run seed:users
+npm run seed
+npm run seed:demo
+```
+
+> 5.  Running the App (production build)
+
+```bash
+cd frontend
+npm run build
+npm run dev
+cd ..
+npm start
+```
+
+> Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
+
+### Login Credentials
+
+| Field    | Value        |
+| -------- | ------------ |
+| Email    | demo@neu.edu |
+| Password | Northeastern |
+
+### How to Access
+
+1. Go to the live URL above
+2. Enter the credentials above and click **Log In**
+3. Browse the MyGarden weekly calendar, or open Explore to see what can be planted in the demo region this week
+
+---
+
+## Work Ownership
+
+- **Aleena** — auth + sessions, users/region, gardens CRUD, PDF export, all-plants explore view, context-aware garden picker
+- **Barbara** — plant API integration + cache, Explore, plantings, calendar views, catalog expansion, manual seeding, flexible planting windows, plant detail access from gardens and calendar, password confirmation, accessibility features
+- **Shared** — Usability study and debugging
 
 ---
 
@@ -206,8 +137,6 @@ frontend/
 
 - Barbara Louyakis
 - Aleena Mary Karatra
-
-CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern University
 
 ---
 

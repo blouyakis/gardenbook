@@ -18,11 +18,11 @@ Participant 4: [Sam Tyrrell Video Link](https://drive.google.com/file/d/1d2WHKL1
 
 Participant 5: [Patrick Walsh Video Link](https://drive.google.com/file/d/1kUUr3Zdo0TX_uT2Grvip8wm5uBLAhgNH/view?usp=sharing)
 
-Participant 6: []()
+Participant 6: [Ruchita Patil Video Link](https://northeastern-my.sharepoint.com/:v:/r/personal/karatra_a_northeastern_edu/Documents/Usability_Recordings/Usability_1.mp4?d=w5c2e6c4dfab84ae6acdc11dd5fb5fa32&csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=P2AIm3)
 
-Participant 7: []()
+Participant 7: [Ann Bijoy Video Link](https://northeastern-my.sharepoint.com/:v:/r/personal/karatra_a_northeastern_edu/Documents/Usability_Recordings/Usability_2.mp4?d=w269607f8aea64d8b8bbea95ebeadc3a2&csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=eCQ1yt)
 
-Participant 8: []()
+Participant 8: [Aditya Cherian Video Link](https://northeastern-my.sharepoint.com/:v:/r/personal/karatra_a_northeastern_edu/Documents/Usability_Recordings/Usability_3.mp4?d=w125068bdfd5a44b8a05558851abf702c&csf=1&web=1&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=1j28ct)
 
 ## Study Overview
 
@@ -161,54 +161,182 @@ Prioritize primarily by severity × number of participants affected.
 - Note-taking template and survey format identical across both moderators.
 - Do not fix or explain bugs during the session; note them and move on.
 
-## Analysis (after all six sessions)
+## Analysis
 
-We compiled every observed issue into a shared findings list.
+We interviewed 8 people and compiled 16 observed issue into a shared findings list.
 
-> Issue: Cannot access a master list of all plants from logged in view. The logged out Explore page should be accessible from the logged in Explore page.
-> Change: Master database of plants should be accessible from logged in view. Organize by plant type and add filtering options.
-> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
-> Priority: (**Must**, Could, Should, Would)
-> Was it implemented? How?
+> **Issue:** Cannot access a master list of all plants from logged in view. The logged out Explore page should be accessible from the logged in Explore page.
+>
+> **Change:** Master database of plants should be accessible from logged in view. Organize by plant type and add filtering options.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
+>
+> **Priority:** (**Must**, Could, Should, Would)
+>
+> **Was it implemented? How?**
+> Implemented. Added a "This week / All plants" mode selection to the Explore page. "This week" keeps the original region and week-filtered view while "All plants" lifts the week and hardiness-zone filters to show the full catalog. This is the same catalog that logged-out users see, which is now visible on the logged-in Explore page as the participant expected.
 
-> Issue: Plant database is limited and many common plants are still missing. Searching is further complicated by the limitations of the database size.
-> Change: Add more plants to database. Organize by plant type and seasons. Expand on planting windows so each plant gets some time added to the front and back of the planting window for plants that have greater flexibility or climate. Note the range with colored borders in the search screen and a warning to the user.
-> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
-> Priority: (**Must**, Could, Should, Would)
-> Was it implemented? How?
+> **Issue:** Plant database is limited and many common plants are still missing. Searching is further complicated by the limitations of the database size.
+>
+> **Change:** Added more plants to the database. Organize by plant type and seasons. Expand on planting windows so each plant gets some time added to the front and back of the planting window for plants that have greater flexibility or climate. Note the range with colored borders in the search screen and a warning to the user.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
+>
+> **Priority:** (**Must**, Could, Should, Would)
+>
+> **Was it implemented? How?**
+> Yes. Catalog expanded from 56 to 84 plants (12 from Perenual, 26 manual entries), planting windows extended with per-plant flex ranges, green/gold borders added to identify ideal vs. edge-of-window planting timing with a warning for the user, and category organization added to the Explore page.
 
-> Issue: Adding a plant to a specific garden is not intuitive and the dropdown menu for which garden to add to is unclear
-> Change: Add a popup button for ‘Which garden would you like to add this plant to?’ so the user has to select an option when confirming to add the plant on a selected day.
-> Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
-> Priority: (Must, Could, **Should**, Would)
-> Was it implemented? How?
+> **Issue:** Adding a plant to a specific garden is not intuitive and the dropdown menu for which garden to add to is unclear.
+>
+> **Change:** Add a context-aware drop down menu that considers where the user is navigating from.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, **Should**, Would)
+>
+> **Was it implemented? How?**
+> Implemented. Made the garden dropdown context-aware and intuitive about what to select. It alternates between three options now. If the user navigates directly from a garden, it preselects the garden the user navigated from. In the same case, if the user only has one garden (like a new user who only has a default garden) it auto-picks that garden. If the user navigates to the Explore page from any other point in the application, the dropdown defaults to a "Which garden?" choice that disallows adding the plant until a garden is selected. This way, a plant does not quietly end up in the wrong location.
 
-> Issue: Lacks useful information
-> Change: Add a sun meter, harvest schedule, watering schedule for each plant
-> Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
-> Priority: (Must, Could, **Should**, Would)
-> Was it implemented? How?
+> **Issue:** Lacks useful information.
+>
+> **Change:** Add a sun meter, harvest schedule, watering schedule for each plant.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, **Could**, Should, Would)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
 
-> Issue: I want to see plant details when I click the plant in my garden or my calendar
-> Change: Adjust so the plant details page appears when the user clicks the plant from the garden view or the calendar view
-> Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
-> Priority: (Must, **Could**, Should, Would)
-> Was it implemented? How?
+> **Issue:** I want to see plant details when I click the plant in my garden or my calendar.
+>
+> **Change:** Adjust so the plant details page appears when the user clicks the plant from the garden view or the calendar view.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, **Should**, Would)
+>
+> **Was it implemented? How?**
+> Yes. The existing PlantDetailModal component from the Explore page was reused. Changed the calendar API response to include plantId, changed planting labels to accessible buttons, and plant names in the garden view plant list are clickable links now. All three views open the shared plant detail modal.
 
-> Issue: Users want to know what the plant will look like during different stages of growth.
-> Change: Add photos to the plant details view that show the plant in different stages of growth including photo of when its ready to harvest.
-> Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
-> Priority: (Must, **Could**, Should, Would)
-> Was it implemented? How?
+> **Issue:** Users want to know what the plant will look like during different stages of growth.
+>
+> **Change:** Add photos to the plant details view that show the plant in different stages of growth including photos of when it is ready to harvest.
+>
+> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, **Could**, Should, Would)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
 
-> Issue: Lacks a reward system and user interactions
-> Change: Options for user feedback to add notes to specific plants and submit their notes for moderator review. Create a points system and level ratings for users who are top contributors.
-> Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
-> Priority: (Must, Could, Should, **Would**)
-> Was it implemented? How?
+> **Issue:** Lacks a reward system and user interactions.
+>
+> **Change:** Options for user feedback to add notes to specific plants and submit their notes for moderator review. Create a points system and level ratings for users who are top contributors.
+>
+> **Severity:** (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, Should, **Would**)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
 
-> Issue: Lacks a social component
-> Change: Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging.
-> Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
-> Priority: (Must, Could, Should, **Would**)
-> Was it implemented? How?
+> **Issue:** Lacks a social component.
+>
+> **Change:** Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging.
+>
+> **Severity:** (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, Should, **Would**)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Contact form/user feedback.
+>
+> **Change:** Add a contact form for user feedback so users can contact the developers.
+>
+> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, **Could**, Should, Would)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Password reset link/confirm password on registration.
+>
+> **Change:** Add a forgot password link to reset user password and add confirmation box when setting a new password.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, **Should**, Would)
+>
+> **Was it implemented? How?**
+> Partially implemented. Added a password confirmation box to the register page and settings page. We intend to implement the password reset link with Nodemailer in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Splash screen on registration/help screen in application.
+>
+> **Change:** Add splash screen that can be viewed from a 'help' button when logged in that gives new users a brief overview of how to use the application.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, **Could**, Should, Would)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Move search button above gardens in homepage.
+>
+> **Change:** Make the search bar stand out more by moving it from the bottom of the home page to the top.
+>
+> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, **Could**, Should, Would)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Add monthly view display & PDF export.
+>
+> **Change:** Create a second view so the user can toggle between either weekly or monthly display for the calendar, and export a weekly or monthly PDF of the calendar.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, **Could**, Should, Would)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Back button on each page.
+>
+> **Change:** Add back buttons everywhere so users don't need to navigate as much when returning to a previous screen.
+>
+> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, Should, **Would**)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** ZIP code population.
+>
+> **Change:** Add pre-loading ZIP codes by major city.
+>
+> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, Should, **Would**)
+>
+> **Was it implemented? How?**
+> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+
+> **Issue:** Plant type filter in explore page.
+>
+> **Change:** Adding a plant type dropdown, with a filter applied for each plant type so that users can easily navigate different plant entries in the explore page without having to manually search for it.
+>
+> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+>
+> **Priority:** (Must, Could, **Should**, Would)
+>
+> **Was it implemented? How?**
+> Implemented. A plant-type dropdown (vegetable, fruit, herb, flower) was added along with its filtering mechanism for both the modes implemented earlier (weekly and all plants). No new page or endpoint was required for this fix, as the existing /api/plants endpoint already returned the full list when no week was supplied (for the logged-out view).

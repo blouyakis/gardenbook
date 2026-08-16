@@ -150,7 +150,7 @@ export default function GardensPage() {
                   <div className="d-flex gap-2 align-items-center">
                     <Button
                       size="sm"
-                      as = {Link}
+                      as={Link}
                       to={`/explore?gardenId=${garden._id}`}
                       className="btn-gb-primary"
                     >
@@ -198,11 +198,12 @@ export default function GardensPage() {
                           >
                             <span>
                               <Button
-                              variant="link"
-                              className="p-0 align-baseline"
-                              onClick={() => setSelectedPlantId(pl.plantId)}
-                              >{pl.name}</Button>
-                              {" "}
+                                variant="link"
+                                className="p-0 align-baseline"
+                                onClick={() => setSelectedPlantId(pl.plantId)}
+                              >
+                                {pl.name}
+                              </Button>{" "}
                               <small className="text-muted">
                                 - {pl.plantedDate}
                               </small>

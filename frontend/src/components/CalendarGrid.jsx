@@ -60,7 +60,8 @@ export default function CalendarGrid({ days = [], onSelectPlant }) {
                       backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
                       cursor: "pointer",
                     }}
-                    onClick={() => onSelectPlant?.(p.plantId)}>
+                    onClick={() => onSelectPlant?.(p.plantId)}
+                  >
                     {p.name}
                   </button>
                 ))
