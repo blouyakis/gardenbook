@@ -50,13 +50,13 @@ Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the A
 
 ## Project Information
 
-### Live Demo
+### Live Website
 
 #### Project 4
 
 The application is deployed and publicly accessible at:
 
-[GardenBook](https://gardenbook-p4.onrender.com/)
+[GardenBook Project 4](https://gardenbook-p4.onrender.com/)
 
 URL: https://gardenbook-p4.onrender.com/
 
@@ -66,7 +66,7 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 
 The application is deployed and publicly accessible at:
 
-[GardenBook](https://gardenbook-tozv.onrender.com)
+[GardenBook Project 3](https://gardenbook-tozv.onrender.com)
 
 URL: https://gardenbook-tozv.onrender.com
 
@@ -84,9 +84,7 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 
 ## Setup
 
-> 1.  Create a new file in the root called `.env`, generate a session secret and copy the Perenual API key from the canvas assignment submission comment section
->
-> Environment Variables:
+> 1.  Environment Variables: Create a new file in the root called `.env`, generate a session secret and copy the Perenual API key from the canvas assignment submission comment section
 >
 > Create a `.env` file in the project root with the following:
 
