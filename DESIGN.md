@@ -4,7 +4,7 @@
 
 ## Barbara Louyakis & Aleena Karatra
 
-### CS5610 Web Development - Project 3
+### CS5610 Web Development - Project 4
 
 ---
 
@@ -18,36 +18,43 @@ Users authenticate via a login and registration system secured with bcrypt passw
 - **Frontend:** React 19 (hooks), React Router 7, React Bootstrap, Vite, HTML5, CSS3
 - **Authentication:** Passport.js (Local Strategy), bcrypt, express-session
 - **PDF Export:** PDFKit (calendar export)
-- **External APIs:** Perenual (plant catalog), phzmapi.org (USDA zones), FarmSense (frost dates)
+- **External APIs:** Perenual (plant catalog), phzmapi.org (USDA zones); frost dates derived locally after the FarmSense API was retired
 - **Dev Tools:** Node --watch, ESLint, Prettier
 - **License:** MIT
 
-The application is a single-page React app with 6 routes:
+The application is a single-page React app with 8 routes:
 
-- **/** (HomePage) — landing page with buttons into each garden view (MyGarden, MyVegetables, MyHerbs, MyFruits, MyFlowers) and Explore Gardens
+- **/** (HomePage) — landing page with buttons into each garden view (MyCalendar, MyVegetables, MyHerbs, MyFruits, MyFlowers, MyMixed) and Explore Plants; shows an about/landing view when logged out
 - **/login** (LoginPage) — email + password login via Passport local strategy
-- **/register** (RegisterPage) — account creation with name, email, password, and ZIP code; the ZIP is resolved to a USDA hardiness zone and frost dates at registration
-- **/mygarden** (MyGardenPage) — weekly calendar of the user's plantings across all gardens, with a garden-type toggle (`?type=vegetable|herb|fruit|flower`)
+- **/register** (RegisterPage) — account creation with name, email, password with a confirmation field, and ZIP code; the ZIP is resolved to a USDA hardiness zone and frost dates at registration
+- **/mygarden** (MyGardenPage) — weekly calendar of the user's plantings across all gardens, with a garden-type toggle (`?type=vegetable|herb|fruit|flower`); clicking a planting opens its plant detail modal
 - **/mygarden/:gardenId** (MyGardenPage) — the same weekly calendar scoped to a single garden
-- **/explore** (ExplorePage) — search bar, week navigation, and a grid of every plant plantable in the user's region during the displayed week; clicking a plant opens a detail modal with a summary, region-specific planting windows, and an add-to-garden form
+- **/gardens** (GardensPage) — create, edit, and delete typed gardens; expand any garden to view its plantings, remove them, or click a plant name for its details
+- **/explore** (ExplorePage) — search bar, week navigation, and a catalog organized into sections by plant type, toggling between plants plantable in the user's region during the displayed week and the full plant library; green and gold card borders mark ideal vs. edge-of-window planting timing; clicking a plant opens a detail modal with a summary, region-specific planting windows, and a context-aware add-to-garden picker
+- **/settings** (SettingsPage) — edit display name and ZIP (re-detects zone and frost dates), change password with confirmation, and delete the account
 
 ### Navigation
 
 ```
 /login <——> /register
    |
-   ├──── / (Home: garden buttons + Explore)
+   ├──── / (Home: garden buttons + Explore; about/landing view when logged out)
    |        ├──── /mygarden (weekly calendar, all gardens)
-   |        |        └──── /mygarden?type=... (per-type toggle)
-   |        |        └──── /mygarden/:gardenId (single garden)
-   |        |                 └──── Export PDF (GET /api/calendar/export)
-   |        └──── /explore (plantable-this-week grid + search)
-   |                 └──── Plant detail modal ——> add to garden
+   |        |        ├──── /mygarden?type=... (per-type toggle)
+   |        |        ├──── /mygarden/:gardenId (single garden)
+   |        |        |        └──── Export PDF (GET /api/calendar/export)
+   |        |        └──── Plant detail modal (click a planting chip)
+   |        ├──── /gardens (garden CRUD + expandable plant lists)
+   |        |        └──── Plant detail modal (click a plant name)
+   |        ├──── /explore (type-sectioned catalog: this-week filter or all
+   |        |     plants, search, window borders)
+   |        |        └──── Plant detail modal ——> add to garden 
+   |        └──── /settings (profile + region, change password, delete account)
 ```
 
 ---
 
-### Project Structure
+## Project Structure
 
 ```
 backend.js                — Express server entry point
@@ -73,14 +80,19 @@ routes/
   Calendar.js             — Weekly views + PDF export
 seed/
   seed.js                 — Seeds the plant catalog from Perenual (fetch, verify,
-                            download images locally) + curated planting windows
-  seedUsers.js            — Demo account + gardens + 1k+ synthetic records
+                            download images locally) plus manual entries for
+                            common species outside the free tier, + curated
+                            planting windows
+  seedUsers.js            — Demo account + 350 synthetic users with gardens
+                            and plantings
   seedDemoPlantings.js    — Demo account's plantings for the current week
   findIds.js              — Dev helper: finds free-tier Perenual species ids
                             when extending the catalog
-  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost offsets)
+  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost
+                            offsets, flex ranges)
 frontend/
   index.html              — HTML shell (favicon, Adobe Fonts kit)
+  vite.config.js          — Vite config + dev-server API proxy
   images/                 — Design mockups referenced by DESIGN.md
   src/
     main.jsx              — React entry, router, auth-guarded routes
@@ -91,8 +103,10 @@ frontend/
                             PlantCard, PlantDetailModal, GardenFormModal, RequireAuth
                             (+ per-component CSS where styled)
     context/              — AuthContext (shared session state)
-  public/                 — background image, favicon
-    plants/               — locally cached plant images (Perenual, CC BY-SA 2.0)
+  public/                 — background art, favicon
+    tiles/                — home page card illustrations
+    plants/               — locally cached plant images via Perenual
+                            (per-image licenses per Perenual's API)
 ```
 
 ---
@@ -121,7 +135,7 @@ frontend/
 
 **Gardens:** `GET /api/gardens`, `POST /api/gardens`, `PUT /api/gardens/:id`, `DELETE /api/gardens/:id`
 
-**Plantings:** `POST /api/gardens/:gardenId/plantings`, `PUT /api/gardens/:gardenId/plantings/:id`, `DELETE /api/gardens/:gardenId/plantings/:id`
+**Plantings:** `POST /api/gardens/:gardenId/plantings`, `PUT /api/gardens/:gardenId/plantings/:id`, `DELETE /api/gardens/:gardenId/plantings/:id`, `GET /api/gardens/:gardenId/plantings/:id`
 
 **Calendar:** `GET /api/calendar?week=`, `GET /api/calendar/:gardenId?week=`, `GET /api/calendar/export?week=&gardenId=`
 
@@ -131,56 +145,68 @@ frontend/
 
 MongoDB with the native driver & MongoDB Atlas.
 
-Five collections:
+Five application collections (plus a `sessions` collection managed by connect-mongo):
 
 - **users** — `{ email (unique index), passwordHash, displayName, region: { zip, zone, lastFrost, firstFrost }, createdAt }`
 - **gardens** — `{ userId, name, type, createdAt }`
 - **plantings** — `{ userId, gardenId, plantId, plantedDate, notes, createdAt }` with a compound index on `{ userId, plantedDate }`; `userId` is denormalized so the all-gardens calendar is a single query
-- **plants** — Perenual cache keyed by Perenual species id (`_id`): `{ commonName, scientificName, type, imageUrl, summary, hardiness: { min, max }, cachedAt }`. Perenual's free tier is rate-limited to 100 requests/day, so the app always serves from this cache
-- **plantingWindows** — our curated frost-offset data: `{ plantId, startOffsetWeeks, endOffsetWeeks, method }`, where offsets are weeks relative to the user's last frost date
+- **plants** — plant catalog keyed by Perenual species id, or a synthetic id (100001+) for manually curated species: `{ commonName, scientificName, type, imageUrl, summary, hardiness: { min, max }, cachedAt }`. Perenual's free tier is rate-limited (100 requests/day, species details only for ids under 3000), so the app always serves from this cache, and common species outside the free tier are seeded manually
+- **plantingWindows** — our curated frost-offset data: `{ plantId, startOffsetWeeks, endOffsetWeeks, method, season?, flexWeeksBefore?, flexWeeksAfter? }`, where offsets are weeks relative to the user's last frost date; `season` distinguishes spring and fall windows for twice-planted crops, and the optional flex fields widen the window for plants with forgiving timing (rendered as gold "edge of window" borders in Explore)
 
 ---
 
 ## User Personas & User Stories
 
-### Remote Employee — "Dyanna," 39, microbiologist who works remotely from home.
-
+### Experience Gardener: "Artemis," 43, microbiologist who works remotely from home.
 As a seasoned biologist working remotely from home, I want to plan out my garden work weekly so I can set aside time between meetings and during lunch to get my garden duties done. I like knowing what to plant ahead of time, and keeping it all organized has been a challenge. I want to quickly see the plants that thrive in my environment and when I have extra space, I want to have a list of options to choose from that can fill that bed. I don't have time to research every plant, so an easy way to see what thrives in my region would be a big help.
 
-### Farmer — "Mark," 60, runs a family-owned farmstead and manages the local farm stand.
+### Local Farmer: "Denise," 66, runs a family-owned farmstead and manages a farm stand. 
+As a local farmer helping to feed my community, I want one calendar that combines all of my gardens so I can plan planting across my land while keeping everything I grow well-organized, both in my head and on the farm. I want to export a weekly PDF to pin up in the barn and pass out to the farmworkers that come help me plant throughout the season. That way, my family and my employees all know what work needs to be done and when, which will help all of us work better together.
 
-As a farmer planting on the land of my ancestors and helping to feed my community, I want one calendar that combines all of my gardens so I can plan planting across my land while keeping everything I grow well-organized, both in my head and on the farm. I want to export a weekly PDF to pin up in the barn and pass out to the farmworkers that come help me plant throughout the season. That way, my family and my employees all know what work needs to be done and when, which will help all of us work better together.
-
-### Business Owner — "Jose," 30, runs a marine services company near a busy fishing port.
-
+### New Gardener: "Patrick," 37, runs a marine services company near a busy fishing port.
 As a marine services provider who works out of my truck and is always on the go, I want to manage my small home garden from my phone during downtime at the docks. I want to browse future weeks on the Explore page so I can plan my yard & garden work around my unpredictable schedule. If all my garden information is accessible on my phone, I can stop by the garden store on my way home at night to pickup everything I need for planting the next morning. It would also be great to add more plants when I have free time between jobs, so a browsable list of plants that I could add this week would be very convenient. A weekly calendar will help me keep all this information organized so I don't forget what I am supposed to get in the ground and when.
 
 ---
 
 ## Work Distribution:
 
-Aleena Karatra: Auth + sessions (register, login, logout, session check — Passport, bcrypt); user profile + region setting (backend routes + settings UI); Gardens CRUD (routes, Mongo collections, and the garden management UI); PDF export (PDFKit route + export button/flow in the calendar views).
+Aleena Karatra: Auth + sessions (register, login, logout, session check — Passport, bcrypt); user profile + region setting (backend routes + settings UI); Gardens CRUD (routes, Mongo collections, and the garden management UI); PDF export (PDFKit route + export button/flow in the calendar views). Project 4: all-plants view on the Explore page; context-aware garden picker in the plant detail modal.
 
-Barbara Louyakis: External plant API integration (proxy routes, region/week filtering, response caching); Explore page (search bar, plant grid with photos, plant detail with summary and when-to-plant, week navigation); Plantings (add-to-garden flow from Explore, edit/remove, backend routes); MyGarden weekly calendar (aggregate and per-garden views with type toggle).
+Barbara Louyakis: External plant API integration (proxy routes, region/week filtering, response caching); Explore page (search bar, plant grid with photos, plant detail with summary and when-to-plant, week navigation); Plantings (add-to-garden flow from Explore, edit/remove, backend routes); MyGarden weekly calendar (aggregate and per-garden views with type toggle). Project 4: catalog expansion with a manual seed pipeline for species outside Perenual's free tier; flexible planting windows with ideal/edge border indicators; type-sectioned Explore layout; plant detail access from the Gardens and calendar views; password confirmation on registration and settings; WCAG AA accessibility audit (100% Lighthouse score).
+
+Shared (Project 4): usability study — conducting sessions, logging issues with severity and priority ratings, and triaging fixes; cross-review of all changes via pull requests on a shared dev branch.
 
 ---
 
-### Design Mockups
+### Project 4 Views
+
+![Home](frontend/images/final_images/home.png)
+![About](frontend/images/final_images/about.png)
+![Login](frontend/images/final_images/login.png)
+![Register](frontend/images/final_images/register.png)
+![Explore](frontend/images/final_images/explore.png)
+![PlantDetail](frontend/images/final_images/plantdetail.png)
+![MyGardens](frontend/images/final_images/mygardens.png)
+![New Garden](frontend/images/final_images/newgarden.png)
+![MyCalendar](frontend/images/final_images/mygarden.png)
+![Settings](frontend/images/final_images/settings.png)
+
+### Project 3 Views
+
+![Home](frontend/images/homepage.png)
+![About](frontend/images/about.png)
+![Login](frontend/images/login.png)
+![Register](frontend/images/register.png)
+![Explore](frontend/images/explore.png)
+![PlantDetail](frontend/images/plantdetail.png)
+![MyGardens](frontend/images/gardens.png)
+![New Garden](frontend/images/addgarden.png)
+![MyCalendar](frontend/images/mygarden.png)
+![Settings](frontend/images/settings.png)
+
+### Original Design Mockups
 
 ![Login mockup](frontend/images/login_pastel.png)
 ![MyGarden mockup](frontend/images/mygarden_pastel.png)
 ![Explore mockup](frontend/images/explore_pastel.png)
 ![Plant detail mockup](frontend/images/plantdetail_pastel.png)
-
-### Final Page Views
-
-![Home](frontend/images/homepage.png)
-![Home](frontend/images/about.png)
-![Home](frontend/images/login.png)
-![Home](frontend/images/register.png)
-![Home](frontend/images/explore.png)
-![Home](frontend/images/plantdetail.png)
-![Home](frontend/images/gardens.png)
-![Home](frontend/images/addgarden.png)
-![Home](frontend/images/mygarden.png)
-![Home](frontend/images/settings.png)
