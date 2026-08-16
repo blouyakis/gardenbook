@@ -29,6 +29,25 @@ Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the A
 
 ---
 
+## Features
+
+- Account registration with automatic region detection (ZIP -> USDA zone + frost dates)
+- Password confirmation on registration and password changes to catch typos before they lock you out
+- Gardens organized by type: vegetables, fruits, herbs, flowers
+- View a garden's plants: expand any garden on the Gardens page to see and remove its plantings
+- MyGarden weekly calendar with garden type toggle
+- Explore page: search every plant plantable in your region for any week, past or future
+- Plant catalog of 80+ vegetables, herbs, fruits, and flowers, organized into sections by type
+- All-plants view: browse the full catalog or filter to what's plantable in a selected week
+- Planting window indicators: green borders mark plants in their ideal window, gold marks the flexible edge, with an on-page legend
+- Plant detail view with region-specific planting windows
+- Plant details open from anywhere a plant appears: Explore, a garden's plant list, or the calendar
+- Add a plant to a specific garden directly from its detail view with a context-aware garden picker
+- Full keyboard and screen reader support: WCAG AA headings, labels, and alerts, verified by a 100% Lighthouse accessibility score
+- Generate a formatted PDF garden calendar (full garden or single garden type)
+
+---
+
 ## Project Information
 
 ### Live Demo
@@ -79,8 +98,6 @@ npm run seed
 npm run seed:demo
 ```
 
----
-
 >5. Running the App (production build)
 
 ```bash
@@ -116,31 +133,10 @@ npm start
 
 ---
 
-## Features
-
-- Account registration with automatic region detection (ZIP -> USDA zone + frost dates)
-- Password confirmation on registration and password changes to catch typos before they lock you out
-- Gardens organized by type: vegetables, fruits, herbs, flowers
-- View a garden's plants: expand any garden on the Gardens page to see and remove its plantings
-- MyGarden weekly calendar with garden type toggle
-- Explore page: search every plant plantable in your region for any week, past or future
-- Plant catalog of 80+ vegetables, herbs, fruits, and flowers, organized into sections by type
-- All-plants view: browse the full catalog or filter to what's plantable in a selected week
-- Planting window indicators: green borders mark plants in their ideal window, gold marks the flexible edge, with an on-page legend
-- Plant detail view with region-specific planting windows
-- Plant details open from anywhere a plant appears: Explore, a garden's plant list, or the calendar
-- Add a plant to a specific garden directly from its detail view with a context-aware garden picker
-- Full keyboard and screen reader support: WCAG AA headings, labels, and alerts, verified by a 100% Lighthouse accessibility score
-- Generate a formatted PDF garden calendar (full garden or single garden type)
-
----
-
 ## Authors
 
 - Barbara Louyakis
 - Aleena Mary Karatra
-
-CS 5610 Web Development — Khoury College of Computer Sciences, Northeastern University
 
 ---
 
