@@ -9,7 +9,12 @@ import { useAuth } from "../context/AuthContext.jsx";
 // Made errors audible with role="alert"
 // Made the main heading an h1 for better accessibility, kept size with fs-2 in className
 
-const DEFAULT_FORM = { displayName: "", email: "", password: "", zip: "" };
+const DEFAULT_FORM = { 
+  displayName: "", 
+  email: "", 
+  password: "", 
+  confirmPassword: "",
+  zip: "" };
 
 export default function RegisterPage() {
   const [form, setForm] = useState(DEFAULT_FORM);
@@ -24,9 +29,19 @@ export default function RegisterPage() {
   const onSubmit = async (evt) => {
     evt.preventDefault();
     setError(null);
+    if (form.password !== form.confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
     setSubmitting(true);
     try {
-      await register(form);
+      const payload = {
+        displayName: form.displayName,
+        email: form.email,
+        password: form.password,
+        zip: form.zip,
+      };
+      await register(payload);
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -73,6 +88,17 @@ export default function RegisterPage() {
           autoComplete="new-password"
           value={form.password}
           onChange={onChange("password")}
+          required
+        />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="register-confirm-password">
+        <Form.Label>Confirm Password</Form.Label>
+        <Form.Control
+          type="password"
+          placeholder="Confirm Password"
+          autoComplete="new-password"
+          value={form.confirmPassword}
+          onChange={onChange("confirmPassword")}
           required
         />
       </Form.Group>
