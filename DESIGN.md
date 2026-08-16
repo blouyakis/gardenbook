@@ -48,7 +48,7 @@ The application is a single-page React app with 8 routes:
    |        |        └──── Plant detail modal (click a plant name)
    |        ├──── /explore (type-sectioned catalog: this-week filter or all
    |        |     plants, search, window borders)
-   |        |        └──── Plant detail modal ——> add to garden 
+   |        |        └──── Plant detail modal ——> add to garden
    |        └──── /settings (profile + region, change password, delete account)
 ```
 
@@ -158,12 +158,15 @@ Five application collections (plus a `sessions` collection managed by connect-mo
 ## User Personas & User Stories
 
 ### Experience Gardener: "Artemis," 43, microbiologist who works remotely from home.
+
 As a seasoned biologist working remotely from home, I want to plan out my garden work weekly so I can set aside time between meetings and during lunch to get my garden duties done. I like knowing what to plant ahead of time, and keeping it all organized has been a challenge. I want to quickly see the plants that thrive in my environment and when I have extra space, I want to have a list of options to choose from that can fill that bed. I don't have time to research every plant, so an easy way to see what thrives in my region would be a big help.
 
-### Local Farmer: "Denise," 66, runs a family-owned farmstead and manages a farm stand. 
+### Local Farmer: "Denise," 66, runs a family-owned farmstead and manages a farm stand.
+
 As a local farmer helping to feed my community, I want one calendar that combines all of my gardens so I can plan planting across my land while keeping everything I grow well-organized, both in my head and on the farm. I want to export a weekly PDF to pin up in the barn and pass out to the farmworkers that come help me plant throughout the season. That way, my family and my employees all know what work needs to be done and when, which will help all of us work better together.
 
 ### New Gardener: "Patrick," 37, runs a marine services company near a busy fishing port.
+
 As a marine services provider who works out of my truck and is always on the go, I want to manage my small home garden from my phone during downtime at the docks. I want to browse future weeks on the Explore page so I can plan my yard & garden work around my unpredictable schedule. If all my garden information is accessible on my phone, I can stop by the garden store on my way home at night to pickup everything I need for planting the next morning. It would also be great to add more plants when I have free time between jobs, so a browsable list of plants that I could add this week would be very convenient. A weekly calendar will help me keep all this information organized so I don't forget what I am supposed to get in the ground and when.
 
 ---

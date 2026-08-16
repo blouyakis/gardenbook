@@ -161,7 +161,7 @@ Prioritize primarily by severity × number of participants affected.
 - Note-taking template and survey format identical across both moderators.
 - Do not fix or explain bugs during the session; note them and move on.
 
-## Analysis 
+## Analysis
 
 We interviewed 8 people and compiled 16 observed issue into a shared findings list.
 
@@ -340,4 +340,3 @@ We interviewed 8 people and compiled 16 observed issue into a shared findings li
 >
 > **Was it implemented? How?**
 > Implemented. A plant-type dropdown (vegetable, fruit, herb, flower) was added along with its filtering mechanism for both the modes implemented earlier (weekly and all plants). No new page or endpoint was required for this fix, as the existing /api/plants endpoint already returned the full list when no week was supplied (for the logged-out view).
-

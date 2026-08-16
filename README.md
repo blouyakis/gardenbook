@@ -72,12 +72,12 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 
 ## Setup
 
->1. Create a new file in the root called `.env`, generate a session secret and copy the Perenual API key from the canvas assignment submission comment section
+> 1.  Create a new file in the root called `.env`, generate a session secret and copy the Perenual API key from the canvas assignment submission comment section
 >
->Environment Variables:
+> Environment Variables:
 >
->Create a `.env` file in the project root with the following:
->
+> Create a `.env` file in the project root with the following:
+
 ```
 MONGODB_URI=mongodb://localhost:27017
 DB_NAME=gardenbook
@@ -86,11 +86,11 @@ PERENUAL_API_KEY=<see comment in canvas assignment>
 PORT=3000
 ```
 
->2. Backend — from the project root: `npm install` then `npm start` (port 3000)
+> 2.  Backend — from the project root: `npm install` then `npm start` (port 3000)
 
->3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
+> 3.  Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
 
->4. Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo` - If the demo data gets modified or deleted, you can restore it by running:
+> 4.  Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo` - If the demo data gets modified or deleted, you can restore it by running:
 
 ```bash
 npm run seed:users
@@ -98,7 +98,7 @@ npm run seed
 npm run seed:demo
 ```
 
->5. Running the App (production build)
+> 5.  Running the App (production build)
 
 ```bash
 cd frontend
@@ -108,7 +108,7 @@ cd ..
 npm start
 ```
 
->Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
+> Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
 
 ### Login Credentials
 

@@ -9,12 +9,13 @@ import { useAuth } from "../context/AuthContext.jsx";
 // Made errors audible with role="alert"
 // Made the main heading an h1 for better accessibility, kept size with fs-2 in className
 
-const DEFAULT_FORM = { 
-  displayName: "", 
-  email: "", 
-  password: "", 
+const DEFAULT_FORM = {
+  displayName: "",
+  email: "",
+  password: "",
   confirmPassword: "",
-  zip: "" };
+  zip: "",
+};
 
 export default function RegisterPage() {
   const [form, setForm] = useState(DEFAULT_FORM);
