@@ -43,11 +43,11 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 
 ### Slide Presentation
 
-[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
+[Click here to view the Slide Presentation](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
 
 ### Video Demonstration
 
-[Watch the Video Demo](<<<INSERT NEW VIDEO DEMO HERE>>>)
+[Click here to watch the Video Demonstration](<<<INSERT NEW VIDEO DEMO HERE>>>)
 
 ---
 
