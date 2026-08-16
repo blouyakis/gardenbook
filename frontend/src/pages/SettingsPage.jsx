@@ -37,12 +37,16 @@ export default function SettingsPage() {
     }
   };
 
-  const [pw, setPw] = useState({ current: "", next: "" });
+  const [pw, setPw] = useState({ current: "", next: "", confirm: "" });
   const [pwMsg, setPwMsg] = useState(null);
 
   const changePassword = async (evt) => {
     evt.preventDefault();
     setPwMsg(null);
+    if (pw.next !== pw.confirm) {
+      setPwMsg({ type: "danger", text: "New passwords do not match." });
+      return;
+    }
     const res = await fetch("/api/auth/password", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -54,7 +58,7 @@ export default function SettingsPage() {
     const data = await res.json().catch(() => ({}));
     if (res.ok) {
       setPwMsg({ type: "success", text: "Password changed." });
-      setPw({ current: "", next: "" });
+      setPw({ current: "", next: "", confirm: "" });
     } else {
       setPwMsg({ type: "danger", text: data.message || "Change failed." });
     }
@@ -147,6 +151,19 @@ export default function SettingsPage() {
                   autoComplete="new-password"
                   value={pw.next}
                   onChange={(e) => setPw({ ...pw, next: e.target.value })}
+                  required
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3"
+                controlId="settings-confirm-password"
+              >
+                <Form.Label>Confirm new password</Form.Label>
+                <Form.Control
+                  type="password"
+                  autoComplete="new-password"
+                  value={pw.confirm}
+                  onChange={(e) => setPw({ ...pw, confirm: e.target.value })}
                   required
                 />
               </Form.Group>
