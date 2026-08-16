@@ -242,101 +242,64 @@ We interviewed 8 people and compiled 16 observed issue into a shared findings li
 > **Was it implemented? How?**
 > We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
 
-> **Issue:** Lacks a social component.
->
-> **Change:** Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging.
->
-> **Severity:** (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
->
-> **Priority:** (Must, Could, Should, **Would**)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Lacks a social component
+> Change: Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging.
+> Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, **Would**)
+> Was it implemented? How?
+> We intend to implement this in the future because it will add to the applications overall value > and is a useful tool for users.
 
-> **Issue:** Contact form/user feedback.
->
-> **Change:** Add a contact form for user feedback so users can contact the developers.
->
-> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
->
-> **Priority:** (Must, **Could**, Should, Would)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Lacks a social component
+> Change: Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging.
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** Password reset link/confirm password on registration.
->
-> **Change:** Add a forgot password link to reset user password and add confirmation box when setting a new password.
->
-> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
->
-> **Priority:** (Must, Could, **Should**, Would)
->
-> **Was it implemented? How?**
-> Partially implemented. Added a password confirmation box to the register page and settings page. We intend to implement the password reset link with Nodemailer in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Contact form/user feedback
+> Change: Add a contact form for user feedback so users can contact the developers
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** Splash screen on registration/help screen in application.
->
-> **Change:** Add splash screen that can be viewed from a 'help' button when logged in that gives new users a brief overview of how to use the application.
->
-> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
->
-> **Priority:** (Must, **Could**, Should, Would)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Password reset link/confirm password on registration
+> Change: Add a forgot password link to reset user password and add confirmation box when setting a new password
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? Partially implemented - Added a password confirmation box to the register page and settings page. We intend to implement the password reset link with nodemailer in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** Move search button above gardens in homepage.
->
-> **Change:** Make the search bar stand out more by moving it from the bottom of the home page to the top.
->
-> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
->
-> **Priority:** (Must, **Could**, Should, Would)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Splash screen on registration/help screen in application
+> Change: Add splash screen that can be viewed from a ‘help’ button when logged in that gives new users brief overview of how to use the application
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** Add monthly view display & PDF export.
->
-> **Change:** Create a second view so the user can toggle between either weekly or monthly display for the calendar, and export a weekly or monthly PDF of the calendar.
->
-> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
->
-> **Priority:** (Must, **Could**, Should, Would)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Move search button above gardens in homepage
+> Change: Make the search bar stand out more by moving it from the bottom of the home page to the top
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** Back button on each page.
->
-> **Change:** Add back buttons everywhere so users don't need to navigate as much when returning to a previous screen.
->
-> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
->
-> **Priority:** (Must, Could, Should, **Would**)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Add monthly view display & PDF export
+> Change: Create a second view so user can toggle between either weekly or monthly display for calendar, user can export weekly or monthly PDF of calendar
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** ZIP code population.
->
-> **Change:** Add pre-loading ZIP codes by major city.
->
-> **Severity:** (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
->
-> **Priority:** (Must, Could, Should, **Would**)
->
-> **Was it implemented? How?**
-> We intend to implement this in the future because it will add to the application's overall value and is a useful tool for users.
+> Issue: Back button on each page
+> Change: Add back buttons everywhere so users don’t need to navigate as much when returning to previous screen
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
 
-> **Issue:** Plant type filter in explore page.
->
-> **Change:** Adding a plant type dropdown, with a filter applied for each plant type so that users can easily navigate different plant entries in the explore page without having to manually search for it.
->
-> **Severity:** (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
->
-> **Priority:** (Must, Could, **Should**, Would)
->
-> **Was it implemented? How?**
-> Implemented. A plant-type dropdown (vegetable, fruit, herb, flower) was added along with its filtering mechanism for both the modes implemented earlier (weekly and all plants). No new page or endpoint was required for this fix, as the existing /api/plants endpoint already returned the full list when no week was supplied (for the logged-out view).
+> Issue: ZIP code population
+> Change: Add pre-loading zip codes by major city
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How? We intend to implement this in the future because it will add to the applications overall value and is a useful tool for users.
+
+> Issue: Plant type filter in explore page.
+> Change: Adding a plant type dropdown, with a filter applied for each plant type so that users can easily navigate different plant entries in the explore page without having to manually search for it.
+> Severity:(0 Not a problem / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, Would)
+> Was it implemented? How?
+> Implemented. A plant-type dropdown (vegetable, fruit, herb, flower) was added along with its filtering mechanism for both the modes implemented earlier (weekly, and all plants). No new page or endpoint was required for this fix, as the existing /api/plants endpoint already returned the full list when no week was supplied ( for the logged out view).

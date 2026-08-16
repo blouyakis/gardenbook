@@ -100,22 +100,6 @@ export default function HomePage() {
         </p>
       </div>
       <Row className="g-3 justify-content-center">
-        {GARDEN_LINKS.map((g) => (
-          <Col lg={4} md={4} sm={6} xs={6} key={g.to}>
-            <Link
-              to={g.to}
-              className="gb-home-tile"
-              style={{
-                "--tile-accent": `var(--gb-${g.type}, var(--gb-crimson))`,
-              }}
-            >
-              <img className="gb-home-tile-img" src={g.img} alt="" />
-              <span className="gb-home-tile-label">{g.label}</span>
-            </Link>
-          </Col>
-        ))}
-      </Row>
-      <Row className="g-3 justify-content-center mt-3">
         <Col xs={12}>
           <Link to="/explore" className="gb-home-explore-banner">
             <img
@@ -146,6 +130,22 @@ export default function HomePage() {
             </span>
           </Link>
         </Col>
+      </Row>
+      <Row className="g-3 justify-content-center mt-3">
+        {GARDEN_LINKS.map((g) => (
+          <Col lg={4} md={4} sm={6} xs={6} key={g.to}>
+            <Link
+              to={g.to}
+              className="gb-home-tile"
+              style={{
+                "--tile-accent": `var(--gb-${g.type}, var(--gb-crimson))`,
+              }}
+            >
+              <img className="gb-home-tile-img" src={g.img} alt="" />
+              <span className="gb-home-tile-label">{g.label}</span>
+            </Link>
+          </Col>
+        ))}
       </Row>
     </div>
   );

@@ -48,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.25rem 1.75rem;
+  padding: 0.55rem 1.75rem;
   border-radius: 12px;
   background-color: color-mix(in srgb, var(--gb-crimson) 6%, var(--gb-surface));
   border: 1px solid var(--gb-border);
