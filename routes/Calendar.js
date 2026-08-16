@@ -51,13 +51,11 @@ async function buildWeek(userId, week, gardenId = null, type = null) {
   const endExclusive = new Date(days[6]);
   endExclusive.setUTCDate(endExclusive.getUTCDate() + 1);
 
-  let gardenScope = gardenId;
-
   const plantings = await findPlantingsInWeek(
     userId,
     startStr,
     endExclusive.toISOString().slice(0, 10),
-    gardenScope
+    gardenId
   );
 
   // Plant name + type from the plants cache.
@@ -77,6 +75,7 @@ async function buildWeek(userId, week, gardenId = null, type = null) {
         const plant = plantById.get(p.plantId);
         return {
           _id: String(p._id),
+          plantId: p.plantId,
           name: plant?.commonName || "Plant",
           type: plant?.type || "vegetable",
         };

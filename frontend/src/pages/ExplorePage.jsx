@@ -11,6 +11,14 @@ import Form from "react-bootstrap/Form";
 // Added screen reader accessibility: visually hidden status for plants found during search
 // Added an h1 heading for the page for better accessibility, kept size with fs-2 in className
 
+const TYPE_ORDER = ["vegetable", "herb", "fruit", "flower"];
+const TYPE_LABELS = {
+  vegetable: "Vegetables",
+  herb: "Herbs",
+  fruit: "Fruits",
+  flower: "Flowers",
+};
+
 export default function ExplorePage() {
   const { user } = useAuth();
   const [query, setQuery] = useState("");
@@ -40,7 +48,7 @@ export default function ExplorePage() {
       {user && (
         <p className="text-center text-body-secondary fs-5">
           Displays plants that can be planted during the selected week in your
-          region. Use the search bar to find specific plants.
+          region. Go to the Plant Library to search all plants.
         </p>
       )}
       <Form.Control
@@ -50,7 +58,19 @@ export default function ExplorePage() {
         placeholder="Search plants"
       />
       {user ? (
-        <WeekNav week={week} setWeek={setWeek} />
+        <>
+          <WeekNav week={week} setWeek={setWeek} />
+          <p className="text-center small text-body-secondary">
+            <span className="text-success" aria-hidden="true">
+              ■
+            </span>{" "}
+            Plants ideal planting window&ensp;
+            <span className="text-warning" aria-hidden="true">
+              ■
+            </span>{" "}
+            Plants edge of planting window, climate specific
+          </p>
+        </>
       ) : (
         <p className="text-center fs-5 my-3">
           Browse the plant catalog here or <Link to="/login">Log in</Link> to
@@ -62,20 +82,33 @@ export default function ExplorePage() {
         {plants?.length ?? 0} plants found
       </p>
 
-      <Row className="g-3">
-        {!plants?.length ? (
-          <p className="text-center">🌱 No plants yet 🌱</p>
-        ) : (
-          plants.map((plant) => (
-            <Col md={3} xs={6} key={plant._id}>
-              <PlantCard
-                plant={plant}
-                onClick={() => setSelectedPlantId(plant._id)}
-              />
-            </Col>
-          ))
-        )}
-      </Row>
+      {!plants?.length ? (
+        <p className="text-center">🌱 No plants yet 🌱</p>
+      ) : (
+        TYPE_ORDER.filter((t) => plants.some((p) => p.type === t)).map((t) => (
+          <section key={t} aria-labelledby={`type-${t}`}>
+            <h2 id={`type-${t}`} className="fs-4 mt-4">
+              {TYPE_LABELS[t]}
+            </h2>
+            <Row className="g-3">
+              {plants
+                .filter((p) => p.type === t)
+                .map((plant) => (
+                  <Col
+                    md={3}
+                    xs={6}
+                    key={plant._id + (plant.windows?.[0]?.season || "")}
+                  >
+                    <PlantCard
+                      plant={plant}
+                      onClick={() => setSelectedPlantId(plant._id)}
+                    />
+                  </Col>
+                ))}
+            </Row>
+          </section>
+        ))
+      )}
 
       <PlantDetailModal
         plantId={selectedPlantId}

@@ -1,8 +1,9 @@
 import express from "express";
 import { ObjectId } from "mongodb";
 import { isAuthenticated } from "../middleware/auth.js";
-// TEST SCAFFOLD: Barbara's planting models, wired below so Aleena can test the
-// add-to-garden loop. Barbara owns the real route implementations.
+
+import { getDb } from "../db/connection.js";
+
 import {
   createPlanting,
   updatePlanting,
@@ -77,14 +78,9 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// ---- Plantings (nested under a garden) ----
-// TEST SCAFFOLD — wires Barbara's plantings model so the add/edit/remove loop
-// works for Aleena's testing. Barbara replaces with her real implementations.
-
 // Confirm the garden exists and belongs to the signed-in user.
 async function ownsGarden(req) {
   if (!ObjectId.isValid(req.params.gardenId)) return false;
-  const { getDb } = await import("../db/connection.js");
   const g = await getDb()
     .collection("gardens")
     .findOne({
@@ -100,7 +96,6 @@ router.get("/:gardenId/plantings", async (req, res) => {
     if (!(await ownsGarden(req))) {
       return res.status(404).json({ message: "Garden not found" });
     }
-    const { getDb } = await import("../db/connection.js");
     const db = getDb();
     const plantings = await db
       .collection("plantings")

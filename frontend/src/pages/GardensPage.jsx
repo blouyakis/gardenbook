@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import GardenFormModal from "../components/GardenFormModal.jsx";
+import PlantDetailModal from "../components/PlantDetailModal.jsx";
 import "./GardensPage.css";
 
 // Made the main heading an h1 for better accessibility, kept size with fs-2 in className
@@ -64,6 +65,7 @@ export default function GardensPage() {
   };
 
   const [openId, setOpenId] = useState(null);
+  const [selectedPlantId, setSelectedPlantId] = useState(null);
   const [plantings, setPlantings] = useState({});
 
   async function toggleGarden(gardenId) {
@@ -195,7 +197,12 @@ export default function GardensPage() {
                             className="d-flex justify-content-between py-1"
                           >
                             <span>
-                              {pl.name}{" "}
+                              <Button
+                              variant="link"
+                              className="p-0 align-baseline"
+                              onClick={() => setSelectedPlantId(pl.plantId)}
+                              >{pl.name}</Button>
+                              {" "}
                               <small className="text-muted">
                                 - {pl.plantedDate}
                               </small>
@@ -234,6 +241,10 @@ export default function GardensPage() {
         garden={editing}
         onClose={() => setModalOpen(false)}
         onSubmit={saveGarden}
+      />
+      <PlantDetailModal
+        plantId={selectedPlantId}
+        onClose={() => setSelectedPlantId(null)}
       />
     </div>
   );

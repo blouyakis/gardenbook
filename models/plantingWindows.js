@@ -23,21 +23,28 @@ export const windowToDates = (window, lastFrostDate) => ({
   ...window,
   startDate: addWeeks(lastFrostDate, window.startOffsetWeeks),
   endDate: addWeeks(lastFrostDate, window.endOffsetWeeks),
+  flexStartDate: addWeeks(
+    lastFrostDate,
+    window.startOffsetWeeks - (window.flexWeeksBefore || 0)
+  ),
+  flexEndDate: addWeeks(
+    lastFrostDate,
+    window.endOffsetWeeks + (window.flexWeeksAfter || 0)
+  ),
 });
 
 export const findPlantsPlantableInWeek = async (lastFrostDate, weekStart) => {
   const weekEnd = addWeeks(weekStart, 1);
   const all = await windows().find({}).toArray();
 
-  const plantable = all.filter((w) => {
-    const { startDate, endDate } = windowToDates(w, lastFrostDate);
-    return startDate < weekEnd && endDate >= weekStart;
-  });
-
   const byPlant = new Map();
-  for (const w of plantable) {
+  for (const w of all) {
+    const dated = windowToDates(w, lastFrostDate);
+    if (!(dated.flexStartDate < weekEnd && dated.flexEndDate >= weekStart))
+      continue;
+    dated.coreMatch = dated.startDate < weekEnd && dated.endDate >= weekStart;
     if (!byPlant.has(w.plantId)) byPlant.set(w.plantId, []);
-    byPlant.get(w.plantId).push(w);
+    byPlant.get(w.plantId).push(dated);
   }
   return byPlant;
 };

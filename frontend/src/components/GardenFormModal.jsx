@@ -9,7 +9,12 @@ import Form from "react-bootstrap/Form";
 
 const GARDEN_TYPES = ["vegetable", "herb", "fruit", "flower", "mixed"];
 
-export default function GardenFormModal({ show, garden, onClose, onSubmit }) {
+export default function GardenFormModal({
+  show,
+  garden = null,
+  onClose,
+  onSubmit,
+}) {
   const [name, setName] = useState("");
   const [type, setType] = useState("vegetable");
   const [error, setError] = useState(null);
@@ -89,8 +94,4 @@ GardenFormModal.propTypes = {
   }),
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-};
-
-GardenFormModal.defaultProps = {
-  garden: null,
 };

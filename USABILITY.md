@@ -24,7 +24,6 @@ Participant 7: []()
 
 Participant 8: []()
 
-
 ## Study Overview
 
 - **Application:** GardenBook (deployed build, not localhost)
@@ -99,7 +98,7 @@ Read each task aloud, one at a time, in this order. Do not help unless the parti
 | 5   | "Add a plant to the garden you just created."                                      | Plant appears in the garden                                                           |
 | 6   | "Find your planting calendar and tell me what is scheduled for this week."         | Locates calendar view and reads the current week correctly                            |
 | 7   | "Log out, then log back in."                                                       | Completes both; note where they land after login                                      |
-| 8  | "Now try to download a PDF of your entire calendar." | Completes download of PDF, displays PDF on screen |
+| 8   | "Now try to download a PDF of your entire calendar."                               | Completes download of PDF, displays PDF on screen                                     |
 
 For each task, record: completion (success / assisted / fail), time on task, errors observed, and notable quotes.
 
@@ -166,51 +165,50 @@ Prioritize primarily by severity × number of participants affected.
 
 We compiled every observed issue into a shared findings list.
 
->Issue: Cannot access a master list of all plants from logged in view. The logged out Explore page should be accessible from the logged in Explore page.
-Change: Master database of plants should be accessible from logged in view. Organize by plant type and add filtering options.
-Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
-Priority: (**Must**, Could, Should, Would)
-Was it implemented? How?
+> Issue: Cannot access a master list of all plants from logged in view. The logged out Explore page should be accessible from the logged in Explore page.
+> Change: Master database of plants should be accessible from logged in view. Organize by plant type and add filtering options.
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
+> Priority: (**Must**, Could, Should, Would)
+> Was it implemented? How?
 
->Issue: Plant database is limited and many common plants are still missing. Searching is further complicated by the limitations of the database size. 
-Change: Add more plants to database. Organize by plant type and seasons. Expand on planting windows so each plant gets some time added to the front and back of the planting window for plants that have greater flexibility or climate. Note the range with colored borders in the search screen and a warning to the user.
-Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
-Priority: (**Must**, Could, Should, Would)
-Was it implemented? How?
+> Issue: Plant database is limited and many common plants are still missing. Searching is further complicated by the limitations of the database size.
+> Change: Add more plants to database. Organize by plant type and seasons. Expand on planting windows so each plant gets some time added to the front and back of the planting window for plants that have greater flexibility or climate. Note the range with colored borders in the search screen and a warning to the user.
+> Severity: (0 Not a problem / 1 Cosmetic / 2 Minor / **3 Major** / 4 Critical)
+> Priority: (**Must**, Could, Should, Would)
+> Was it implemented? How?
 
->Issue: Adding a plant to a specific garden is not intuitive and the dropdown menu for which garden to add to is unclear
-Change: Add a popup button for ‘Which garden would you like to add this plant to?’ so the user has to select an option when confirming to add the plant on a selected day. 
-Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
-Priority: (Must, Could, **Should**, Would)
-Was it implemented? How?
+> Issue: Adding a plant to a specific garden is not intuitive and the dropdown menu for which garden to add to is unclear
+> Change: Add a popup button for ‘Which garden would you like to add this plant to?’ so the user has to select an option when confirming to add the plant on a selected day.
+> Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+> Priority: (Must, Could, **Should**, Would)
+> Was it implemented? How?
 
->Issue: Lacks useful information
-Change: Add a sun meter, harvest schedule, watering schedule for each plant
-Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
-Priority: (Must, Could, **Should**, Would)
-Was it implemented? How?
+> Issue: Lacks useful information
+> Change: Add a sun meter, harvest schedule, watering schedule for each plant
+> Severity: (0 Not a problem / 1 Cosmetic / **2 Minor** / 3 Major / 4 Critical)
+> Priority: (Must, Could, **Should**, Would)
+> Was it implemented? How?
 
->Issue: I want to see plant details when I click the plant in my garden or my calendar
-Change: Adjust so the plant details page appears when the user clicks the plant from the garden view or the calendar view
-Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
-Priority: (Must, **Could**, Should, Would)
-Was it implemented? How?
+> Issue: I want to see plant details when I click the plant in my garden or my calendar
+> Change: Adjust so the plant details page appears when the user clicks the plant from the garden view or the calendar view
+> Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, **Could**, Should, Would)
+> Was it implemented? How?
 
->Issue: Users want to know what the plant will look like during different stages of growth.
-Change: Add photos to the plant details view that show the plant in different stages of growth including photo of when its ready to harvest. 
-Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
-Priority: (Must, **Could**, Should, Would)
-Was it implemented? How?
+> Issue: Users want to know what the plant will look like during different stages of growth.
+> Change: Add photos to the plant details view that show the plant in different stages of growth including photo of when its ready to harvest.
+> Severity: (0 Not a problem / **1 Cosmetic** / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, **Could**, Should, Would)
+> Was it implemented? How?
 
->Issue: Lacks a reward system and user interactions
-Change: Options for user feedback to add notes to specific plants and submit their notes for moderator review. Create a points system and level ratings for users who are top contributors. 
-Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
-Priority: (Must, Could, Should, **Would**)
-Was it implemented? How?
+> Issue: Lacks a reward system and user interactions
+> Change: Options for user feedback to add notes to specific plants and submit their notes for moderator review. Create a points system and level ratings for users who are top contributors.
+> Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, **Would**)
+> Was it implemented? How?
 
->Issue: Lacks a social component
-Change: Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging. 
-Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
-Priority: (Must, Could, Should, **Would**)
-Was it implemented? How?
-
+> Issue: Lacks a social component
+> Change: Create a messaging board for users where they can have conversations about the plants and become friends with other users for private messaging.
+> Severity: (**0 Not a problem** / 1 Cosmetic / 2 Minor / 3 Major / 4 Critical)
+> Priority: (Must, Could, Should, **Would**)
+> Was it implemented? How?
