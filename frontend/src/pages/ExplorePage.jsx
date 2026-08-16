@@ -65,7 +65,50 @@ export default function ExplorePage() {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search plants"
       />
-      {user ? (
+
+      <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 my-3">
+        {user ? (
+          <div className="btn-group" role="group" aria-label="View mode">
+            <Button
+              variant={browseAll ? "gb-outline" : "gb-primary"}
+              size="sm"
+              onClick={() => setBrowseAll(false)}
+              aria-pressed={!browseAll}
+            >
+              This week
+            </Button>
+            <Button
+              variant={browseAll ? "gb-primary" : "gb-outline"}
+              size="sm"
+              onClick={() => setBrowseAll(true)}
+              aria-pressed={browseAll}
+            >
+              All plants
+            </Button>
+          </div>
+        ) : (
+          <span className="text-body-secondary">
+            Browse the catalog or <Link to="/login">log in</Link> for your
+            region.
+          </span>
+        )}
+
+        <Form.Select
+          className="w-auto"
+          size="sm"
+          aria-label="Filter by plant type"
+          value={typeFilter}
+          onChange={(e) => setTypeFilter(e.target.value)}
+        >
+          <option value="">All types</option>
+          <option value="vegetable">Vegetables</option>
+          <option value="herb">Herbs</option>
+          <option value="fruit">Fruits</option>
+          <option value="flower">Flowers</option>
+        </Form.Select>
+      </div>
+
+      {user && !browseAll ? (
         <>
           <WeekNav week={week} setWeek={setWeek} />
           <p className="text-center small text-body-secondary">
@@ -79,12 +122,12 @@ export default function ExplorePage() {
             Plants edge of planting window, climate specific
           </p>
         </>
-      ) : (
+      ) : !user ? (
         <p className="text-center fs-5 my-3">
           Browse the plant catalog here or <Link to="/login">Log in</Link> to
           see plantings this week in your region.
         </p>
-      )}
+      ) : null}
 
       <p className="visually-hidden" role="status">
         {plants?.length ?? 0} plants found
