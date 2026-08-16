@@ -6,23 +6,6 @@ GardenBook is a full-stack web application that helps gardeners plan what to pla
 
 ---
 
-## Development Environment
-
-Full stack web application using Node + Express 5 + MongoDB native driver + React 19 (hooks), React Router, Vite, Passport (session auth), bcrypt (password hashing), PDFKit (calendar PDF export), React Bootstrap (UI)
-
-## APIs
-
-Perenual (plant catalog, photos, summaries, zones), USDA Hardiness Zone — phzmapi.org (ZIP -> zone)
-An earlier design used the FarmSense frost API, but its endpoint was retired, frost dates are now estimated from the resolved zone so registration never depends on a live external call. Zones 1–13 are supported, including frost-free zones 11–13.
-
----
-
-## Database
-
-Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the API has a 100 req/day rate limit, so we serve from cache), `plantingWindows` (our curated frost-offset data)
-
----
-
 ## Class
 
 [CS 5610 Web Development](https://johnguerra.co/classes/webDevelopment_online_summer_2026/)
@@ -31,7 +14,24 @@ Khoury College of Computer Sciences, Northeastern University
 
 ---
 
-## Live Demo
+## Development Environment
+
+Full stack web application using Node + Express 5 + MongoDB native driver + React 19 (hooks), React Router, Vite, Passport (session auth), bcrypt (password hashing), PDFKit (calendar PDF export), React Bootstrap (UI)
+
+### APIs
+
+Perenual (plant catalog, photos, summaries, zones), USDA Hardiness Zone — phzmapi.org (ZIP -> zone)
+An earlier design used the FarmSense frost API, but its endpoint was retired, frost dates are now estimated from the resolved zone so registration never depends on a live external call. Zones 1–13 are supported, including frost-free zones 11–13.
+
+### Mongo DB Atlas
+
+Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the API has a 100 req/day rate limit, so we serve from cache), `plantingWindows` (our curated frost-offset data)
+
+---
+
+## Project Information
+
+### Live Demo
 
 The application is deployed and publicly accessible at:
 
@@ -41,15 +41,37 @@ URL: https://gardenbook-tozv.onrender.com
 
 A demo account has been pre-loaded with sample data so you can explore the application without creating an account or adding data manually.
 
-### Resetting the Demo Data
+### Slide Presentation
 
-If the demo data gets modified or deleted, you can restore it by running:
+[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
 
-```bash
-npm run seed
+### Video Demonstration
+
+[Watch the Video Demo](<<<INSERT NEW VIDEO DEMO HERE>>>)
+
+---
+
+## Setup
+
+>1. Create a new file in the root called `.env`, generate a session secret and copy the Perenual API key from the canvas assignment submission comment section
+>
+>Environment Variables:
+>
+>Create a `.env` file in the project root with the following:
+>
+```
+MONGODB_URI=mongodb://localhost:27017
+DB_NAME=gardenbook
+SESSION_SECRET=<generate one>
+PERENUAL_API_KEY=<see comment in canvas assignment>
+PORT=3000
 ```
 
-This re-seeds the planting windows.
+>2. Backend — from the project root: `npm install` then `npm start` (port 3000)
+
+>3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
+
+>4. Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo` - If the demo data gets modified or deleted, you can restore it by running:
 
 ```bash
 npm run seed:users
@@ -59,25 +81,17 @@ npm run seed:demo
 
 ---
 
-## Setup
+>5. Running the App (production build)
 
-1. Create a new file in the root called `.env` and copy the environment variables below to `.env`
-2. Backend — from the project root: `npm install` then `npm start` (port 3000)
-3. Frontend — in a second terminal: `cd frontend` then `npm install && npm run dev` (port 5173)
-4. Seed planting windows — from the project root: `npm run seed:users && npm run seed && npm run seed:demo`
-5. Open http://localhost:5173
-
-### Environment Variables
-
-Create a `.env` file in the project root with the following:
-
+```bash
+cd frontend
+npm run build
+npm run dev
+cd ..
+npm start
 ```
-MONGODB_URI=mongodb://localhost:27017
-DB_NAME=gardenbook
-SESSION_SECRET=<generate one>
-PERENUAL_API_KEY=<see comment in canvas assignment>
-PORT=3000
-```
+
+>Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
 
 ### Login Credentials
 
@@ -94,35 +108,11 @@ PORT=3000
 
 ---
 
-## Ownership
+## Work Ownership
 
 - **Aleena** — auth + sessions, users/region, gardens CRUD, PDF export, all-plants explore view, context-aware garden picker
 - **Barbara** — plant API integration + cache, Explore, plantings, calendar views, catalog expansion, manual seeding, flexible planting windows, plant detail access from gardens and calendar, password confirmation, accessibility features
 - **Shared** — Usability study and debugging
-
----
-
-## Project Information
-
-### Slides
-
-[Click here to view the Slides](https://docs.google.com/presentation/d/e/2PACX-1vSKaliN8gi_RbZjXbkeov8gsCdpZP42VO73hbgy02RzLqErIJ8fmYGaWc9mkWr5paErvGr90_VOxS0z/pub?start=false&loop=false&delayms=3000)
-
-### Video Demo
-
-[Watch the Video Demo](<<<INSERT NEW VIDEO DEMO HERE>>>)
-
-### Running the App (production build)
-
-```bash
-cd frontend
-npm run build
-npm run dev
-cd ..
-npm start
-```
-
-Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
 
 ---
 
