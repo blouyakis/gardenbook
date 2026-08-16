@@ -52,6 +52,18 @@ Collections: `users`, `gardens`, `plantings`, `plants` (Perenual cache — the A
 
 ### Live Demo
 
+#### Project 4
+
+The application is deployed and publicly accessible at:
+
+[GardenBook](https://gardenbook-p4.onrender.com/)
+
+URL: https://gardenbook-p4.onrender.com/
+
+A demo account has been pre-loaded with sample data so you can explore the application without creating an account or adding data manually.
+
+#### Project 3
+
 The application is deployed and publicly accessible at:
 
 [GardenBook](https://gardenbook-tozv.onrender.com)
