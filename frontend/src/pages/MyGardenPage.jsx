@@ -5,7 +5,6 @@ import GardenTypeToggle from "../components/GardenTypeToggle.jsx";
 import WeekNav, { currentMonday } from "../components/WeekNav.jsx";
 import CalendarGrid from "../components/CalendarGrid.jsx";
 import Button from "react-bootstrap/Button";
-import PlantDetailModal from "../components/PlantDetailModal.jsx";
 
 // Added an h1 heading for the page for better accessibility, kept size with fs-2 in className
 
@@ -16,7 +15,6 @@ export default function MyGardenPage() {
   const type = searchParams.get("type");
   const [week, setWeek] = useState(currentMonday());
   const [days, setDays] = useState([]);
-  const [selectedPlantId, setSelectedPlantId] = useState(null);
 
   const reloadCalendar = useCallback(async () => {
     const params = new URLSearchParams({ week });
@@ -46,7 +44,7 @@ export default function MyGardenPage() {
 
   return (
     <div className="gb-calendar-page">
-      <h1 className="text-center fs-2">My Garden</h1>
+      <h1 className="text-center fs-2">My Calendar</h1>
       <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 my-3">
         <GardenTypeToggle activeType={type} />
         <div className="d-flex gap-2">
@@ -59,11 +57,7 @@ export default function MyGardenPage() {
         </div>
       </div>
       <WeekNav week={week} setWeek={setWeek} />
-      <CalendarGrid days={days} onSelectPlant={setSelectedPlantId} />
-      <PlantDetailModal
-        plantId={selectedPlantId}
-        onClose={() => setSelectedPlantId(null)}
-      />
+      <CalendarGrid days={days} />
     </div>
   );
 }
