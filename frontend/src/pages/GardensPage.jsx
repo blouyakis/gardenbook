@@ -200,6 +200,7 @@ export default function GardensPage() {
                               <Button
                                 variant="link"
                                 className="p-0 align-baseline"
+                                style={{ color: "var(--gb-crimson)" }}
                                 onClick={() => setSelectedPlantId(pl.plantId)}
                               >
                                 {pl.name}
