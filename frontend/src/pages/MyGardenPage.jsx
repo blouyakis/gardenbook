@@ -46,7 +46,7 @@ export default function MyGardenPage() {
 
   return (
     <div className="gb-calendar-page">
-      <h1 className="text-center fs-2">My Garden</h1>
+      <h1 className="text-center fs-2">My Calendar</h1>
       <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 my-3">
         <GardenTypeToggle activeType={type} />
         <div className="d-flex gap-2">
