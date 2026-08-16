@@ -2,7 +2,7 @@
 
 GardenBook is a full-stack web application that helps gardeners plan what to plant and when to plant it. Users can explore plants without an account or create an account, set their region, and organize plants into garden types: vegetables, fruits, herbs, and flowers. The MyGarden page displays a weekly calendar of the user's selected plants on their intended planting dates. They can toggle the calendar by garden type or view the full garden. The Explore page displays every plant that can be grown in the user's region, sorted by what should be planted during the specified week. This feature pulls data from Perenual's public API and lets users browse past and future weeks. They can also export any weekly calendar view, all gardens from MyGarden or a specific type of garden, as a PDF that they can save locally or print.
 
-![Explore Screen View](frontend/images/explore.png)
+![Home Screen View](frontend/images/final_images/home.png)
 
 ---
 
@@ -75,7 +75,7 @@ Create a `.env` file in the project root with the following:
 MONGODB_URI=mongodb://localhost:27017
 DB_NAME=gardenbook
 SESSION_SECRET=<generate one>
-PERENUAL_API_KEY=sk-ZE6L6a4e9544bb54418670
+PERENUAL_API_KEY=<see comment in canvas assignment>
 PORT=3000
 ```
 
@@ -96,8 +96,9 @@ PORT=3000
 
 ## Ownership
 
-- **Aleena** — auth + sessions, users/region, gardens CRUD, PDF export
-- **Barbara** — plant API integration + cache, Explore, plantings, calendar views
+- **Aleena** — auth + sessions, users/region, gardens CRUD, PDF export, all-plants explore view, context-aware garden picker
+- **Barbara** — plant API integration + cache, Explore, plantings, calendar views, catalog expansion, manual seeding, flexible planting windows, plant detail access from gardens and calendar, password confirmation, accessibility features
+- **Shared** — Usability study and debugging
 
 ---
 
@@ -128,11 +129,18 @@ Then go to `http://localhost:3000` in your browser. (During development, use the
 ## Features
 
 - Account registration with automatic region detection (ZIP -> USDA zone + frost dates)
+- Password confirmation on registration and password changes to catch typos before they lock you out
 - Gardens organized by type: vegetables, fruits, herbs, flowers
 - View a garden's plants: expand any garden on the Gardens page to see and remove its plantings
 - MyGarden weekly calendar with garden type toggle
 - Explore page: search every plant plantable in your region for any week, past or future
+- Plant catalog of 80+ vegetables, herbs, fruits, and flowers, organized into sections by type
+- All-plants view: browse the full catalog or filter to what's plantable in a selected week
+- Planting window indicators: green borders mark plants in their ideal window, gold marks the flexible edge, with an on-page legend
 - Plant detail view with region-specific planting windows
+- Plant details open from anywhere a plant appears: Explore, a garden's plant list, or the calendar
+- Add a plant to a specific garden directly from its detail view with a context-aware garden picker
+- Full keyboard and screen reader support: WCAG AA headings, labels, and alerts, verified by a 100% Lighthouse accessibility score
 - Generate a formatted PDF garden calendar (full garden or single garden type)
 
 ---
@@ -163,14 +171,19 @@ routes/
   Calendar.js             — Weekly views + PDF export
 seed/
   seed.js                 — Seeds the plant catalog from Perenual (fetch, verify,
-                            download images locally) + curated planting windows
-  seedUsers.js            — Demo account + gardens + 1k+ synthetic records
+                            download images locally) plus manual entries for
+                            common species outside the free tier, + curated
+                            planting windows
+  seedUsers.js            — Demo account + 350 synthetic users with gardens
+                            and plantings
   seedDemoPlantings.js    — Demo account's plantings for the current week
   findIds.js              — Dev helper: finds free-tier Perenual species ids
                             when extending the catalog
-  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost offsets)
+  plantingWindows.sample.json — Curated catalog manifest (ids, types, frost
+                            offsets, flex ranges)
 frontend/
   index.html              — HTML shell (favicon, Adobe Fonts kit)
+  vite.config.js          — Vite config + dev-server API proxy
   images/                 — Design mockups referenced by DESIGN.md
   src/
     main.jsx              — React entry, router, auth-guarded routes
@@ -181,8 +194,10 @@ frontend/
                             PlantCard, PlantDetailModal, GardenFormModal, RequireAuth
                             (+ per-component CSS where styled)
     context/              — AuthContext (shared session state)
-  public/                 — background image, favicon
-    plants/               — locally cached plant images (Perenual, CC BY-SA 2.0)
+  public/                 — background art, favicon
+    tiles/                — home page card illustrations
+    plants/               — locally cached plant images via Perenual
+                            (per-image licenses per Perenual's API)
 ```
 
 ---
