@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import PropTypes from "prop-types";
 import { Link } from "react-router";
 
-export default function CalendarGrid({ days = [] }) {
+export default function CalendarGrid({ days = [], onSelectPlant }) {
   const today = new Date().toLocaleDateString("en-CA");
   const placeholderDays =
     days.length === 7
@@ -45,15 +45,24 @@ export default function CalendarGrid({ days = [] }) {
               </div>
               {day.plantings?.length ? (
                 day.plantings.map((p) => (
-                  <div
+                  // <div
+                  //   key={p._id}
+                  //   className="small rounded px-1 my-1"
+                  //   style={{
+                  //     backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
+                  //   }}
+                  // >
+                  <button
+                    type="button"
                     key={p._id}
-                    className="small rounded px-1 my-1"
+                    className="small rounded px-1 my-1 border-0"
                     style={{
                       backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
+                      cursor: "pointer",
                     }}
-                  >
+                    onClick={() => onSelectPlant?.(p.plantId)}>
                     {p.name}
-                  </div>
+                  </button>
                 ))
               ) : (
                 <div className="text-body-secondary fst-italic mb-1">
@@ -78,8 +87,10 @@ CalendarGrid.propTypes = {
           _id: PropTypes.string.isRequired,
           name: PropTypes.string.isRequired,
           type: PropTypes.string,
+          plantId: PropTypes.number,
         })
       ),
     })
   ),
+  onSelectPlant: PropTypes.func,
 };

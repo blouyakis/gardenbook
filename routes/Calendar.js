@@ -75,6 +75,7 @@ async function buildWeek(userId, week, gardenId = null, type = null) {
         const plant = plantById.get(p.plantId);
         return {
           _id: String(p._id),
+          plantId: p.plantId,
           name: plant?.commonName || "Plant",
           type: plant?.type || "vegetable",
         };
