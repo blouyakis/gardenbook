@@ -14,7 +14,11 @@ import "./PlantDetailModal.css";
 //   GET  /api/gardens               -> garden <select>
 //   POST /api/gardens/:id/plantings -> add the planting
 
-export default function PlantDetailModal({ plantId = null, onClose }) {
+export default function PlantDetailModal({
+  plantId = null,
+  preferredGardenId = null,
+  onClose,
+}) {
   const { user } = useAuth();
   const [plant, setPlant] = useState(null);
   const [gardens, setGardens] = useState([]);
@@ -42,11 +46,14 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
       if (!res.ok) return;
       const { gardens: fetchedGardens } = await res.json();
       setGardens(fetchedGardens);
-      if (fetchedGardens.length > 0) {
+      const preferred = fetchedGardens.find((g) => g._id === preferredGardenId);
+      if (preferred) {
+        setForm((f) => ({ ...f, gardenId: preferred._id }));
+      } else if (fetchedGardens.length === 1) {
         setForm((f) => ({ ...f, gardenId: fetchedGardens[0]._id }));
       }
     })();
-  }, [plantId, user]);
+  }, [plantId, user, preferredGardenId]);
 
   const onAdd = async (evt) => {
     evt.preventDefault();
@@ -125,6 +132,9 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
               onChange={(e) => setForm({ ...form, gardenId: e.target.value })}
               required
             >
+              {gardens.length > 1 && !form.gardenId && (
+                <option value="">Which garden?</option>
+              )}
               {gardens.map((garden) => (
                 <option key={garden._id} value={garden._id}>
                   {garden.name}
@@ -156,5 +166,6 @@ export default function PlantDetailModal({ plantId = null, onClose }) {
 
 PlantDetailModal.propTypes = {
   plantId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  preferredGardenId: PropTypes.string,
   onClose: PropTypes.func.isRequired,
 };

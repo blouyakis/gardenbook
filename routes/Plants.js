@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
     }
 
     const userZone = zoneNumber(req.user?.region?.zone);
-    if (userZone != null) {
+    if (week && userZone != null) {
       plants = plants.filter(
         (p) =>
           (p.hardiness?.min == null || p.hardiness.min <= userZone) &&
