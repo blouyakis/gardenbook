@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../context/AuthContext.jsx";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import WeekNav, { currentMonday } from "../components/WeekNav.jsx";
 import PlantCard from "../components/PlantCard.jsx";
 import PlantDetailModal from "../components/PlantDetailModal.jsx";
@@ -28,6 +28,8 @@ export default function ExplorePage() {
   const [selectedPlantId, setSelectedPlantId] = useState(null);
   const [browseAll, setBrowseAll] = useState(false);
   const [typeFilter, setTypeFilter] = useState("");
+  const [searchParams] = useSearchParams();
+  const fromGardenId = searchParams.get("gardenId");
 
   const reloadPlants = useCallback(async () => {
     const params = new URLSearchParams();
@@ -118,6 +120,7 @@ export default function ExplorePage() {
 
       <PlantDetailModal
         plantId={selectedPlantId}
+        preferredGardenId={fromGardenId}
         onClose={() => setSelectedPlantId(null)}
       />
     </div>

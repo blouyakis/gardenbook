@@ -150,8 +150,8 @@ export default function GardensPage() {
                   <div className="d-flex gap-2 align-items-center">
                     <Button
                       size="sm"
-                      as={Link}
-                      to="/explore"
+                      as = {Link}
+                      to={`/explore?gardenId=${garden._id}`}
                       className="btn-gb-primary"
                     >
                       + Add
@@ -222,7 +222,7 @@ export default function GardensPage() {
                       <Button
                         size="sm"
                         as={Link}
-                        to="/explore"
+                        to={`/explore?gardenId=${garden._id}`}
                         className="btn-gb-primary mt-2"
                       >
                         + Add plants (Explore)
