@@ -89,7 +89,7 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 > Create a `.env` file in the project root with the following:
 
 ```
-MONGODB_URI=mongodb://localhost:27017
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/
 DB_NAME=gardenbook
 SESSION_SECRET=<generate one>
 PERENUAL_API_KEY=<see comment in canvas assignment>
@@ -119,6 +119,8 @@ npm start
 ```
 
 > Then go to `http://localhost:3000` in your browser. (During development, use the two-terminal setup above and browse at `http://localhost:5173`.)
+
+>Note: To generate the MONGODB_URI: create a free cluster at [mongodb.com/atlas](https://mongodb.com/atlas)
 
 ### Login Credentials
 
