@@ -45,13 +45,6 @@ export default function CalendarGrid({ days = [], onSelectPlant }) {
               </div>
               {day.plantings?.length ? (
                 day.plantings.map((p) => (
-                  // <div
-                  //   key={p._id}
-                  //   className="small rounded px-1 my-1"
-                  //   style={{
-                  //     backgroundColor: `var(--gb-${p.type}-tint, var(--gb-surface))`,
-                  //   }}
-                  // >
                   <button
                     type="button"
                     key={p._id}
