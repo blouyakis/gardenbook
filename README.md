@@ -80,6 +80,11 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 
 [Click here to watch the Video Demonstration]https://drive.google.com/file/d/1nFjV80BjusJ58iFCu6x38JqMTcKKomg8/view?usp=sharing)
 
+### GitHub
+
+[Click here to view the GitHub repo]
+(https://github.com/blouyakis/gardenbook/tree/dev-usability)
+
 ---
 
 ## Setup
