@@ -78,7 +78,7 @@ A demo account has been pre-loaded with sample data so you can explore the appli
 
 ### Video Demonstration
 
-[Click here to watch the Video Demonstration]https://drive.google.com/file/d/1nFjV80BjusJ58iFCu6x38JqMTcKKomg8/view?usp=sharing)
+[Click here to watch the Video Demonstration](https://drive.google.com/file/d/1mE-usFEliQS-aKUm7XZccVT6hDro5jfp/view?usp=sharing)
 
 ### GitHub
 
